@@ -1,0 +1,151 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SCv20.Tools.Web.SiteMaster"  %>
+<%@ Register src="~/Views/Shared/Navigation.ascx" tagname="Navigation" tagprefix="view" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link runat="server" href="~/Content/Styles/Site.css" rel="stylesheet" type="text/css" />
+    
+    <script type="text/javascript" src="/content/scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/content/widgets/jqwidgets/jqx-all.js"></script>
+    <script type="text/javascript" src="/content/scripts/site.js"></script>
+
+    <script type="text/javascript">
+        if (typeof (Sys) !== 'undefined') Sys.Application.notifyScriptLoaded();
+//        function EndRequestHandler(sender, args) {
+//            //if UpdatePanel error occurs...
+//            if (args.get_error() != undefined) {
+//                var Error = "3-add further description client side... : [Code]:" +
+//                    args.get_response().get_statusCode() + "  [Message]: " +
+//                    args.get_error().message;
+//                //Show your custom popup or...
+//                alert(Error);
+//                //Hide default ajax error popup
+//                args.set_errorHandled(true);
+//                //...redirect error to your Error Panel on page
+//                document.getElementById("Label1").innerText = Error;
+//            }
+//        }
+
+//        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+    </script>
+
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager id="scriptManager" runat="server" AllowCustomErrorsRedirect="true" EnablePartialRendering="true" />
+
+        <div id="body">
+            <div class="head">
+                <div class="head-content">SpyCraft v2.0 Online Tools</div>
+            </div>
+            
+            <div class="nav">
+                <div class="nav-content-loader">
+                    <asp:UpdateProgress runat="server" EnableViewState="false">
+                        <ProgressTemplate>
+                            <div class="nav-content-loader-icon"></div>
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                </div>
+
+                <div class="nav-content">
+                    Expand All;
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="content-wrapper">
+                    <div class="right">
+                        <div class="right-head">
+                            <div  class="right-head-title" style="float:left">
+                                <asp:ContentPlaceHolder id="MainTitleContent" runat="server"/>
+                            </div>
+                            <div id="right-head-message" class="right-head-message" 
+                                onclick="$(this).fadeOut('1000').removeClass('error, info, warn');">Mensages do Sistema</div>
+                        </div>
+                        <div class="right-content" style="">
+                            <asp:UpdateProgress runat="server" EnableViewState="false">
+                                <ProgressTemplate>
+                                    <div class="right-content-loader">Updating Page... Please Wait...</div>
+                                </ProgressTemplate>
+                            </asp:UpdateProgress>
+                            
+                            <div class="page" style="">
+                                <asp:ContentPlaceHolder id="MainContent" runat="server"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="splitter" data-action="contract">
+                    <div class="splitter-icon"></div>
+                </div>
+
+                <div class="left" style="">
+                    <div class="left-head">
+                        System Menu
+                    </div>
+                    
+                    <div class="left-content" style="">
+                        <view:Navigation id="navigator" runat="server" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="foot" style="">
+                <div class="foot-content">
+                    fixed size footer
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    <%--<div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    My ASP.NET Application
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Site/Account/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName id="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus id="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
+                        <asp:MenuItem NavigateUrl="~/Site/About.aspx" Text="About" />
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>--%>
+    </form>
+</body>
+</html>
+<script type="text/javascript">
+
+</script>

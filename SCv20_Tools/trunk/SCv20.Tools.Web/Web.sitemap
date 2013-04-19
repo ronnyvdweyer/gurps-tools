@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode    title="Planning"  description="Planning" >
+      <siteMapNode  title="Campaigns"     url="~/site/campaign/default.aspx"/>
+      <siteMapNode  title="Missions"      url="~/site/missions/default.aspx"/>
+      <siteMapNode  title="Organizations" url="~/site/organizations/default.aspx"/>
+    </siteMapNode>
+ </siteMap>
