@@ -24,5 +24,19 @@ namespace System {
             var res = Int32.TryParse(value, out ret);
             return ret;
         }
+
+
+        public static Int32 SafeInt32(this string value, int defaultValue) {
+            int ret = defaultValue;
+            var res = Int32.TryParse(value, out ret);
+            return ret;
+        }
+
+
+        //public static Int32 SafeInt32(this object value) {
+        //    int ret = 0;
+        //    var res = Int32.TryParse(Convert.ToString(value), out ret);
+        //    return ret;
+        //}
     }
 }

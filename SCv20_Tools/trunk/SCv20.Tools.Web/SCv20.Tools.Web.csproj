@@ -38,9 +38,8 @@
     <Reference Include="AjaxControlToolkit">
       <HintPath>..\packages\AjaxControlToolkit.7.0123\lib\40\AjaxControlToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="CKEditor.NET, Version=3.6.4.0, Culture=neutral, PublicKeyToken=e379cdf2f8354999, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ckeditor_aspnet_3.6.4\bin\Debug\CKEditor.NET.dll</HintPath>
+    <Reference Include="CKEditor.NET">
+      <HintPath>..\packages\ckeditor_aspnet_3.6.4\bin\Release\CKEditor.NET.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\AjaxControlToolkit.7.0123\lib\40\SanitizerProviders\HtmlAgilityPack.dll</HintPath>
@@ -67,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_Classes\Resources\AddClientMessage.js" />
+    <Content Include="Content\Images\nav-right.png" />
+    <Content Include="Content\Images\nav-left.png" />
     <Content Include="Content\Widgets\ckEditor\build-config.js" />
     <Content Include="Content\Widgets\ckEditor\ckeditor.js" />
     <Content Include="Content\Widgets\ckEditor\config.js" />
@@ -588,9 +589,11 @@
     <Content Include="Site\GridView.aspx" />
     <Content Include="Site\Missions\Default.aspx" />
     <Content Include="Site\Organizations\Default.aspx" />
+    <Content Include="Views\Shared\Pager.ascx.css" />
     <Content Include="Views\Shared\CKEditor.ascx" />
     <Content Include="Views\QualityEditor.ascx" />
     <Content Include="Views\Shared\Navigation.ascx" />
+    <Content Include="Views\Shared\Pager.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -694,6 +697,13 @@
     </Compile>
     <Compile Include="Views\Shared\Navigation.ascx.designer.cs">
       <DependentUpon>Navigation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Pager.ascx.cs">
+      <DependentUpon>Pager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Pager.ascx.designer.cs">
+      <DependentUpon>Pager.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

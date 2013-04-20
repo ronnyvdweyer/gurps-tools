@@ -7,45 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SCv20.Tools.Web.Site {
+namespace SCv20.Tools.Web.Views.Shared {
     
     
-    public partial class GridView {
+    public partial class Pager {
         
         /// <summary>
-        /// Button1 control.
+        /// prevPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button prevPage;
         
         /// <summary>
-        /// Button2 control.
+        /// currentPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.TextBox currentPage;
         
         /// <summary>
-        /// Pager1 control.
+        /// nextPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SCv20.Tools.Web.Views.Shared.Pager Pager1;
+        protected global::System.Web.UI.WebControls.Button nextPage;
         
         /// <summary>
-        /// ListView1 control.
+        /// currentPageIndex control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListView1;
+        protected global::System.Web.UI.WebControls.HiddenField currentPageIndex;
+        
+        /// <summary>
+        /// totalPages control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField totalPages;
+        
+        /// <summary>
+        /// totalRecords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField totalRecords;
     }
 }
