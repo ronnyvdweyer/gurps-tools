@@ -68,7 +68,6 @@ namespace SCv20.Tools.Web.Views.Shared {
         
         
         
-        
         public PagedList<T> PaginateDataSource<T>(IQueryable<T> source) {
             var paged = new PagedList<T>(source, CurrentPageIndex, PageSize);
 
@@ -110,7 +109,6 @@ namespace SCv20.Tools.Web.Views.Shared {
         
         
         
-        
         private void DisableNavigation(bool hasPreviousPage, bool hasNextPage) {
             prevPage.Enabled = hasPreviousPage;
             nextPage.Enabled = hasNextPage;
@@ -129,12 +127,10 @@ namespace SCv20.Tools.Web.Views.Shared {
         
         
         
-        
         public int PageSize {
             get;
             set;
         }
-        
 
 
         public int CurrentPageIndex {
@@ -148,7 +144,6 @@ namespace SCv20.Tools.Web.Views.Shared {
         }
 
 
-
         public int TotalPages {
             get {
                 return totalPages.Value.SafeInt32();
@@ -157,7 +152,6 @@ namespace SCv20.Tools.Web.Views.Shared {
                 totalPages.Value = value.ToString();
             }
         }
-
 
 
         public int TotalRecords {
@@ -180,6 +174,9 @@ namespace SCv20.Tools.Web.Views.Shared {
             set;
             get;
         }
+
+
+
 
 
         /// <summary>

@@ -12,6 +12,8 @@
     <asp:UpdatePanel ID="ajax" runat="server" UpdateMode="Always">
         <ContentTemplate>
             <div class="form" style="">
+                <asp:HiddenField runat="server" ID="current_id" Value="0" />
+
                 <div class="input">
                     <span class="label">Name:</span>
                     <asp:TextBox runat="server" id="txt_name" CssClass="text" Style="width:650px;" autofocus="autofocus" /> 

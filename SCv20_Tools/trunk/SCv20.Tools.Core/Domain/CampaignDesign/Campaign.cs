@@ -2,43 +2,111 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace SCv20.Tools.Core.Domain.CampaignDesign {
     [Serializable]
     public class Campaign {
-        //public Campaign() {
-        //    Info = new CampaignInfo();
-        //}
+        public Campaign() {
+            YearId = 1;
+            BaseReputation = 2;
+            BaseNetWorth = 1000000M;
+        }
 
+        [Key]
         public virtual int Id {
             get;
             set;
         }
 
+
+        [Range(2, 20)]
         public virtual int BaseReputation {
             get;
             set;
         }
 
+
+        [Range(100000, 2000000)]
         public virtual decimal BaseNetWorth {
             get;
             set;
         }
 
+
+        [Range(0, 20)]
         public virtual int StartingLevel {
             get;
             set;
         }
 
+
+        [MaxLength(10)]
         public virtual string Code {
             get;
             set;
         }
 
-        public virtual CampaignInfo Info {
+
+        [MaxLength(100)]
+        public virtual string Name {
             get;
             set;
-        } 
+        }
+
+
+        [MaxLength(100)]
+        public virtual string YearDetails {
+            get;
+            set;
+        }
+
+
+        [MaxLength(200)]
+        public virtual string Concept {
+            get;
+            set;
+        }
+
+
+        [MaxLength(1000)]
+        public virtual string Summary {
+            get;
+            set;
+        }
+
+
+        #region -- Relationships --------------------------------------------------------
+
+        [ForeignKey("YearId")]
+        public virtual HistoricalConversion Year {
+            get;
+            set;
+        }
+
+
+        public virtual ICollection<Quality> Qualities {
+            get;
+            set;
+        }
+
+        
+        public int YearId {
+            get;
+            set;
+        }
+
+        #endregion
+
+        [NotMapped]
+        public string BaseNetWorthFormatted {
+            get {
+                //var format = BaseNetWorth.ToString("$ #,0.##").Replace(",", ".");
+                var format = String.Format("{0:C0}", BaseNetWorth);
+                return format;
+            }
+        }
 
     }
 }

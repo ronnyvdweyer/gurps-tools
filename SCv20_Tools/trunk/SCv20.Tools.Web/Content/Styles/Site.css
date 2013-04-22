@@ -1,6 +1,7 @@
 ﻿@import url('/content/styles/layout.css');
 @import url('/content/widgets/jqWidgets/styles/jqx.base.css');
 @import url('/content/widgets/jqWidgets/styles/jqx.ui-smoothness.css');
+@import url('/content/styles/layoutgrid.css');
 
 .gray {
     background-color: #efefef;
@@ -14,16 +15,9 @@
     background-color:#F3E8CF;        
 }
 
-
-
-
-
 .focus {
     background-color: #ffffcc!important;
 }
-
-
-
 
 .al-l {
     text-align:left;    
@@ -37,8 +31,21 @@
     text-align:right;    
 }
 
+.trunc {
+    white-space: nowrap;
+    overflow: hidden;
+    /*text-overflow: ellipsis;*/
+}
 
+.clear {
+    clear:both;    
+}
 
+.trunc:after {
+    content:    "[more]";
+    font-size:  .5em;
+    font-style: italic;    
+}
 
 .right-head-message.error {
     background-color: #FFCCCC;
@@ -62,27 +69,38 @@
     top:0px;
 }
 
-.input {
+
+/********************************************************************************
+ *  FORM-ELEMENTS
+ ********************************************************************************/
+.input, 
+.input-container {
     display: block;
     clear: both;
     height: 30px;
-    line-height: 30px;
+    /*line-height: 30px;*/
     border: 0px solid silver;
+    min-height: 30px;
+    height: auto;
 }
 
-.label {
-    width: 100px;
+.label, 
+.input-label {
+    width: 98px;
     line-height: 20px;
     height: 20px;
-    border: 1px solid transparent;
+    border: 0px solid transparent;
     display: block;
     float: left;
-    margin-right: 4px;
+    padding-right: 4px;
     font-family: Verdana;
     font-size: 1.0em;
 }
 
-.text, .text-number {
+.text, 
+.text-number,
+.input-text, 
+.input-number {
     border: 1px solid silver;
     line-height: 18px;
     height: 18px;
@@ -96,13 +114,15 @@
     border-radius: 4px;
 }
 
-.text-number {
+.text-number, 
+.input-number, {
     width:50px;
     text-align:right
 }
 
 
-.text-area {
+.text-area, 
+.input-area {
     border: 1px solid silver;
     line-height: 18px;
     height: 100px;
@@ -172,21 +192,36 @@
 }
 
 .check-box {
+    /*margin-right: 4px;*/
+    background-color: #F6F5EA;
+    border: 1px solid silver;
+    border-radius: 4px;    
+    float: left;
+    font-family: Verdana;
+    font-size: 1.0em;
+    height: 22px;
+    line-height: 22px;
+    -moz-border-radius: 4px;
+    padding-right:2px;
+    text-align:center;
+    width: 48px;
+}
+
+
+.input-select {
     border: 1px solid silver;
     line-height: 22px;
     height: 22px;
-    width: 48px;
+    width: 300px;
     float: left;
     /*margin-right: 4px;*/
     background-color: #F6F5EA;
     font-family: Verdana;
     font-size: 1.0em;
     -moz-border-radius: 4px;
-    border-radius: 4px;    
-    text-align:center;
-    padding-right:2px;
+    border-radius: 4px;
+    padding: 1px 0 1px 0;
 }
-
 
 
 
@@ -196,6 +231,44 @@
 
 .text:focus, 
 .text-area:focus, 
-.text-number:focus {
+.text-number:focus,
+.input-text:focus,
+.input-number:focus,
+.input-area:focus,
+.input-select:focus {
+    background-color: #ffffcc;
+}
+
+
+
+.w-1{width:048px;}
+.w-2{width:148px;}
+.w-3{width:248px;}
+.w-4{width:348px;}
+.w-5{width:448px;}
+.w-6{width:548px;}
+.w-7{width:648px;}
+.w-8{width:798px;}
+.w-9{width:848px;}
+
+.h-1{height:22px;}
+.h-2{height:44px;}
+.h-3{height:66px;}
+.h-4{height:88px;}
+.h-5{height:110px;}
+.h-6{height:132px;}
+.h-7{height:154px;}
+.h-8{height:176px;}
+.h-9{height:198px;}
+
+
+
+.nicEdit-selectTxt {
+    line-height:14px;
+}
+.nicEdit-main {
+    background-color: #F6F5EA;
+}
+.nicEdit-main:focus {
     background-color: #ffffcc;
 }

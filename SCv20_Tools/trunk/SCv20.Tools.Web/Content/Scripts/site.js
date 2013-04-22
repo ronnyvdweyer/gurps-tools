@@ -47,7 +47,7 @@ $(function () {
     //-----------------------------------------------------------------------------
     // Reamarra todos os eventos jquery aos Pedaços atualizados da página.
     //-----------------------------------------------------------------------------
-    
+
     $(".update-panel")
         .on("focus", ".check-box input", function (event) {
             $(this).parent(".check-box").addClass("focus");
@@ -58,8 +58,10 @@ $(function () {
 
     // Document ShortCuts;
     $(document).keypress(function (e) {
-        if (e.keyCode == 27)
+        if (e.keyCode == 27) {
             $('#right-head-message').fadeOut('1000').removeClass('error, info, warn');
+            $('.error-messages-container').fadeOut('1000');
+        }
     });
 
 

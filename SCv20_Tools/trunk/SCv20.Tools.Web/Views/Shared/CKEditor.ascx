@@ -2,7 +2,7 @@
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="ck" %>
 
 <asp:Panel ID="ckEditorContainer" runat="server">
-    <ck:CKEditorControl ID="ck" BasePath="~/Content/Widgets/ckeditor/" runat="server" EnterMode="P" ResizeEnabled="false" Toolbar="NewPage|Preview
+    <ck:CKEditorControl ID="ck" BasePath="~/Content/Widgets/ckeditor/" runat="server" EnterMode="BR" ResizeEnabled="false" Skin="kama" Toolbar="NewPage|Preview
                  Cut|Copy|Paste|PasteText|PasteFromWord|-|Print
                  Undo|Redo|-|Find|Replace|-|SelectAll|RemoveFormat
                  /   

@@ -74,7 +74,8 @@ namespace SCv20.Tools.Core.Domain {
         [NotMapped]
         public string NetworthFormated {
             get {
-                var format = Networth.ToString("$ #,0.##").Replace(",", ".");
+                //var format = Networth.ToString("$ #,0.##").Replace(",", ".");
+                var format = String.Format("{0:C0}", NetworthFormated);
                 return format;
             }
         }

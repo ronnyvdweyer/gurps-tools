@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 
 namespace System {
     public static class StringExtensions {
@@ -22,6 +23,13 @@ namespace System {
         public static Int32 SafeInt32(this string value) { 
             int ret = 0;
             var res = Int32.TryParse(value, out ret);
+            return ret;
+        }
+
+
+        public static Decimal SafeDecimal(this string value) {
+            var ret = 0.0M;
+            var res = Decimal.TryParse(value, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out ret);
             return ret;
         }
 

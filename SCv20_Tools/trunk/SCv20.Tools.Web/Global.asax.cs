@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Globalization;
+using System.Threading;
 
 namespace SCv20.Tools.Web {
     public class Global : System.Web.HttpApplication {
@@ -35,5 +37,10 @@ namespace SCv20.Tools.Web {
             // or SQLServer, the event is not raised.
         }
 
+        void Application_BeginRequest(object sender, EventArgs e) {
+            var ci = (CultureInfo)Thread.CurrentThread.CurrentCulture.Clone();  //new CultureInfo("pt-BR");
+            ci.NumberFormat.CurrencySymbol = "$";
+            Thread.CurrentThread.CurrentCulture = ci;
+        }
     }
 }

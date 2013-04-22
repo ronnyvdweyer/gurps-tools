@@ -83,8 +83,7 @@ html, body {
  ********************************************************************************/
 .foot {
     height: 27px;
-    position: absolute;
-    /*bottom: -27px;*/
+    position: absolute; /*bottom: -27px;*/
     bottom: 0px;
     left: 0;
     background-image: url(/content/images/bg-head.gif);
@@ -156,7 +155,10 @@ html, body {
 }
 
 .page {
-    border:0px solid; display:block;margin-left:220px; padding:5px;
+    border: 0px solid;
+    display: block;
+    margin-left: 220px;
+    padding: 5px;
 }
 
 
@@ -177,37 +179,34 @@ html, body {
 }
 
 .right-head {
-    background-image: url(/content/images/bg-head.gif);
-    background-repeat: repeat-x;
-    background-position: 0px 0px;
     background-attachment: scroll;
-    height: 27px;
-    line-height: 27px;
-    padding-left: 5px;
+    background-image: url(/content/images/bg-head.gif);
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
     border-bottom: 1px solid #D0D0D0;
     font-family: arial,​tahoma,​verdana,​helvetica;
     font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    padding-left: 5px;
 }
 
 .right-head-message {
-    text-align:center;  
-    font-weight:bold;
-    color:Red;
-    margin:auto;
-    max-width:70%;
-    min-width:600px;
+    text-align: center;
+    font-weight: bold;
+    color: Red;
+    margin: auto;
+    max-width: 70%;
+    min-width: 600px;
     height: 30px;
-    line-height:30px;
-    position:relative; z-index:9000;
-    top:-18px;
+    line-height: 30px;
+    position: relative;
+    z-index: 9000;
+    top: -18px;
     -moz-border-radius: 6px;
     border-radius: 6px;
-    cursor:pointer;
-    display:none;
-    /*
-    opacity:0.7;
-    filter:alpha(opacity=90); 
-    */
+    cursor: pointer;
+    display: none; /*     opacity:0.7;     filter:alpha(opacity=90);      */
 }
 
 
@@ -218,10 +217,9 @@ html, body {
  ********************************************************************************/
 .left-content {
     background-color: #fff;
-    padding:5px;
-    /*margin-top: 5px;*/
+    padding: 5px; /*margin-top: 5px;*/
     font-family: vedana,arial,​tahoma,​​helvetica;
-    position:relative;
+    position: relative;
 }
 
 .right-content {
@@ -234,7 +232,8 @@ html, body {
     bottom: 1px;
     padding-top: 5px;
     font-family: verdana,arial,​tahoma,​​helvetica;
-    width:100%; margin-left:-220px;
+    width: 100%;
+    margin-left: -220px;
 }
 
 .right-content-loader {
@@ -242,12 +241,45 @@ html, body {
     line-height: 30px;
     height: 30px;
     position: absolute;
-    width:100%;
+    width: 100%;
     top: -2px;
     text-align: center;
     font-weight: bold;
     border-bottom: 2px solid #D0D0D0;
-    z-index:1000;
+    z-index: 1000;
+}
+
+
+.error-messages-container {
+    background-color: #FFCCCC;
+    border: 1px solid black;
+    border: 2px solid red;
+    border-radius: 6px;
+    color: black;
+    cursor: pointer;
+    filter: alpha(opacity=90);
+    margin-left: 250px;
+    margin-right: 230px;
+    -moz-border-radius: 6px;
+    opacity: 0.9;
+    padding: 5px;
+    position: relative;
+    top: 100px;
+    z-index: 200000;
+}
+.error-messages-title {
+    border-bottom: 1px solid red;
+    display: block;
+}
+.error-messages-summary {
+    cursor: pointer;
+}
+.error-messages-summary ul {
+    line-height: 22px;
+    list-style-type: none;
+    margin: 10px 0 10px 0;
+    margin-left: 0;
+    padding: 0 0 0 20px;
 }
 
 

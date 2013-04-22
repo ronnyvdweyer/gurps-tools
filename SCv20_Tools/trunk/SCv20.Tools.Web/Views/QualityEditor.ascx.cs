@@ -14,28 +14,61 @@ namespace SCv20.Tools.Web.Views {
 
         
         protected void Page_Init(object sender, EventArgs e) {
-            cmd_save_new.Click += new EventHandler(SaveClick);
-            cmd_save.Click += new EventHandler(SaveClick);
+            cmd_save_new.Click  += new EventHandler(Save_Click);
+            cmd_save.Click      += new EventHandler(Save_Click);
         }
 
 
         protected void Page_Load(object sender, EventArgs e) {
-
+        
         }
 
 
-        public void LoadData(int id) {
-            LoadedDataId = id;
-            if (id == 0) return;
+        private void Save_Click(object sender, EventArgs e) {
+            var command = (sender as Button).CommandName;
+            
+            var entity = new Quality {
+                Name            = txt_name.Text,
+                Description     = txt_desc.Text, 
+                IsSeasonsOnly   = chk_season_only.Checked,
+                BonusAD         = txt_bonus_ad.Text.SafeInt32(),
+                BonusXP         = txt_bonus_xp.Text.SafeInt32(),
+            };
+            
+            var repo = Repository<Quality>.GetInstance();
+            repo.Create(entity);
+            repo.Commit();
+
+            if (command == "save-new")
+                Clear();
+
+            AddClientMessage("Operação Realizada com Sucesso", MessageType.Info);
         }
 
 
-        public int LoadedDataId {
+        public void EditRecord(int id) {
+            CurrentRecord = id;
+
+            if (id == 0) 
+                return;
+
+            var repo = Repository<Quality>.GetInstance();
+            var data = repo.GetById(CurrentRecord);
+
+            txt_name.Text           = data.Name;
+            txt_desc.Text           = data.Description;
+            chk_season_only.Checked = data.IsSeasonsOnly;
+            txt_bonus_ad.Text       = data.BonusAD.ToString();
+            txt_bonus_xp.Text       = data.BonusXP.ToString();
+        }
+
+
+        public int CurrentRecord {
             get {
-                return Convert.ToInt32(ViewState["LoadedDataId"]);
+                return current_id.Value.SafeInt32();
             }
             private set {
-                ViewState["LoadedDataId"] = value;
+                current_id.Value = value.ToString();
             }
         }
 
@@ -63,28 +96,7 @@ namespace SCv20.Tools.Web.Views {
             txt_bonus_xp.Text       = "";
             txt_name.Focus();
         }
-
-
-        private void SaveClick(object sender, EventArgs e) {
-            var command = (sender as Button).CommandName;
-            
-            var entity = new Quality {
-                Name            = txt_name.Text,
-                Description     = txt_desc.Text, 
-                IsSeasonsOnly   = chk_season_only.Checked,
-                BonusAD         = txt_bonus_ad.Text.SafeInt32(),
-                BonusXP         = txt_bonus_xp.Text.SafeInt32(),
-            };
-            
-            var repo = Repository<Quality>.GetInstance();
-            repo.Create(entity);
-            repo.Commit();
-
-            if (command == "save-new")
-                Clear();
-
-            AddClientMessage("Operação Realizada com Sucesso", MessageType.Info);
-        }
+        
     }
 
 }

@@ -1,0 +1,66 @@
+﻿/********************************************************************************
+ *  DEFAULT TABLE/GRID LAYOUTS
+ ********************************************************************************/
+.tb-containter {
+    background-color: #F3E8CF;
+    padding: 0 10px 0 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-radius: 8px;
+   -moz-border-top-left-radius: 8px;
+   -moz-border-top-right-radius: 8px;
+   -moz-border-radius: 8px;
+    display: inline-block;
+}
+.tb-title {
+    border: 0px solid black;
+    color: #70899B;
+    float: left;
+    line-height: 27px;
+    font-weight: bold;
+}
+.tb-pager {
+    border: 0px solid red;
+    float: right;
+}
+.tb-header {
+    line-height: 22px;
+    height: 22px;
+    border-top: 2px dotted #EBD894;
+    border-bottom: 2px dotted #EBD894;
+    clear: both;
+    display: block;
+}
+.tb-header .tb-col {
+    float: left;
+    color: #913D4A;
+    font-weight: bold;
+}
+.tb-body {
+    height: auto;
+    border-bottom: 0px dotted #EBD894;
+    clear: both;
+    display: block;
+}
+.tb-row {
+    line-height: 22px;
+    height: 22px;
+    border-bottom: 1px dotted silver;
+    cursor:pointer;
+}
+.tb-row .tb-col {
+    float: left;
+    background-color: #F5F3F1;
+}
+
+.tb-col {
+    white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;  
+}
+/*
+.tb-col:after {
+    font-size: .5em;
+    font-style:italic;    
+}
+*/

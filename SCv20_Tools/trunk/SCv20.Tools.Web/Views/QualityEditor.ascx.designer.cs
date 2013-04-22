@@ -22,6 +22,15 @@ namespace SCv20.Tools.Web.Views {
         protected global::System.Web.UI.UpdatePanel ajax;
         
         /// <summary>
+        /// current_id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField current_id;
+        
+        /// <summary>
         /// txt_name control.
         /// </summary>
         /// <remarks>

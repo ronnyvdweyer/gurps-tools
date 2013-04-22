@@ -7,37 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SCv20.Tools.Web.Site {
+namespace SCv20.Tools.Web.Views {
     
     
-    public partial class GridView {
+    public partial class QualityGrid {
         
         /// <summary>
-        /// Button1 control.
+        /// qualityGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl qualityGrid;
         
         /// <summary>
-        /// Button2 control.
+        /// ajax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.UpdatePanel ajax;
         
         /// <summary>
-        /// Pager1 control.
+        /// GridPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SCv20.Tools.Web.Views.Shared.Pager Pager1;
+        protected global::SCv20.Tools.Web.Views.Shared.Pager GridPager;
         
         /// <summary>
         /// ListView1 control.

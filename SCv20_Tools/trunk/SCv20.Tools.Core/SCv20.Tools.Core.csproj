@@ -50,12 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContext\Mappings\CampaignMap.cs" />
     <Compile Include="DataContext\RulesContext.cs" />
     <Compile Include="DataContext\RulesContextInitializer.cs" />
     <Compile Include="Domain\Asset.cs" />
     <Compile Include="Domain\CampaignDesign\Campaign.cs" />
     <Compile Include="Domain\CampaignDesign\CampaignInfo.cs" />
     <Compile Include="Domain\Caliber.cs" />
+    <Compile Include="Domain\HistoricalConversion.cs" />
+    <Compile Include="Domain\IEntity.cs" />
     <Compile Include="Domain\Quality.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="IPagedList.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Services\AssetService.cs" />
+    <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\SerializationService.cs" />
   </ItemGroup>
   <ItemGroup>

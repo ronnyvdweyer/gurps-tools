@@ -12,6 +12,11 @@ namespace SCv20.Tools.Web.Site.Missions {
         protected void Page_Load(object sender, EventArgs e) {
 
         }
+
+
+        protected override void BindData() {
+            throw new NotImplementedException();
+        }
     }
 
 }

@@ -11,5 +11,10 @@ namespace SCv20.Tools.Web.Site.Campaigns {
 
 
     public partial class Default {
+
+
+        protected override void BindData() {
+            throw new System.NotImplementedException();
+        }
     }
 }

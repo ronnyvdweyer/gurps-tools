@@ -23,7 +23,7 @@ namespace SCv20.Tools.Core.Services {
         }
 
         public void Create(Asset asset, object assetData) {
-            var db = new RulesContext();
+            var db = RulesContext.GetInstance();
             asset.Data = SerializationService.GetInstance().Serialize(assetData);
             db.Assets.Add(asset);
             db.SaveChanges();

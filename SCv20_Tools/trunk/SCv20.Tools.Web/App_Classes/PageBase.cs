@@ -4,10 +4,13 @@ using System.Linq;
 using System.Web.UI;
 using System.IO;
 using System.Reflection;
+using SCv20.Tools.Core.Services;
+using System.ComponentModel.DataAnnotations;
+using System.Web.UI.WebControls;
 
 
 namespace SCv20.Tools.Web {
-    public class PageBase : System.Web.UI.Page {
+    public abstract class PageBase : System.Web.UI.Page {
 
         /// <summary>
         /// Recupera um Script (texto) definido como EmbedResource no assembly atual.
@@ -54,6 +57,50 @@ namespace SCv20.Tools.Web {
         /// <param name="message">Mensagem a ser exibida.</param>
         protected void AddClientMessage(string message) {
             AddClientMessage(message, MessageType.Info);
-        } 
+        }
+
+
+        public void ValidateAnnotations(object dataAnotatedObject) {
+            //  http://stackoverflow.com/questions/3089760/using-asp-net-mvc-data-annotation-outside-of-mvc
+            //  http://stackoverflow.com/questions/777889/on-postback-how-can-i-add-a-error-message-to-validation-summary
+            //  http://blog.webmastersam.net/post/Adding-custom-error-message-to-ValidationSummary-without-validators.aspx
+            //  http://stackoverflow.com/questions/7149899/custom-validation-not-executing
+            
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(dataAnotatedObject, null, null);
+            var isValid = Validator.TryValidateObject(dataAnotatedObject, context, results, true);
+
+            var panel = Page.Master.FindControl("errorPanel");
+            var error = Page.Master.FindControl("errorSummary") as ValidationSummary;
+            error.ValidationGroup = "DataAnotationsValidator";
+
+            foreach (var v in results) {
+                var validator = new CustomValidator();
+                validator.ValidationGroup = "DataAnotationsValidator";
+                validator.IsValid = false;
+                validator.ErrorMessage = v.ErrorMessage;
+                
+                Page.Validators.Add(validator);
+            }
+
+            panel.Visible = true;
+        }
+
+
+
+        /// <summary>
+        /// Obtém uma referência ao serviço global de dados.
+        /// </summary>
+        protected virtual DataService DataService {
+            get {
+                return SCv20.Tools.Core.Services.DataService.GetInstance();
+            }
+        }
+
+
+        /// <summary>
+        /// Método padrão reponsável por carregar os dados em uma página.
+        /// </summary>
+        protected abstract void BindData();
     }
 }

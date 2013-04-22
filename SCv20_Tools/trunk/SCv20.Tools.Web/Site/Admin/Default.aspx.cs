@@ -12,6 +12,10 @@ namespace SCv20.Tools.Web.Admin {
         protected void Page_Load(object sender, EventArgs e) {
 
         }
+
+        protected override void BindData() {
+            throw new NotImplementedException();
+        }
     }
 
 }

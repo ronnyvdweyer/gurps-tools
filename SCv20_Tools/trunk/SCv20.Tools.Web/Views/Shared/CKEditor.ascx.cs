@@ -40,7 +40,7 @@ namespace SCv20.Tools.Web.Views.Shared {
         }
 
 
-        public string Content {
+        public string Text {
             get { return ck.Text; }
             set { ck.Text = value; }
         }

@@ -49,6 +49,7 @@
       <HintPath>..\packages\AjaxControlToolkit.7.0123\lib\40\SanitizerProviders\SanitizerProviders.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,6 +69,7 @@
     <EmbeddedResource Include="App_Classes\Resources\AddClientMessage.js" />
     <Content Include="Content\Images\nav-right.png" />
     <Content Include="Content\Images\nav-left.png" />
+    <Content Include="Content\Styles\LayoutGrid.css" />
     <Content Include="Content\Widgets\ckEditor\build-config.js" />
     <Content Include="Content\Widgets\ckEditor\ckeditor.js" />
     <Content Include="Content\Widgets\ckEditor\config.js" />
@@ -231,6 +233,43 @@
     <Content Include="Content\Widgets\ckEditor\plugins\wsc\dialogs\tmpFrameset.html" />
     <Content Include="Content\Widgets\ckEditor\plugins\wsc\dialogs\wsc.css" />
     <Content Include="Content\Widgets\ckEditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\dialog.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\dialog_ie.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\dialog_ie7.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\dialog_ie8.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\dialog_iequirks.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\dialog_opera.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\editor.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\editor_ie.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\editor_ie7.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\editor_ie8.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\editor_iequirks.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\icons.png" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\images\dialog_sides.gif" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\images\dialog_sides.png" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\images\dialog_sides_rtl.png" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\images\mini.gif" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\images\sprites.png" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\images\sprites_ie6.png" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\images\toolbar_start.gif" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama\skin.js" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\dialog.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\dialog_ie.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\dialog_ie7.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\dialog_ie8.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\dialog_iequirks.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\dialog_opera.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\editor.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\editor_gecko.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\editor_ie.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\editor_ie7.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\editor_ie8.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\editor_iequirks.css" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\icons.png" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\images\arrow.png" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\images\close.png" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\images\mini.png" />
+    <Content Include="Content\Widgets\ckEditor\skins\moonocolor\skin.js" />
     <Content Include="Content\Widgets\ckEditor\skins\moono\dialog.css" />
     <Content Include="Content\Widgets\ckEditor\skins\moono\dialog_ie.css" />
     <Content Include="Content\Widgets\ckEditor\skins\moono\dialog_ie7.css" />
@@ -248,6 +287,13 @@
     <Content Include="Content\Widgets\ckEditor\skins\moono\images\close.png" />
     <Content Include="Content\Widgets\ckEditor\skins\moono\images\mini.png" />
     <Content Include="Content\Widgets\ckEditor\styles.js" />
+    <Content Include="Content\Widgets\nicEdit\demos\demo01.html" />
+    <Content Include="Content\Widgets\nicEdit\demos\demo02.html" />
+    <Content Include="Content\Widgets\nicEdit\demos\demo03.html" />
+    <Content Include="Content\Widgets\nicEdit\demos\demo04.html" />
+    <Content Include="Content\Widgets\nicEdit\demos\demo05.html" />
+    <Content Include="Content\Widgets\nicEdit\nicEdit.js" />
+    <Content Include="Content\Widgets\nicEdit\nicEditorIcons.gif" />
     <Content Include="Site\Admin\CampaignQualities\Create.aspx" />
     <Content Include="Site\Admin\Default.aspx" />
     <Content Include="Content\Images\arrow-r.png" />
@@ -586,9 +632,10 @@
     <Content Include="Global.asax" />
     <Content Include="Site\Campaigns\Create.aspx" />
     <Content Include="Site\Campaigns\Default.aspx" />
-    <Content Include="Site\GridView.aspx" />
     <Content Include="Site\Missions\Default.aspx" />
     <Content Include="Site\Organizations\Default.aspx" />
+    <Content Include="Site\WebForm1.aspx" />
+    <Content Include="Views\QualityGrid.ascx" />
     <Content Include="Views\Shared\Pager.ascx.css" />
     <Content Include="Views\Shared\CKEditor.ascx" />
     <Content Include="Views\QualityEditor.ascx" />
@@ -656,13 +703,6 @@
     <Compile Include="Site\Campaigns\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site\GridView.aspx.cs">
-      <DependentUpon>GridView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site\GridView.aspx.designer.cs">
-      <DependentUpon>GridView.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site\Missions\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -676,6 +716,20 @@
     </Compile>
     <Compile Include="Site\Organizations\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityGrid.ascx.cs">
+      <DependentUpon>QualityGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\QualityGrid.ascx.designer.cs">
+      <DependentUpon>QualityGrid.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\CKEditor.ascx.cs">
       <DependentUpon>CKEditor.ascx</DependentUpon>
@@ -723,6 +777,8 @@
     <None Include="Content\Widgets\ckEditor\plugins\scayt\README.md" />
     <None Include="Content\Widgets\ckEditor\plugins\wsc\LICENSE.md" />
     <None Include="Content\Widgets\ckEditor\plugins\wsc\README.md" />
+    <None Include="Content\Widgets\ckEditor\skins\kama\readme.md" />
+    <None Include="Content\Widgets\ckEditor\skins\moonocolor\readme.md" />
     <None Include="Content\Widgets\ckEditor\skins\moono\readme.md" />
     <None Include="Content\Widgets\jqWidgets\_EULA.pdf" />
   </ItemGroup>

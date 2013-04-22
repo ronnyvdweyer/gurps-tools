@@ -6,6 +6,8 @@ using SCv20.Tools.Core.DataContext;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq.Expressions;
+using SCv20.Tools.Core.Domain;
+using System.Data;
 
 namespace SCv20.Tools.Core {
     public class Repository<T> : IRepository<T>, IDisposable where T : class {
@@ -17,7 +19,7 @@ namespace SCv20.Tools.Core {
         /// Prevents a default instance of the <see cref="Repository"/> class from being created.
         /// </summary>
         private Repository() {
-            _context = new RulesContext();
+            _context = RulesContext.GetInstance();
         }
 
 
@@ -41,8 +43,9 @@ namespace SCv20.Tools.Core {
         /// <param name="id">The value of the primary key for the entity to be found.</param>
         /// <returns>The entity found, or null.</returns>
         public virtual T GetById(object id) {
-            return this._context.Set<T>().Find(id);
-            //return this.Entities.Find(id);
+            var entity = this._context.Set<T>().Find(id);
+            //this._context.Entry(entity).State = EntityState.Detached; // TODO: Check if not Implies in Hierarquical Read.
+            return entity;
         }
 
 
@@ -63,6 +66,7 @@ namespace SCv20.Tools.Core {
         /// <returns></returns>
         public virtual IQueryable<T> FindBy(Expression<Func<T, bool>> predicate) {
             IQueryable<T> query = this._context.Set<T>().Where(predicate);
+
             return query;
         } 
 
@@ -89,8 +93,19 @@ namespace SCv20.Tools.Core {
             if (entity == null)
                 throw new ArgumentNullException("entity");
 
-            this._context.Entry(entity).State = System.Data.EntityState.Modified;
-          //this.Context.Entry(entity).CurrentValues.SetValues(EntityState.Modified);
+                this._context.Entry(entity).State = System.Data.EntityState.Modified;
+            
+            //  http://stackoverflow.com/questions/5672255/an-object-with-the-same-key-already-exists-in-the-objectstatemanager-the-object
+            //  this._context.Entry(entity).CurrentValues.SetValues(EntityState.Modified);
+            
+            //this._context.Entry(entity).State = EntityState.Detached;
+            //this._context.Set<T>().Attach(entity);
+            //this._context.Entry(entity).CurrentValues.SetValues(EntityState.Modified);
+
+            //this._context.Entry(entity).State = EntityState.Detached;
+            //this._context.Set<T>().Attach(entity);
+            //this._context.Entry(entity).CurrentValues.SetValues(entity);
+
 
             return entity;
         }
