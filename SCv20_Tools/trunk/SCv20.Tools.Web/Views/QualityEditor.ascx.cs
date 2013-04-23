@@ -20,7 +20,9 @@ namespace SCv20.Tools.Web.Views {
 
 
         protected void Page_Load(object sender, EventArgs e) {
-        
+            if (!Page.IsPostBack) {
+                EditRecord(Request["id"].SafeInt32());
+            }
         }
 
 

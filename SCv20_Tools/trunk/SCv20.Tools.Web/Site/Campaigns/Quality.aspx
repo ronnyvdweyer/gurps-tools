@@ -16,28 +16,27 @@
             <view:CampaignDisplay ID="CampaignDisplay" runat="server" />
         </div>
 
-        <div class="clear"></div>
+        <asp:UpdatePanel runat="server" ID="ajax" UpdateMode="Always">
+            <ContentTemplate>
+                <div class="input-container">
+                    <span class="label">Quality:</span>
+                    <asp:DropDownList runat="server" ID="SelectQuality" DataValueField="Id" DataTextField="Name" CssClass="input-select w-5" Style=""
+                                      OnSelectedIndexChanged="SelectQuality_SelectedIndexChanged" AutoPostBack="true" />
+        
+                    <span class="label al-r w-2" ">Action Dice:</span>
+                    <asp:TextBox runat="server" ID="txtBonusAD" CssClass="input-text w-1 al-c" Enabled="false" />
+        
+                    <span class="label al-r">XP Bonus:</span>
+                    <asp:TextBox runat="server" ID="txtBonusXP" CssClass="input-text w-1 al-c"  Enabled="false"/>
+                </div>
 
-        <div style="float:left;">
-            <div class="input-container">
-                <span class="label">Quality:</span>
-                <asp:DropDownList runat="server" ID="SelectQuality" DataValueField="Id" DataTextField="Name" CssClass="input-select w-3" 
-                    OnSelectedIndexChanged="SelectQuality_SelectedIndexChanged" AutoPostBack="true" />
-            </div>
-            <div class="input-container">
-                <span class="label">Action Dice:</span>
-                <asp:TextBox runat="server" ID="txtBonusAD" CssClass="input-text w-1" Enabled="false" />
-            </div>
-            <div class="input-container">
-                <span class="label">XP Bonus:</span>
-                <asp:TextBox runat="server" ID="txtBonusXP" CssClass="input-text w-1"  Enabled="false"/>
-            </div>
-        </div>
+                <div class="input-container">
+                    <span class="label">Description:</span>
+                    <asp:TextBox runat="server" ID="txtDescription" TextMode="MultiLine" CssClass="input-area w-8 h-6" Style=""  Enabled="false" />
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
-        <div class="" style="float:left">
-            <span class="label al-c">Description:</span>
-            <asp:TextBox runat="server" ID="txtDescription" TextMode="MultiLine" CssClass="input-area w-5" Style="height:78px;"  Enabled="false" />
-        </div>
         <div class="clear" style="border:1px solid black"></div>
     </div>
 <br />
@@ -45,5 +44,7 @@
 -------- Contents Here Please --------
 <br />
 <br />
+
+    </span>
 
 </asp:Content>

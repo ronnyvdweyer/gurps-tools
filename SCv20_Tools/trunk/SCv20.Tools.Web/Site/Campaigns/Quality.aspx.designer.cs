@@ -22,6 +22,15 @@ namespace SCv20.Tools.Web.Site.Campaigns {
         protected global::SCv20.Tools.Web.Views.CampaignDisplay CampaignDisplay;
         
         /// <summary>
+        /// ajax control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel ajax;
+        
+        /// <summary>
         /// SelectQuality control.
         /// </summary>
         /// <remarks>

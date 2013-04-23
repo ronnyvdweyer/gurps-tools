@@ -24,15 +24,15 @@
                     <asp:CheckBox runat="server" ID="chk_season_only" CssClass="check-box" />
             
                     <span class="label al-r">Bonus XP:</span>
-                    <asp:TextBox runat="server" id="txt_bonus_xp" CssClass="text-number" style="width:50px;text-align:right" /> 
+                    <asp:TextBox runat="server" id="txt_bonus_xp" CssClass="text-number al-c" style="width:50px;" /> 
             
                     <span class="label al-r">Bonus AD:</span>
-                    <asp:TextBox runat="server" id="txt_bonus_ad" CssClass="text-number" style="width:50px"/> 
+                    <asp:TextBox runat="server" id="txt_bonus_ad" CssClass="text-number al-c" style="width:50px"/> 
                 </div>
             
                 <div class="input">
                     <span class="label">Description:</span>
-                    <asp:TextBox runat="server" id="txt_desc" TextMode="MultiLine" CssClass="text-area" style="width:650px;"/>
+                    <asp:TextBox runat="server" id="txt_desc" TextMode="MultiLine" CssClass="text-area h-6" style="width:650px;"/>
                 </div>
 
                 <div runat="server" id="formControls" class="form-controls">

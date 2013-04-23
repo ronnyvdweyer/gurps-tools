@@ -28,7 +28,14 @@ namespace SCv20.Tools.Web.Site.Campaigns {
 
         
         protected void CampaignDisplay_ItemSelected(object sender, CampaignDisplay.ItemSelectedEventArgs e) {
-            AddClientMessage(e.SelectedItem.ToString());
+            if (e.SelectedItem == 0) {
+                ClearControl();
+                SelectQuality.Enabled = false;
+            }
+            else {
+                SelectQuality.Enabled = true;
+                SelectQuality.Focus();
+            }
         }
         
         
@@ -47,14 +54,17 @@ namespace SCv20.Tools.Web.Site.Campaigns {
                 txtDescription.Text = data.Description;
                 txtBonusAD.Text = data.BonusAD.ToString();
                 txtBonusXP.Text = data.BonusXP.ToString();
+                SelectQuality.Focus();
             }
             else {
                 ClearControl();
+                SelectQuality.Focus();
             }
         }
 
         
         private void ClearControl() {
+            SelectQuality.SelectedIndex = 0;
             txtDescription.Text = string.Empty;
             txtBonusAD.Text = string.Empty;
             txtBonusXP.Text = string.Empty;
