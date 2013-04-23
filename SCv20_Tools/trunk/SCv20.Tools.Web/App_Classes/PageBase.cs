@@ -7,6 +7,7 @@ using System.Reflection;
 using SCv20.Tools.Core.Services;
 using System.ComponentModel.DataAnnotations;
 using System.Web.UI.WebControls;
+using SCv20.Tools.Web.App_Classes;
 
 
 namespace SCv20.Tools.Web {
@@ -60,6 +61,10 @@ namespace SCv20.Tools.Web {
         }
 
 
+        /// <summary>
+        /// Valida um Objeto contedo data anotations e adiciona o resultado à coleção de validadores da página.
+        /// </summary>
+        /// <param name="dataAnotatedObject">Objeto contentod DataAnotations.</param>
         public void ValidateAnnotations(object dataAnotatedObject) {
             //  http://stackoverflow.com/questions/3089760/using-asp-net-mvc-data-annotation-outside-of-mvc
             //  http://stackoverflow.com/questions/777889/on-postback-how-can-i-add-a-error-message-to-validation-summary
@@ -82,10 +87,11 @@ namespace SCv20.Tools.Web {
                 
                 Page.Validators.Add(validator);
             }
-
-            panel.Visible = true;
+            if (results.Count > 0)
+                panel.Visible = true;
+            else
+                panel.Visible = false;
         }
-
 
 
         /// <summary>
@@ -99,8 +105,18 @@ namespace SCv20.Tools.Web {
 
 
         /// <summary>
+        /// Obtem uma referência ao valores armazenados na sessão.
+        /// </summary>
+        protected virtual SessionVariables SessionVariables {
+            get {
+                return new SessionVariables();
+            }
+        }
+
+
+        /// <summary>
         /// Método padrão reponsável por carregar os dados em uma página.
         /// </summary>
-        protected abstract void BindData();
+        protected abstract void LoadPageData();
     }
 }

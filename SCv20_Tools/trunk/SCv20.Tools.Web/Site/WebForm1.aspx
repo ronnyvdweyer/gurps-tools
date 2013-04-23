@@ -19,6 +19,5 @@
 
 
 <asp:Content ID="body" ContentPlaceHolderID="MainContent" runat="server">
-
-    <uc1:QualityGrid ID="QualityGrid1" runat="server" Visible="false"/>
+    <uc1:QualityGrid ID="QualityGrid1" runat="server" Visible="true"/>
 </asp:Content>

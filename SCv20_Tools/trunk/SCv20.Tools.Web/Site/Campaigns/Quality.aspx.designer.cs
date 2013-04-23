@@ -7,63 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SCv20.Tools.Web.Views {
+namespace SCv20.Tools.Web.Site.Campaigns {
     
     
-    public partial class QualityGrid {
+    public partial class Quality {
         
         /// <summary>
-        /// qualityGrid control.
+        /// CampaignDisplay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl qualityGrid;
+        protected global::SCv20.Tools.Web.Views.CampaignDisplay CampaignDisplay;
         
         /// <summary>
-        /// ajax control.
+        /// SelectQuality control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel ajax;
+        protected global::System.Web.UI.WebControls.DropDownList SelectQuality;
         
         /// <summary>
-        /// GridPager control.
+        /// txtBonusAD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SCv20.Tools.Web.Views.Shared.Pager GridPager;
+        protected global::System.Web.UI.WebControls.TextBox txtBonusAD;
         
         /// <summary>
-        /// ListQuality control.
+        /// txtBonusXP control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListQuality;
+        protected global::System.Web.UI.WebControls.TextBox txtBonusXP;
         
         /// <summary>
-        /// txt_seletion control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_seletion;
-        
-        /// <summary>
-        /// SelectedItems control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SelectedItems;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
     }
 }

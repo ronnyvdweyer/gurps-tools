@@ -67,6 +67,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_Classes\Resources\AddClientMessage.js" />
+    <Content Include="Content\Images\ico-delete.png" />
+    <Content Include="Content\Images\ico-copy-2.png" />
+    <Content Include="Content\Images\ico-copy-1.png" />
+    <Content Include="Content\Images\ico-copy-3.png" />
     <Content Include="Content\Images\nav-right.png" />
     <Content Include="Content\Images\nav-left.png" />
     <Content Include="Content\Styles\LayoutGrid.css" />
@@ -632,9 +636,11 @@
     <Content Include="Global.asax" />
     <Content Include="Site\Campaigns\Create.aspx" />
     <Content Include="Site\Campaigns\Default.aspx" />
+    <Content Include="Site\Campaigns\Quality.aspx" />
     <Content Include="Site\Missions\Default.aspx" />
     <Content Include="Site\Organizations\Default.aspx" />
     <Content Include="Site\WebForm1.aspx" />
+    <Content Include="Views\CampaignDisplay.ascx" />
     <Content Include="Views\QualityGrid.ascx" />
     <Content Include="Views\Shared\Pager.ascx.css" />
     <Content Include="Views\Shared\CKEditor.ascx" />
@@ -651,6 +657,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Classes\MessageType.cs" />
+    <Compile Include="App_Classes\SessionVariables.cs" />
     <Compile Include="App_Classes\UserControlBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -703,6 +710,13 @@
     <Compile Include="Site\Campaigns\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Site\Campaigns\Quality.aspx.cs">
+      <DependentUpon>Quality.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\Campaigns\Quality.aspx.designer.cs">
+      <DependentUpon>Quality.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site\Missions\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -723,6 +737,13 @@
     </Compile>
     <Compile Include="Site\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CampaignDisplay.ascx.cs">
+      <DependentUpon>CampaignDisplay.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CampaignDisplay.ascx.designer.cs">
+      <DependentUpon>CampaignDisplay.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\QualityGrid.ascx.cs">
       <DependentUpon>QualityGrid.ascx</DependentUpon>

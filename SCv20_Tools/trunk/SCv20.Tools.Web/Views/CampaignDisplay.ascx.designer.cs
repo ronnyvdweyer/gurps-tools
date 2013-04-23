@@ -10,60 +10,42 @@
 namespace SCv20.Tools.Web.Views {
     
     
-    public partial class QualityGrid {
+    public partial class CampaignDisplay {
         
         /// <summary>
-        /// qualityGrid control.
+        /// CampaignDisplayContainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl qualityGrid;
+        protected global::System.Web.UI.WebControls.Panel CampaignDisplayContainer;
         
         /// <summary>
-        /// ajax control.
+        /// SelectCampaignField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel ajax;
+        protected global::System.Web.UI.WebControls.DropDownList SelectCampaignField;
         
         /// <summary>
-        /// GridPager control.
+        /// txtCreatedOn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SCv20.Tools.Web.Views.Shared.Pager GridPager;
+        protected global::System.Web.UI.WebControls.TextBox txtCreatedOn;
         
         /// <summary>
-        /// ListQuality control.
+        /// txtConcept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListQuality;
-        
-        /// <summary>
-        /// txt_seletion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_seletion;
-        
-        /// <summary>
-        /// SelectedItems control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SelectedItems;
+        protected global::System.Web.UI.WebControls.TextBox txtConcept;
     }
 }

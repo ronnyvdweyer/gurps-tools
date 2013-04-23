@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace SCv20.Tools.Core.Domain.CampaignDesign {
+
     [Serializable]
     public class Campaign {
+
         public Campaign() {
             YearId = 1;
             BaseReputation = 2;
             BaseNetWorth = 1000000M;
+            CreatedOn = DateTime.Now;
         }
 
         [Key]
@@ -77,6 +80,11 @@ namespace SCv20.Tools.Core.Domain.CampaignDesign {
         }
 
 
+        public virtual DateTime CreatedOn {
+            get;
+            set;
+        }
+
         #region -- Relationships --------------------------------------------------------
 
         [ForeignKey("YearId")]
@@ -91,13 +99,13 @@ namespace SCv20.Tools.Core.Domain.CampaignDesign {
             set;
         }
 
-        
+
         public int YearId {
             get;
             set;
         }
 
-        #endregion
+        #endregion -- Relationships --------------------------------------------------------
 
         [NotMapped]
         public string BaseNetWorthFormatted {
@@ -107,6 +115,5 @@ namespace SCv20.Tools.Core.Domain.CampaignDesign {
                 return format;
             }
         }
-
     }
 }

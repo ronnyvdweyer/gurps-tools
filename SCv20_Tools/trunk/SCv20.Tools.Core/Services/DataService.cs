@@ -6,12 +6,9 @@ using SCv20.Tools.Core.Domain;
 using SCv20.Tools.Core.Domain.CampaignDesign;
 
 namespace SCv20.Tools.Core.Services {
+
     public class DataService {
         private static DataService _instance;
-
-        private DataService() {
-        
-        }
 
 
         public static DataService GetInstance() {
@@ -21,6 +18,17 @@ namespace SCv20.Tools.Core.Services {
 
                 return _instance;
             }
+        }
+
+
+        private DataService() {
+        }
+
+
+        public IList<Campaign> GetAllCampaigns() {
+            var repo = Repository<Campaign>.GetInstance();
+            var data = repo.FindAll().ToList();
+            return data;
         }
 
 
@@ -40,23 +48,15 @@ namespace SCv20.Tools.Core.Services {
         }
 
 
-        public IList<Campaign> GettAllCampaigns() {
-            var repo = Repository<Campaign>.GetInstance();
-            var data = repo.FindAll().ToList();
-            return data;
-        }
-
-        
-        public IList<Quality> GetAllQualities(bool isSeason) {
+        public IList<Quality> GetAllQualities(bool? isSeason) {
             var repo = Repository<Quality>.GetInstance();
-            var data = repo.FindBy(e=>e.IsSeasonsOnly == isSeason).ToList();
-            
-            return data;
-        }
+            var data = repo.FindAll();
 
+            if (isSeason.HasValue) {
+                data = data.Where(e => e.IsSeasonsOnly == isSeason);
+            }
 
-        public KeyValuePair<int, string> GetCareerLevel(int level) {
-            return GetAllCareerLevels().Where(e => e.Key == level).FirstOrDefault();
+            return data.ToList();
         }
 
 
@@ -65,6 +65,11 @@ namespace SCv20.Tools.Core.Services {
             var data = repo.GetById(id);
 
             return data;
+        }
+
+
+        public KeyValuePair<int, string> GetCareerLevel(int level) {
+            return GetAllCareerLevels().Where(e => e.Key == level).FirstOrDefault();
         }
 
 
@@ -85,7 +90,7 @@ namespace SCv20.Tools.Core.Services {
                 c = repo1.Create(c);
 
             repo1.Commit();
-            
+
             return c;
         }
     }

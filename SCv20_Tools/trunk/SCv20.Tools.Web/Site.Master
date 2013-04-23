@@ -21,7 +21,8 @@
     <div id="body">
         <div class="head">
             <div class="head-content">
-                SpyCraft v2.0 Online Tools</div>
+                SpyCraft v2.0 Online Tools
+            </div>
         </div>
         <div class="nav">
             <div class="nav-content-loader">
@@ -47,14 +48,18 @@
                             Mensages do Sistema
                         </div>
 
-                        <div runat="server" id="errorPanel" visible="false" class="error-messages-container" style="" onclick="$(this).fadeOut('1000')">
-                            <div class="error-messages-title" style="">
-                                INVALID VALUES DETECTED:
-                            </div>
-                            <div style="border: 0px solid black;" class="error-messages-summary">
-                                <asp:ValidationSummary runat="server" CssClass="" ID="errorSummary" DisplayMode="BulletList" ShowSummary="true" />
-                            </div>
-                        </div>
+                        <asp:UpdatePanel ID="validator" runat="server" UpdateMode="Always">
+                            <ContentTemplate>
+                                <div runat="server" id="errorPanel" visible="false" class="error-messages-container" style="" onclick="$(this).fadeOut('1000')">
+                                    <div class="error-messages-title" style="">
+                                        INVALID VALUES DETECTED:
+                                    </div>
+                                    <div style="border: 0px solid black;" class="error-messages-summary">
+                                        <asp:ValidationSummary runat="server" CssClass="" ID="errorSummary" DisplayMode="BulletList" ShowSummary="true" />
+                                    </div>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
 
                     </div>
                     <div class="right-content" style="">

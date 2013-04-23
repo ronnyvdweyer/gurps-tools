@@ -13,6 +13,15 @@ namespace SCv20.Tools.Web.Site.Campaigns {
     public partial class Create {
         
         /// <summary>
+        /// ajax control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel ajax;
+        
+        /// <summary>
         /// hid_campaign_id control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace SCv20.Tools.Web.Site.Campaigns {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_name;
+        
+        /// <summary>
+        /// txt_concept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_concept;
         
         /// <summary>
         /// sel_year control.
@@ -76,15 +94,6 @@ namespace SCv20.Tools.Web.Site.Campaigns {
         protected global::System.Web.UI.WebControls.TextBox txt_networth;
         
         /// <summary>
-        /// txt_concept control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_concept;
-        
-        /// <summary>
         /// txt_summary control.
         /// </summary>
         /// <remarks>
@@ -101,5 +110,14 @@ namespace SCv20.Tools.Web.Site.Campaigns {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Save;
+        
+        /// <summary>
+        /// QualityGrid1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SCv20.Tools.Web.Views.QualityGrid QualityGrid1;
     }
 }

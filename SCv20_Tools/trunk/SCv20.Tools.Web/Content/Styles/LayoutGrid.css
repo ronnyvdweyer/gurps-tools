@@ -3,60 +3,63 @@
  ********************************************************************************/
 .tb-containter {
     background-color: #F3E8CF;
-    padding: 0 10px 0 10px;
+    border-radius: 8px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    border-radius: 8px;
-   -moz-border-top-left-radius: 8px;
-   -moz-border-top-right-radius: 8px;
-   -moz-border-radius: 8px;
     display: inline-block;
+    -moz-border-radius: 8px;
+    -moz-border-top-left-radius: 8px;
+    -moz-border-top-right-radius: 8px;
+    padding: 0 10px 0 10px;
 }
 .tb-title {
     border: 0px solid black;
     color: #70899B;
     float: left;
-    line-height: 27px;
     font-weight: bold;
+    line-height: 27px;
 }
 .tb-pager {
     border: 0px solid red;
     float: right;
 }
 .tb-header {
-    line-height: 22px;
-    height: 22px;
-    border-top: 2px dotted #EBD894;
     border-bottom: 2px dotted #EBD894;
+    border-top: 2px dotted #EBD894;
     clear: both;
     display: block;
+    height: 22px;
+    line-height: 22px;
 }
 .tb-header .tb-col {
-    float: left;
     color: #913D4A;
+    float: left;
     font-weight: bold;
 }
 .tb-body {
-    height: auto;
     border-bottom: 0px dotted #EBD894;
     clear: both;
     display: block;
+    height: auto;
 }
 .tb-row {
-    line-height: 22px;
-    height: 22px;
+    background-color: #F5F3F1;
     border-bottom: 1px dotted silver;
-    cursor:pointer;
+    cursor: pointer;
+    height: 22px;
+    line-height: 22px;
 }
 .tb-row .tb-col {
-    float: left;
     background-color: #F5F3F1;
+    float: left;
 }
 
 .tb-col {
+    margin-right: 0px;
+    overflow: hidden;
+    padding: 0 5px 0 5px;
+    text-overflow: ellipsis;
     white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;  
 }
 /*
 .tb-col:after {
@@ -64,3 +67,29 @@
     font-style:italic;    
 }
 */
+.tb-toolbar {
+    border: 1px solid #F3E8CF;
+    display: block;
+    padding: 3px 0 3px 0;
+    text-align: right;
+}
+.tb-toolbar .btn-ico-copy {
+    background-color: #F3E8CF;
+    background-image: url(/Content/Images/ico-copy-1.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 20px;
+    -moz-border-radius: 4px;
+    width: 30px;
+}
+.tb-toolbar .btn-ico-copy:active, 
+.tb-toolbar .btn-ico-copy:active {
+    background-color: #F6F5EA;
+}
+.tb-toolbar .btn-ico-copy:hover, 
+.tb-toolbar .btn-ico-copy:hover {
+    background-color: #F6F5EA;
+}

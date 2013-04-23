@@ -14,7 +14,7 @@ namespace SCv20.Tools.Web.Site.Admin.CampaignQualities {
 
         }
 
-        protected override void BindData() {
+        protected override void LoadPageData() {
             throw new NotImplementedException();
         }
 

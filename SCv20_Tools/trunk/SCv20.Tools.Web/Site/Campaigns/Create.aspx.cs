@@ -15,7 +15,7 @@ namespace SCv20.Tools.Web.Site.Campaigns {
     public partial class Create : PageBase {
         protected void Page_Load(object sender, EventArgs e) {
             if (!Page.IsPostBack) {
-                BindData();
+                LoadPageData();
                 LoadData();
             }
         }
@@ -41,7 +41,7 @@ namespace SCv20.Tools.Web.Site.Campaigns {
         }
 
 
-        protected override void BindData() {
+        protected override void LoadPageData() {
             sel_year.DataSource = DataService.GetAllHistoricalConversions();
             sel_year.DataBind();
 
@@ -65,35 +65,16 @@ namespace SCv20.Tools.Web.Site.Campaigns {
             c.BaseReputation = txt_reputation.Text.SafeInt32();
             c.Concept        = txt_concept.Text;
             c.Summary        = txt_summary.Text;
-
-
+            
             ValidateAnnotations(c);
 
+            if (Page.IsValid) {
+                var newId = DataService.SaveCampaign(c);
+                hid_campaign_id.Value = newId.Id.ToString();
+                AddClientMessage("Succes");
+            }
 
-            //  http://stackoverflow.com/questions/3089760/using-asp-net-mvc-data-annotation-outside-of-mvc
-            //  http://stackoverflow.com/questions/777889/on-postback-how-can-i-add-a-error-message-to-validation-summary
-            //  http://blog.webmastersam.net/post/Adding-custom-error-message-to-ValidationSummary-without-validators.aspx
-            //  http://stackoverflow.com/questions/7149899/custom-validation-not-executing
-
-
-            //var results = new List<ValidationResult>();
-            //var context = new ValidationContext(c, null, null);
-            //var xpto = Validator.TryValidateObject(c, context, results, true);
-
-
-            //foreach (var v in results) {
-            //    var err = new CustomValidator();
-            //    err.ValidationGroup = "DataAnotationsValidator";
-            //    err.IsValid = false;
-            //    err.ErrorMessage = v.ErrorMessage;
-            //    errorSummary.ValidationGroup = "DataAnotationsValidator";
-            //    Page.Validators.Add(err);
-            //}
-
-
-            //var newId = DataService.SaveCampaign(c);
-            //hid_campaign_id.Value = newId.Id.ToString();
-            //AddClientMessage("Succes");
+            //Page.GetPostBackEventReference()
         }
     }
 }

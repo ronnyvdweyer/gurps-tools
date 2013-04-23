@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web.UI;
 using System.IO;
 using System.Reflection;
+using SCv20.Tools.Core.Services;
+using SCv20.Tools.Web.App_Classes;
 
 
 namespace SCv20.Tools.Web {
@@ -54,6 +56,26 @@ namespace SCv20.Tools.Web {
         /// <param name="message">Mensagem a ser exibida.</param>
         protected void AddClientMessage(string message) {
             AddClientMessage(message, MessageType.Info);
+        }
+
+
+        /// <summary>
+        /// Obtém uma referência ao serviço global de dados.
+        /// </summary>
+        protected virtual DataService DataService {
+            get {
+                return SCv20.Tools.Core.Services.DataService.GetInstance();
+            }
+        }
+
+
+        /// <summary>
+        /// Obtem uma referência ao valores armazenados na sessão.
+        /// </summary>
+        protected virtual SessionVariables SessionVariables {
+            get {
+                return new SessionVariables() ;
+            }
         }
     }
 }
