@@ -642,6 +642,8 @@
     <Content Include="Site\WebForm1.aspx" />
     <Content Include="Views\CampaignDisplay.ascx" />
     <Content Include="Views\QualityGrid.ascx" />
+    <Content Include="Views\Shared\DataGrid.ascx" />
+    <Content Include="Views\Shared\DataGrid_Tests.aspx" />
     <Content Include="Views\Shared\Pager.ascx.css" />
     <Content Include="Views\Shared\CKEditor.ascx" />
     <Content Include="Views\QualityEditor.ascx" />
@@ -765,6 +767,20 @@
     </Compile>
     <Compile Include="Views\QualityEditor.ascx.designer.cs">
       <DependentUpon>QualityEditor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\DataGrid.ascx.cs">
+      <DependentUpon>DataGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\DataGrid.ascx.designer.cs">
+      <DependentUpon>DataGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\DataGrid_Tests.aspx.cs">
+      <DependentUpon>DataGrid_Tests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\DataGrid_Tests.aspx.designer.cs">
+      <DependentUpon>DataGrid_Tests.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Navigation.ascx.cs">
       <DependentUpon>Navigation.ascx</DependentUpon>

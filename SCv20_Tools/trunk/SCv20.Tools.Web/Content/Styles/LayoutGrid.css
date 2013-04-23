@@ -72,6 +72,7 @@
     display: block;
     padding: 3px 0 3px 0;
     text-align: right;
+    clear: both;
 }
 .tb-toolbar .btn-ico-copy {
     background-color: #F3E8CF;
