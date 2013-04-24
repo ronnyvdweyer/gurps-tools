@@ -85,6 +85,8 @@ namespace SCv20.Tools.Web.Views.Shared {
                 IEnumerator ie = _dataSource.GetEnumerator();
 
                 while (ie.MoveNext()) {
+                    var x = DataBinder.Eval(_currentItem, "Name");
+                    
                     if (_itemTemplate != null) {
                         AddItemTemplateAsControl(_itemTemplate, ie.Current);
                     }

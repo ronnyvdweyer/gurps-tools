@@ -31,10 +31,10 @@
     height: 22px;
     line-height: 22px;
 }
-.tb-header .tb-col {
+.tb-header-item {
     color: #913D4A;
-    float: left;
     font-weight: bold;
+    text-align: left;
 }
 .tb-body {
     border-bottom: 0px dotted #EBD894;
@@ -42,55 +42,14 @@
     display: block;
     height: auto;
 }
-.tb-row {
-    background-color: #F5F3F1;
-    border-bottom: 1px dotted silver;
-    cursor: pointer;
-    height: 22px;
-    line-height: 22px;
+.tb-row-item {
+    background-color:#F5F3F1;
+    border-bottom:1px dotted silver;
 }
-.tb-row .tb-col {
-    background-color: #F5F3F1;
-    float: left;
-}
-
-.tb-col {
-    margin-right: 0px;
-    overflow: hidden;
-    padding: 0 5px 0 5px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-/*
-.tb-col:after {
-    font-size: .5em;
-    font-style:italic;    
-}
-*/
 .tb-toolbar {
     border: 1px solid #F3E8CF;
     display: block;
     padding: 3px 0 3px 0;
     text-align: right;
     clear: both;
-}
-.tb-toolbar .btn-ico-copy {
-    background-color: #F3E8CF;
-    background-image: url(/Content/Images/ico-copy-1.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    border: 0;
-    border-radius: 4px;
-    cursor: pointer;
-    height: 20px;
-    -moz-border-radius: 4px;
-    width: 30px;
-}
-.tb-toolbar .btn-ico-copy:active, 
-.tb-toolbar .btn-ico-copy:active {
-    background-color: #F6F5EA;
-}
-.tb-toolbar .btn-ico-copy:hover, 
-.tb-toolbar .btn-ico-copy:hover {
-    background-color: #F6F5EA;
 }

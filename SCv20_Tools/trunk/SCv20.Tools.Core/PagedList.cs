@@ -67,7 +67,7 @@ namespace SCv20.Tools.Core {
 
             this.PageSize = pageSize;
             this.PageIndex = pageIndex;
-            this.AddRange(source);
+            this.AddRange(source.Skip(pageIndex * pageSize).Take(pageSize));
         }
 
 

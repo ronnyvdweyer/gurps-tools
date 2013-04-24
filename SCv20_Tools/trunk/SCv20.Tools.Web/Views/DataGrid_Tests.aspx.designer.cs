@@ -22,12 +22,12 @@ namespace SCv20.Tools.Web.Views.Shared {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// DataGrid1 control.
+        /// myGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SCv20.Tools.Web.Views.Shared.DataGrid DataGrid1;
+        protected global::SCv20.Tools.Web.Views.Shared.DynamicGrid myGrid;
     }
 }

@@ -16,14 +16,16 @@
                     
             <asp:PlaceHolder runat="server" ID="gridHeaderTemplate" />
 
-            <%-- <div class="tb-col al-c" style="width:040px">
+            <%--
+            <div class="tb-col al-c" style="width:040px">
                 <input type="checkbox" disabled="disabled" id="x-chk-all" class="x-chk-all" />
             </div>
             <div class="tb-col al-c" style="width:050px">ID</div>
             <div class="tb-col al-l" style="width:380px">Name</div>
             <div class="tb-col al-l" style="width:100px">Seasons</div>
             <div class="tb-col al-r" style="width:100px">XP Bonus</div>
-            <div class="tb-col al-r" style="width:100px">AD Bonus</div>--%>
+            <div class="tb-col al-r" style="width:100px">AD Bonus</div>
+            --%>
         </div>
                 
         <div class="tb-body">
