@@ -56,7 +56,46 @@ namespace SCv20.Tools.Core.Services {
                 data = data.Where(e => e.IsSeasonsOnly == isSeason);
             }
 
-            return data.ToList();
+            return data.OrderBy(e=>e.Name).ToList();
+
+
+            //var vListVendors = (from eee in vListSupplier
+            //                    where !(from ppp in vListCustomer select ppp.SupplierID).ToList().Contains(eee.SupplierID)
+            //                    select eee).ToList();
+
+        }
+
+
+        public IList<Quality> GetAllQualitiesExcludingExistingFromCampaign(int campaignId) {
+            var repoQuality  = Repository<Quality>.GetInstance();
+            var repoCampaign = Repository<Campaign>.GetInstance();
+            
+            var campaign = repoCampaign.GetById(campaignId);
+
+            if (campaign == null) {
+                return repoQuality.FindAll().OrderBy(e => e.Name).ToList();
+            }
+            else {
+                var aaa  = campaign.Qualities.ToList();    // Customers
+                var bbb  = repoQuality.FindAll().ToList();               // Orders
+
+                var query = from c in bbb
+                            where !(from o in aaa select o.Id).Contains(c.Id)
+                            select c;
+
+                var r = query.ToList();
+
+                //var availQualities = (from Q in repoQuality.FindAll()
+                //                      where !(from CQ in campaignQualities
+                //                              select CQ.Id).Contains(Q.Id)
+                //                      select Q)/*.ToList()*/;
+
+                ///var rrr = availQualities.ToList();
+                
+                return r;
+                
+                //availQualities;
+            }
         }
 
 

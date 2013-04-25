@@ -1,9 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DynamicGrid.ascx.cs" Inherits="SCv20.Tools.Web.Views.Shared.DynamicGrid" %>
 <%@ Register src="~/Views/Shared/Pager.ascx" tagname="Pager" tagprefix="view" %>
 
-<asp:panel runat="server" id="QualityGridContainer" style="display:block;width:100%">
+<asp:panel runat="server" id="QualityGridContainer" style="display:block">
     
-    <div class="tb-container" style="height:auto">
+    <div class="tb-container" style="height:auto; display:block">
         <div class="tb-title">
             <span runat="server" id="gridTitle" />
         </div>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="tb-toolbar">
-            <asp:PlaceHolder runat="server" ID="gridFooterTemplate" />
+            &nbsp;<asp:PlaceHolder runat="server" ID="gridFooterTemplate" />
         </div>
     </div>
 

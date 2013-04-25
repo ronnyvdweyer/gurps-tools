@@ -13,13 +13,13 @@ namespace SCv20.Tools.Web.Site.Campaigns {
     public partial class Quality {
         
         /// <summary>
-        /// CampaignDisplay control.
+        /// ucCampaignDisplay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SCv20.Tools.Web.Views.CampaignDisplay CampaignDisplay;
+        protected global::SCv20.Tools.Web.Views.CampaignDisplay ucCampaignDisplay;
         
         /// <summary>
         /// ajax control.
@@ -31,13 +31,13 @@ namespace SCv20.Tools.Web.Site.Campaigns {
         protected global::System.Web.UI.UpdatePanel ajax;
         
         /// <summary>
-        /// SelectQuality control.
+        /// cboQualities control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList SelectQuality;
+        protected global::System.Web.UI.WebControls.DropDownList cboQualities;
         
         /// <summary>
         /// txtBonusAD control.
@@ -65,5 +65,32 @@ namespace SCv20.Tools.Web.Site.Campaigns {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        
+        /// <summary>
+        /// cmdSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cmdSave;
+        
+        /// <summary>
+        /// gridQualities control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SCv20.Tools.Web.Views.Shared.DynamicGrid gridQualities;
+        
+        /// <summary>
+        /// cmdRemove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cmdRemove;
     }
 }

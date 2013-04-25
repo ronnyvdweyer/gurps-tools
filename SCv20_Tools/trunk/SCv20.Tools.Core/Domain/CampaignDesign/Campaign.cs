@@ -15,7 +15,9 @@ namespace SCv20.Tools.Core.Domain.CampaignDesign {
             BaseReputation = 2;
             BaseNetWorth = 1000000M;
             CreatedOn = DateTime.Now;
+            Qualities = new List<Quality>();
         }
+
 
         [Key]
         public virtual int Id {

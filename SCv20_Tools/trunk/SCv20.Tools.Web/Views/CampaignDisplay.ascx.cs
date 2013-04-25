@@ -12,7 +12,7 @@ namespace SCv20.Tools.Web.Views {
         public delegate void ItemSelectedHandler(object sender, ItemSelectedEventArgs e);
                 
 
-        public int SelectedCampaign {
+        public int SelectedCampaignID {
             get {
                 return SelectCampaignField.SelectedValue.SafeInt32();
             }
