@@ -1,0 +1,48 @@
+﻿@model  IList<SCv20_Tools.Web.Models.QualityModel>
+<div class="table">
+    <table class="size-7">
+        <caption>Existing Qualities</caption>
+        <colgroup>
+            <col class="grid-1" />
+            <col class="grid-4" />
+            @*<col class="grid-1" />*@
+            <col class="grid-1" />
+            <col class="grid-1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Quality</th>
+                <th>Description</th>
+                <th class="al-c">AD / XP Bonus</th>
+                @*<th class="al-c">XP Bonus</th>*@
+                <th class="al-r">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model) {
+                <tr>
+                    <td>@item.Name  </td>
+                    <td class="al-l">
+                        <div style="overflow-y: hidden; width: 100%; font-size: .8em">
+                            @item.Description
+                        </div>
+                        @*<span style="display:block;border:0px solid" class="al-r">[more]</span>*@
+                    </td>
+                    <td class="al-c">@item.BonusADFormated / @item.BonusXPFormated</td>
+                    @*<td class="al-c">@item.BonusXPFormated</td>*@
+                    <td class="al-r">
+                        <button type="button" value="remove" data-id="@item.Id">remove</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5"></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+@*.trunc {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}*@

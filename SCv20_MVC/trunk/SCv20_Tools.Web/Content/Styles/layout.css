@@ -1,0 +1,184 @@
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #305330;
+    background-color: silver;
+    font-size: 13pt;
+    font-family: 'Trebuchet MS';
+}
+
+#header {
+    right: 0;
+    left: 0;
+    background-color: black;
+    box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
+}
+
+    #header .title {
+        padding-left: 55px;
+        height: 1.5em;
+        border-bottom: 1px dashed #fff;
+        background-image: url(/Content/Images/head-logo.gif);
+        background-position: left center;
+        background-repeat: no-repeat;
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.5em;
+        line-height: 1.5em;
+    }
+
+    #header .navigation {
+        padding-left: 10px;
+        height: 2em;
+        color: #fff;
+        line-height: 2em;
+    }
+
+#container {
+    position: absolute;
+    top: 4.8em;
+    right: 0;
+    bottom: 1.6em;
+    left: 0;
+    margin: auto;
+}
+
+#left {
+    position: absolute;
+    left: .5em;
+    width: 14em;
+    height: 70%;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
+    /*border-color: #ddd #aaa #aaa #ddd;*/
+    /*border-right: 0px solid black;*/
+}
+
+    #left .title {
+        padding: 0 10px 0 10px;
+        height: 1.7em;
+        background-color: #000;
+        color: #fff;
+        line-height: 1.7em;
+    }
+
+    #left .content {
+        padding: 10px 5px 0 5px;
+    }
+
+#main {
+    position: absolute;
+    right: 0em;
+    left: 15.2em;
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 8px 0 0px 0px;
+    background-color: whitesmoke;
+    /*box-shadow: -1px -1px 3px rgba(50, 50, 50, 0.75);*/
+}
+
+    #main .title {
+        padding: 0 10px 0 10px;
+        height: 1.7em;
+        background-color: #000;
+        color: #fff;
+        line-height: 1.7em;
+    }
+
+    #main .content {
+        position: absolute;
+        top: 1.7em;
+        right: 0em;
+        bottom: 0em;
+        left: 0em;
+        overflow-y: scroll;
+        padding: 10px 10px 0 10px;
+    }
+
+#ajaxLoader {
+    position: fixed;
+    top: 0;
+    right: 0px;
+    left: 0px;
+    z-index: 3000;
+    display: none;
+    overflow: hidden;
+    height: 100%;
+    background-image: url(/Content/Images/loading2.gif);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    /*background-color: rgba(225, 225, 225, 0.0);*/
+}
+
+#ajaxMessage {
+    position: absolute;
+    top: .3em;
+    right: 0;
+    left: 0;
+    z-index: 30000;
+    display: none;
+    overflow: hidden;
+    margin-right: 3em;
+    margin-bottom: 20px;
+    margin-left: 3em;
+    padding: .5em .5em .5em 3em;
+    border-radius: 12px;
+    background-repeat: no-repeat;
+    vertical-align: central;
+    font-weight: bold;
+    /*background-position: .4em .4em;*/
+}
+
+    #ajaxMessage.error {
+        border: 1px solid red;
+        background-color: #F2DEDE;
+        background-image: url(/Content/Images/ico-error.png);
+        background-position: 10px 5px;
+        box-shadow: 1px 1px 1px 2px rgba(255,0,0, .1);
+        color: #B94A48;
+    }
+
+    #ajaxMessage.warn {
+        border: 3px solid #fbeed5;
+        background-color: #FCF8E3;
+        background-image: url(/Content/Images/ico-warn.png);
+        background-position: 10px 4px;
+        box-shadow: 1px 1px 1px 2px rgba(255, 235, 0, .2);
+        color: #C09853;
+    }
+
+    #ajaxMessage.info {
+        border: 1px solid #bce8f1;
+        background-color: #d9edf7;
+        background-image: url(/Content/Images/ico-info.png);
+        background-position: 10px 7px;
+        box-shadow: 1px 1px 1px 2px rgba(0, 0, 255, .1);
+        color: #3A87AD;
+    }
+
+    #ajaxMessage .close {
+        display: block;
+        float: right;
+        margin-right: 5px;
+        padding: 0;
+        border: 0px solid;
+        font-size: .8em;
+    }
+
+        #ajaxMessage .close span {
+            display: block;
+            display: table;
+            width: 16px;
+            height: 1.5em;
+            border: 0px solid;
+            background-image: url(/Content/Images/ico-close.gif);
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+    #ajaxMessage .message {
+        font-size: .9em;
+    }
