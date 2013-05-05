@@ -14,14 +14,14 @@ namespace SCv20_Tools.Core.Data {
 
         public static DataContext BuildContext() {
 
-            return new DataContext();
+            //return new DataContext();
 
-            //lock (typeof(DataContext)) {
-            //    if (_instance == null)
-            //        _instance = new DataContext();
+            lock (typeof(DataContext)) {
+                if (_instance == null)
+                    _instance = new DataContext();
 
-            //    return _instance;
-            //}
+                return _instance;
+            }
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
@@ -37,7 +37,7 @@ namespace SCv20_Tools.Core.Data {
 
         #region -- Data Sets ------------------------------------------------------------
 
-        public virtual DbSet<Caliber> Caliber {
+        public virtual DbSet<Caliber> Calibers {
             get;
             set;
         }
@@ -47,17 +47,17 @@ namespace SCv20_Tools.Core.Data {
             set;
         }
 
-        public virtual DbSet<Quality> Quality {
+        public virtual DbSet<Quality> Qualities {
             get;
             set;
         }
 
-        public virtual DbSet<HistoricalConversion> HistoricalConversion {
+        public virtual DbSet<HistoricalConversion> HistoricalConversions {
             get;
             set;
         }
 
-        public virtual DbSet<Campaign> Campaign {
+        public virtual DbSet<Campaign> Campaigns {
             get;
             set;
         }

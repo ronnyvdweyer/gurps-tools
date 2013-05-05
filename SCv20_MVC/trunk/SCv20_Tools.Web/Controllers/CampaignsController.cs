@@ -18,6 +18,7 @@ namespace SCv20_Tools.Web.Controllers {
 
     public class CampaignsController : BaseController {
         private readonly DataService _dataService;
+        public static readonly object x = new object();
 
         public CampaignsController() {
             _dataService = DataService.GetInstance();
@@ -38,15 +39,17 @@ namespace SCv20_Tools.Web.Controllers {
 
         [HttpGet]
         public ActionResult Edit(int id) {
-            if (id <= 0)
-                return RedirectToAction("Create");
+            lock (x) {
+                if (id <= 0)
+                    return RedirectToAction("Create");
 
-            var entity = _dataService.GetCampaign(id);
+                var entity = _dataService.GetCampaign(id);
 
-            var model = CampaignModel.MapFrom(entity);
-            PrepareModelForView(model);
+                var model = CampaignModel.MapFrom(entity);
+                PrepareModelForView(model);
 
-            return View(model);
+                return View(model);
+            }
         }
 
 
@@ -59,29 +62,31 @@ namespace SCv20_Tools.Web.Controllers {
 
         [HttpGet, AjaxHandleError]
         public ActionResult GetQualityDetails(int id) {
-            var data = _dataService.GetQuality(id);
-            var model = QualityModel.MapFrom(data);
+            lock (x) {
+                var data = _dataService.GetQuality(id);
+                var model = QualityModel.MapFrom(data);
 
-            return Json(new {
-                bonusAD     = model.BonusADFormated,
-                bonusXP     = model.BonusXPFormated,
-                description = model.Description
-            }, JsonRequestBehavior.AllowGet);
-        
+                return Json(new {
+                    bonusAD = model.BonusADFormated,
+                    bonusXP = model.BonusXPFormated,
+                    description = model.Description
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
-
         private CampaignModel PrepareModelForView(CampaignModel model) {
-            if (model == null)
-                model = new CampaignModel();
+            lock (x) {
+                if (model == null)
+                    model = new CampaignModel();
 
-            var qualities = _dataService.GetAllQualitiesExcludingExistingFromCampaign(model.Id);
-            model.ListAvaliableQualities = qualities.Select(item => QualityModel.MapFrom(item)).ToList();
+                var qualities = _dataService.GetAllQualitiesExcludingExistingFromCampaign(model.Id);
+                model.ListAvaliableQualities = qualities.Select(item => QualityModel.MapFrom(item)).ToList();
 
-            var conversions = _dataService.GetAllHistoricalConversions();
-            model.ListHistoricalConversions = conversions.Select(item => HistoricalConversionModel.MapFrom(item)).ToList();
+                var conversions = _dataService.GetAllHistoricalConversions();
+                model.ListHistoricalConversions = conversions.Select(item => HistoricalConversionModel.MapFrom(item)).ToList();
 
-            return model;
+                return model;
+            }
         }
     }
 }

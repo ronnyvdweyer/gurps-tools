@@ -12,10 +12,10 @@ namespace SCv20_Tools.Core.Data {
 
     internal class DataContextInitializer : DropCreateDatabaseIfModelChanges<DataContext> {
         protected override void Seed(DataContext context) {
-            LoadCaliber().ForEach(c => context.Caliber.Add(c));
-            LoadQualities().ForEach(c => context.Quality.Add(c));
-            LoadHistoricalConversion().ForEach(c => context.HistoricalConversion.Add(c));
-            context.Campaign.Add(CreateSampleCampaign(context));
+            LoadCaliber().ForEach(c => context.Calibers.Add(c));
+            LoadQualities().ForEach(c => context.Qualities.Add(c));
+            LoadHistoricalConversion().ForEach(c => context.HistoricalConversions.Add(c));
+            context.Campaigns.Add(CreateSampleCampaign(context));
         }
 
         private static List<Caliber> LoadCaliber() {

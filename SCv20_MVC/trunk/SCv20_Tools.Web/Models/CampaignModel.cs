@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 using SCv20_Tools.Core;
 
 namespace SCv20_Tools.Web.Models {
-
+    [HandleError]
     public class CampaignModel {
+        public static readonly object x = new object();
 
         public CampaignModel() {
             ListHistoricalConversions = new List<HistoricalConversionModel>();
@@ -56,13 +58,13 @@ namespace SCv20_Tools.Web.Models {
 
         public string BaseXPFormatted {
             get {
-                return BaseXPCalculated.ToString("+#;-#;+0");
+                return BaseXPCalculated.ToString("+#;-#;+0") + " XP";
             }
         }
 
         public string BaseADFormatted {
             get {
-                return BaseADCalculated.ToString("+#;-#;+0");
+                return BaseADCalculated.ToString("+#;-#;+0") + " AD";
             }
         }
 
@@ -98,7 +100,7 @@ namespace SCv20_Tools.Web.Models {
                 model.Summary = entity.Summary;
                 model.CreatedOn = entity.CreatedOn;
                 model.SelectedYearId = entity.YearId;
-                model.ListCampaignQualities = entity.Qualities.Select(row => QualityModel.MapFrom(row)).ToList();
+                model.ListCampaignQualities = entity.Qualities.Select(row => QualityModel.MapFrom(row)).OrderBy(row => row.Name).ToList();
             }
             return model;
         }

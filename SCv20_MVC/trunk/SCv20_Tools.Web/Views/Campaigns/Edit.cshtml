@@ -1,9 +1,9 @@
-﻿
-@model SCv20_Tools.Web.Models.CampaignModel
+﻿@model SCv20_Tools.Web.Models.CampaignModel
 @{ ViewBag.Title = "Edit Campaign"; }
 
 @using (Html.BeginForm()) { 
     <div class="form ">
+        @Html.HiddenFor(m => m.Id)
 
         <div class="group">
             <div class="grid-1">
@@ -68,8 +68,14 @@
             <div class="grid-1">
                 @Html.LabelFor(m => m.Concept)
             </div>
-            <div class="grid-6">
+            <div class="grid-4">
                 @Html.MeHZ().TextAreaFor(m => m.Concept, null)
+            </div>
+            <div class="grid-1">
+                @Html.LabelFor(m => m.CreatedOn)
+            </div>
+            <div class="grid-1">
+                @Html.MeHZ().TextBoxFor(m => m.CreatedOn, new TextBoxOptions { Disabled = true })
             </div>
         </div>
 
@@ -82,7 +88,7 @@
             <div class="grid-2">
                 @Html.MeHZ().DropDownListFor(m => m.SelectedQualityId, ds => ds.ListAvaliableQualities, "Id", "Name", null)
             </div>
-            
+
             <div class="grid-1 al-l">
                 <button type="button" value="add-quality" id="btnAddQuality">Add Quality</button>
             </div>
@@ -92,11 +98,12 @@
             <div class="grid-1">
                 <input type="text" id="txtQualityBonusAD" disabled="disabled" />
             </div>
-        
+
             <div class="grid-1">
                 <input type="text" id="txtQualityBonusXP" disabled="disabled" />
             </div>
         </div>
+
         <div class="group">
             <div class="grid-1">
                 <label for="txtQualityDetails">Description</label>
@@ -110,11 +117,26 @@
     </div>
     
     @Html.Partial("_qualityList", @Model.ListCampaignQualities)
+    
+    <div id="html" style="border: 5px solid red; padding: 10px;">
+        template goes here...
+    </div>
+    
+    <select id="mySelect">
+        {{~it: value: index}}
+        <option value="{{=value.id}}">{{=value.name}}</option>
+        {{~}}
+    </select>
 }
+
+
 <script type="text/javascript">
     /// <reference path="/content/scripts/jquery/jquery-1.7.1.min.js" />
+    /// <reference path="/areas/api/scripts/quality.api.js" />
+    /// <reference path="/areas/api/scripts/campaign.api.js" />
 
-    $('#@Html.IdFor(m=>m.SelectedQualityId)').change(getQualityDetails).keyup(getQualityDetails).change();
+    $('#@Html.IdFor(m => m.SelectedQualityId)').change(getQualityDetails).keyup(getQualityDetails).change();
+    $('#btnAddQuality').click(addQuality);
 
     function getQualityDetails(e) {
         var id = $(this).val();
@@ -125,13 +147,31 @@
             $("#btnAddQuality").removeAttr("disabled");
         }
 
-        $.ajax('@Url.Action("GetQualityDetails")', {
-            type: 'GET',
-            data: { "id": id }
-        }).done(function (data) {
-            $("#txtQualityBonusAD").val(data.bonusAD);
-            $("#txtQualityBonusXP").val(data.bonusXP);
+        var api = new qualityApi();
+        api.getDetails(id, function (data) {
+            $("#txtQualityBonusAD").val(data.bonusADFormated);
+            $("#txtQualityBonusXP").val(data.bonusXPFormated);
             $("#txtQualityDetails").html(data.description);
         });
     }
+
+
+    function addQuality() {
+        var api = new campaignApi();
+        var cid = $('#Id').val();
+        var qid = $('#@Html.IdFor(m=>m.SelectedQualityId)').val();
+
+        api.addQuality(cid, qid, function (data) {
+            alert(data.done);
+        });
+    }
+
+
+    (function () {
+        var api = new qualityApi();
+        api.getAll(function (data) {
+            $('#mySelect').tmpl(data);
+        })
+    }());
 </script>
+

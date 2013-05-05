@@ -6,6 +6,8 @@ using SCv20_Tools.Core;
 
 namespace SCv20_Tools.Web.Models {
     public class HistoricalConversionModel {
+        public static readonly object x = new object();
+
         public int Id { get; set; }
 
         public string Year { get; set; }
@@ -21,16 +23,18 @@ namespace SCv20_Tools.Web.Models {
         }
 
         public static HistoricalConversionModel MapFrom(HistoricalConversion entity) {
-            var model = new HistoricalConversionModel();
+            lock (x) {
+                var model = new HistoricalConversionModel();
 
-            if (entity != null) {
-                model.Id = entity.Id;
-                model.Year = entity.Year;
-                model.Order = entity.Order;
-                model.Modifier = entity.Modifier;
+                if (entity != null) {
+                    model.Id = entity.Id;
+                    model.Year = entity.Year;
+                    model.Order = entity.Order;
+                    model.Modifier = entity.Modifier;
+                }
+
+                return model;
             }
-
-            return model;
         }
     }
 }

@@ -6,6 +6,7 @@ using SCv20_Tools.Core;
 
 namespace SCv20_Tools.Web.Models {
     public class QualityModel {
+        public static readonly object x = new object();
 
         public int Id { get; set; }
 
@@ -38,18 +39,20 @@ namespace SCv20_Tools.Web.Models {
         }
 
         public static QualityModel MapFrom(Quality entity) {
-            var model = new QualityModel();
+            lock (x) {
+                var model = new QualityModel();
 
-            if (entity != null) {
-                model.Id = entity.Id;
-                model.Name = entity.Name;
-                model.Description = entity.Description;
-                model.IsSeasonsOnly = entity.IsSeasonsOnly;
-                model.BonusXP = entity.BonusXP;
-                model.BonusAD = entity.BonusAD;
+                if (entity != null) {
+                    model.Id = entity.Id;
+                    model.Name = entity.Name;
+                    model.Description = entity.Description;
+                    model.IsSeasonsOnly = entity.IsSeasonsOnly;
+                    model.BonusXP = entity.BonusXP;
+                    model.BonusAD = entity.BonusAD;
 
+                }
+                return model;
             }
-            return model;
         }
     }
 }

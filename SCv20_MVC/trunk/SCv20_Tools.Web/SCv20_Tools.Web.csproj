@@ -98,6 +98,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\Api\Controllers\CampaignController.cs" />
+    <Compile Include="Areas\Api\Controllers\QualityController.cs" />
+    <Compile Include="Areas\Api\Models\QualityModel.cs" />
     <Compile Include="Models\CampaignModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MissionsController.cs" />
@@ -111,6 +115,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SCv20_TOOLS.sdf" />
+    <Content Include="Areas\Api\Scripts\campaign.api.js" />
+    <Content Include="Areas\Api\Scripts\quality.api.js" />
     <Content Include="Content\Images\ico-close.gif" />
     <Content Include="Content\Images\ico-error.png" />
     <Content Include="Content\Images\ico-info.png" />
@@ -119,6 +125,8 @@
     <Content Include="Content\Images\head-logo.gif" />
     <Content Include="Content\Images\loading1.gif" />
     <Content Include="Content\Images\ico-warn.png" />
+    <Content Include="Content\Scripts\doT.js" />
+    <Content Include="Content\Scripts\doT.min.js" />
     <Content Include="Content\Scripts\util.js" />
     <Content Include="Content\Styles\layout_grid.css" />
     <Content Include="Content\Styles\layout.css" />
@@ -183,6 +191,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Styles\deprecated\_mvc-template.css" />
+    <Content Include="Areas\Api\Views\Web.config" />
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Content\Scripts\jquery\jquery-1.7.1.intellisense.js" />
     <Content Include="Content\Scripts\jquery\jquery-1.7.1.js" />
     <Content Include="Content\Scripts\jquery\jquery-1.7.1.min.js" />
@@ -222,8 +234,10 @@
     <Content Include="Views\Shared\_menu.cshtml" />
     <Content Include="Views\Campaigns\Edit.cshtml" />
     <Content Include="Views\Campaigns\_qualityList.cshtml" />
+    <Content Include="Views\Shared\_requiredScripts.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Api\Views\Shared\" />
     <Folder Include="Views\Shared\SpyCraftHtml\" />
   </ItemGroup>
   <ItemGroup>
@@ -253,7 +267,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>9595</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
