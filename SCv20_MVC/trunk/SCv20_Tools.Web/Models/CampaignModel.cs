@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using SCv20_Tools.Core;
+using SCv20_Tools.Core.Domain;
 
 namespace SCv20_Tools.Web.Models {
+
     [HandleError]
     public class CampaignModel {
         public static readonly object x = new object();
@@ -34,7 +35,6 @@ namespace SCv20_Tools.Web.Models {
         public string Summary { get; set; }
 
         public DateTime CreatedOn { get; set; }
-
 
         #region -- Calculated Fields -----------------------------------------------------
 
@@ -70,7 +70,6 @@ namespace SCv20_Tools.Web.Models {
 
         #endregion -- Calculated Fields -----------------------------------------------------
 
-
         #region -- View Supporting Fields ------------------------------------------------
 
         public int SelectedQualityId { get; set; }
@@ -83,7 +82,7 @@ namespace SCv20_Tools.Web.Models {
 
         public IList<HistoricalConversionModel> ListHistoricalConversions { get; set; }
 
-        #endregion
+        #endregion -- View Supporting Fields ------------------------------------------------
 
         public static CampaignModel MapFrom(Campaign entity) {
             var model = new CampaignModel();
@@ -100,7 +99,7 @@ namespace SCv20_Tools.Web.Models {
                 model.Summary = entity.Summary;
                 model.CreatedOn = entity.CreatedOn;
                 model.SelectedYearId = entity.YearId;
-                model.ListCampaignQualities = entity.Qualities.Select(row => QualityModel.MapFrom(row)).OrderBy(row => row.Name).ToList();
+                model.ListCampaignQualities = entity.Qualities.Select(row => QualityModel.MapFrom(row.Quality)).OrderBy(row => row.Name).ToList();
             }
             return model;
         }

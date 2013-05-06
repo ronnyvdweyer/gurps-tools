@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using SCv20_Tools.Core;
+﻿using SCv20_Tools.Core.Domain;
 
 namespace SCv20_Tools.Web.Models {
+
     public class QualityModel {
         public static readonly object x = new object();
 
@@ -39,20 +36,17 @@ namespace SCv20_Tools.Web.Models {
         }
 
         public static QualityModel MapFrom(Quality entity) {
-            lock (x) {
-                var model = new QualityModel();
+            var model = new QualityModel();
 
-                if (entity != null) {
-                    model.Id = entity.Id;
-                    model.Name = entity.Name;
-                    model.Description = entity.Description;
-                    model.IsSeasonsOnly = entity.IsSeasonsOnly;
-                    model.BonusXP = entity.BonusXP;
-                    model.BonusAD = entity.BonusAD;
-
-                }
-                return model;
+            if (entity != null) {
+                model.Id = entity.Id;
+                model.Name = entity.Name;
+                model.Description = entity.Description;
+                model.IsSeasonsOnly = entity.IsSeasonsOnly;
+                model.BonusXP = entity.BonusXP;
+                model.BonusAD = entity.BonusAD;
             }
+            return model;
         }
     }
 }

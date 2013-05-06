@@ -1,0 +1,46 @@
+﻿<div class="table">
+    <table class="size-7">
+        <caption>Existing Qualities</caption>
+        <colgroup>
+            <col class="grid-1" />
+            <col class="grid-4" />
+            <col class="grid-1" />
+            <col class="grid-1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Quality</th>
+                <th>Description</th>
+                <th class="al-c">AD / XP Bonus</th>
+                <th class="al-r">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{?it.length > 0}}
+                {{~it: value: index}}
+                    <tr>
+                        <td>{{=value.name}}</td>
+                        <td class="al-l">
+                            <div style="overflow-y: hidden; width: 100%; font-size: .8em">
+                                {{=value.description}}
+                            </div>
+                        </td>
+                        <td class="al-c">{{=value.bonusADFormated}}  / {{=value.bonusXPFormated}}</td>
+                        <td class="al-r">
+                            <button type="button" value="remove" class="remove" data-id="{{=value.id}}">remove</button>
+                        </td>
+                    </tr>
+                {{~}}
+            {{??}}
+                <tr>
+                    <td colspan="4">Add qualities...</td>
+                </tr>
+            {{?}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

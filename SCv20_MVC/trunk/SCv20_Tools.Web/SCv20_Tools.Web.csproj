@@ -114,7 +114,6 @@
     <Compile Include="Controllers\CampaignsController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SCv20_TOOLS.sdf" />
     <Content Include="Areas\Api\Scripts\campaign.api.js" />
     <Content Include="Areas\Api\Scripts\quality.api.js" />
     <Content Include="Content\Images\ico-close.gif" />
@@ -192,9 +191,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Styles\deprecated\_mvc-template.css" />
     <Content Include="Areas\Api\Views\Web.config" />
-    <Content Include="x86\SQLite.Interop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Content\Scripts\jquery\jquery-1.7.1.intellisense.js" />
     <Content Include="Content\Scripts\jquery\jquery-1.7.1.js" />
     <Content Include="Content\Scripts\jquery\jquery-1.7.1.min.js" />
@@ -235,8 +231,10 @@
     <Content Include="Views\Campaigns\Edit.cshtml" />
     <Content Include="Views\Campaigns\_qualityList.cshtml" />
     <Content Include="Views\Shared\_requiredScripts.cshtml" />
+    <Content Include="Views\Campaigns\_qualityListTmpl.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Areas\Api\Views\Shared\" />
     <Folder Include="Views\Shared\SpyCraftHtml\" />
   </ItemGroup>

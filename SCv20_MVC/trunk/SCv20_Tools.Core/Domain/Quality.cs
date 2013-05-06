@@ -5,9 +5,10 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
+using SCv20_Tools.Core.Domain;
 
 
-namespace SCv20_Tools.Core {
+namespace SCv20_Tools.Core.Domain {
     [Serializable]
     public class Quality {
 
@@ -87,6 +88,14 @@ namespace SCv20_Tools.Core {
             get;
             set;
         }
+
+
+        public virtual ICollection<CampaignQuality> CampaignQualities {
+            get;
+            set;
+        }
+
+
     }
 
 

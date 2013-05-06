@@ -60,7 +60,7 @@
     <Compile Include="Domain\Asset.cs" />
     <Compile Include="Domain\Caliber.cs" />
     <Compile Include="Domain\Campaign.cs" />
-    <Compile Include="Domain\CampaignInfo.cs" />
+    <Compile Include="Domain\CampaignQuality.cs" />
     <Compile Include="Domain\HistoricalConversion.cs" />
     <Compile Include="Domain\Quality.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
@@ -74,8 +74,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Seed\Qualities.json.js" />
-    <Content Include="Data\Seed\Rewards.json.js" />
+    <EmbeddedResource Include="Data\Seed\Qualities.json.js" />
+    <EmbeddedResource Include="Data\Seed\Rewards.json.js" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using SCv20_Tools.Core;
+﻿using SCv20_Tools.Core.Domain;
 
 namespace SCv20_Tools.Web.Areas.Api.Models {
+
     public class QualityModel {
 
         public int id { get; set; }
@@ -47,7 +44,6 @@ namespace SCv20_Tools.Web.Areas.Api.Models {
                 model.isSeasonsOnly = entity.IsSeasonsOnly;
                 model.bonusXP = entity.BonusXP;
                 model.bonusAD = entity.BonusAD;
-
             }
             return model;
         }

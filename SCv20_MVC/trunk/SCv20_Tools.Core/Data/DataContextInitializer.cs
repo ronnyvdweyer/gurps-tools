@@ -15,6 +15,8 @@ namespace SCv20_Tools.Core.Data {
             LoadCaliber().ForEach(c => context.Calibers.Add(c));
             LoadQualities().ForEach(c => context.Qualities.Add(c));
             LoadHistoricalConversion().ForEach(c => context.HistoricalConversions.Add(c));
+            context.SaveChanges();
+
             context.Campaigns.Add(CreateSampleCampaign(context));
         }
 
@@ -74,7 +76,12 @@ namespace SCv20_Tools.Core.Data {
                 Summary = "n/a",
                 YearId = 11,
                 YearDetails = "Futuro alternativo ambientado no ano de 2028.",
-                Qualities = ctx.Set<Quality>().Where(q => q.Id == 1).ToList()
+                Qualities = new List<CampaignQuality>() { 
+                    new CampaignQuality { QualityId = 1, CampaignId = 1}, 
+                    //new CampaignQuality { QualityId = 20, CampaignId = 1},
+                    //new CampaignQuality { QualityId = 30, CampaignId = 1}
+                }
+                //Qualities = ctx.Set<Quality>().Where(q => q.Id == 1).ToList()
             };
             return c;
         }
@@ -89,7 +96,7 @@ namespace SCv20_Tools.Core.Data {
                 return contents;
             }
             catch (ArgumentNullException ex) {
-                throw new InvalidOperationException("Requested Resource [{0}] not found in [{1}].".FormatWith(resourceID, assembly.FullName), ex);
+                throw new InvalidOperationException("Requested Resource [{0}] not found in [{1}].".FormatWith(resourceID, assembly.FullName));
             }
         }
     }

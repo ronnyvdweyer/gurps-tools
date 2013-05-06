@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SCv20_Tools.Core.Data;
+using SCv20_Tools.Core.Domain;
 
 namespace SCv20_Tools.Core.Services {
 
@@ -69,10 +70,10 @@ namespace SCv20_Tools.Core.Services {
                 var bbb = repoQuality.FindAll().ToList();               // Orders
 
                 var query = from c in bbb
-                            where !(from o in aaa select o.Id).Contains(c.Id)
+                            where !(from o in aaa select o.QualityId).Contains(c.Id)
                             select c;
 
-                var r = query.ToList();
+                var r = query.OrderBy(e=>e.Name).ToList();
 
                 //var availQualities = (from Q in repoQuality.FindAll()
                 //                      where !(from CQ in campaignQualities

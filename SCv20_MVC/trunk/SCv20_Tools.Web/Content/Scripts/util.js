@@ -19,12 +19,13 @@ function ajaxSetup(doc) {
 
     $(document).ajaxSend(function () {
         $('#ajaxLoader').show();
+        //$('#ajaxLoader').fadeIn('fast');
         $msg.fadeOut('fast');
     });
 
 
     $(document).ajaxComplete(function () {
-        $('#ajaxLoader').hide();
+        $('#ajaxLoader').fadeOut('slow');
     })
 
 
@@ -44,19 +45,27 @@ function ajaxSetup(doc) {
 
 
 $.fn.extend({
-    tmpl: function (data) {
+    tmpl: function (tmplSource, tmplData) {
         ///	<summary>
-        ///     &#10;This method is an Adapter to doT.js client template engine. This uses the jquery selector element (this) as 
-        ///     &#10;the template spec. This is an part of MyCustomExtensions. Go to http://olado.github.io/doT/ for more information.
+        ///     &#10; This method is an Adapter to doT.js client template engine. This uses the jquery selected element (this) as the template 
+        ///     &#10; target element. This is an part of MyCustomExtensions. Go to http://olado.github.io/doT/ for more information.
         ///	</summary>
-        ///	<param name="data" type="Json">A json object contaning the template data.</param>
+        ///	<param name="tmplSource" type="jQuery">jQuery selector that contains the template specification.</param>
+        ///	<param name="tmplData" type="Json">A json object containing the data that will be used by template specification.</param>
         ///	<returns type="jQuery" />
-        if (doT == undefined || doT == null || doT == false)
+        if (doT == undefined || doT == null || doT == false) {
             console.log("doT.js not found. Please include it in your references.")
+            return;
+        }
 
-        var template = $(this).html();
-        var func = doT.template(template);
-        $(this).html(func(data));
+        var tmpl = $(tmplSource).html();    // Gets the tmplSource Specification.
+        var func = doT.template(tmpl);      // Compiles the template into a function based on tmplData.
+        var html = func(tmplData);          // Executes the template function and stores the result HTML.
+        console.log(func.toString());
+
+
+        // Replaces the jQuery selected element HTML with the result HTML.
+        $(this).html(html);
 
         return this;
     },

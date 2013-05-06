@@ -10,3 +10,28 @@ campaignApi.prototype.addQuality = function (campaignId, qualityId, fDone) {
     }).done(fDone);
 }
 
+campaignApi.prototype.getQualities = function (campaignId, fDone) {
+    $.ajax('/api/campaign/getQualities', {
+        type: 'GET',
+        dataType: 'json',
+        data: { "campaignId": campaignId }
+    }).done(fDone);
+}
+
+campaignApi.prototype.getAvaliable = function (campaignId, fDone) {
+    $.ajax('/api/campaign/getAvaliableQualities', {
+        type: 'GET',
+        dataType: 'json',
+        data: { "campaignId": campaignId }
+    }).done(fDone);
+}
+
+campaignApi.prototype.removeQuality = function (campaignId, qualityId, fDone) {
+    $.ajax('/api/campaign/removeQuality', {
+        type: 'POST',
+        dataType: 'json',
+        data: { "campaignId": campaignId, "qualityId": qualityId }
+    }).done(fDone);
+}
+
+

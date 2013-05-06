@@ -7,7 +7,7 @@ namespace SCv20_Tools.Core.Data {
     public class DataContext : DbContext {
         private static DataContext _instance;
 
-        private DataContext() : base("DEFAULT") {
+        public DataContext() : base("DEFAULT") {
             Database.SetInitializer(new DataContextInitializer());
             Database.Initialize(true);
         }
@@ -30,7 +30,7 @@ namespace SCv20_Tools.Core.Data {
             //modelBuilder.Configurations.Add(new CampaignMap());
             //http://stackoverflow.com/questions/8136026/unidirectional-many-to-many-realtionship-with-code-first-entity-framework
 
-            modelBuilder.Entity<Campaign>().HasMany(m => m.Qualities).WithMany();
+            //modelBuilder.Entity<Campaign>().HasMany(m => m.Qualities).WithMany();
 
             base.OnModelCreating(modelBuilder);
         }
@@ -58,6 +58,11 @@ namespace SCv20_Tools.Core.Data {
         }
 
         public virtual DbSet<Campaign> Campaigns {
+            get;
+            set;
+        }
+
+        public virtual DbSet<CampaignQuality> CampaignQualities {
             get;
             set;
         }

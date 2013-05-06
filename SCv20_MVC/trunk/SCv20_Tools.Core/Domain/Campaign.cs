@@ -4,8 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using SCv20_Tools.Core.Domain;
 
-namespace SCv20_Tools.Core {
+namespace SCv20_Tools.Core.Domain {
 
     [Serializable]
     public class Campaign {
@@ -15,7 +16,7 @@ namespace SCv20_Tools.Core {
             BaseReputation = 2;
             BaseNetWorth = 1000000M;
             CreatedOn = DateTime.Now;
-            Qualities = new List<Quality>();
+            Qualities = new List<CampaignQuality>();
         }
 
 
@@ -96,16 +97,24 @@ namespace SCv20_Tools.Core {
         }
 
 
-        public virtual ICollection<Quality> Qualities {
-            get;
-            set;
-        }
+        //public virtual ICollection<Quality> Qualities {
+        //    get;
+        //    set;
+        //}
 
 
         public int YearId {
             get;
             set;
         }
+
+
+        public virtual ICollection<CampaignQuality> Qualities {
+            get;
+            set;
+        }
+
+
 
         #endregion -- Relationships --------------------------------------------------------
 

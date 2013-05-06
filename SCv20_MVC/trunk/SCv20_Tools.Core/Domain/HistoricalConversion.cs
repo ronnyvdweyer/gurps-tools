@@ -5,7 +5,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SCv20_Tools.Core {
+namespace SCv20_Tools.Core.Domain {
     public class HistoricalConversion {
         [Key]
         public int Id {
