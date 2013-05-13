@@ -200,6 +200,7 @@
     <Content Include="Content\Scripts\jquery\jquery.validate.js" />
     <Content Include="Content\Scripts\jquery\jquery.validate.min.js" />
     <Content Include="Content\Scripts\modernizr\modernizr-2.5.3.js" />
+    <Content Include="Views\Campaigns\edit.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -223,15 +224,17 @@
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_sysMenu.cshtml" />
-    <Content Include="Views\Campaigns\Index.cshtml" />
+    <Content Include="Views\Campaigns\index.cshtml" />
     <Content Include="Views\Missions\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Campaigns\_menu.cshtml" />
     <Content Include="Views\Shared\_menu.cshtml" />
-    <Content Include="Views\Campaigns\Edit.cshtml" />
-    <Content Include="Views\Campaigns\_qualityList.cshtml" />
+    <Content Include="Views\Campaigns\edit.cshtml" />
+    <Content Include="Views\Campaigns\tmpl\_qualityList.cshtml" />
     <Content Include="Views\Shared\_requiredScripts.cshtml" />
-    <Content Include="Views\Campaigns\_qualityListTmpl.cshtml" />
+    <Content Include="Views\Campaigns\tmpl\_qualityListTmpl.cshtml" />
+    <None Include="Views\Campaigns\tmpl\avaliableQualitiesTmpl.shtml" />
+    <None Include="Views\Campaigns\tmpl\qualityListTmpl.shtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -265,9 +268,9 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
-          <DevelopmentServerPort>9595</DevelopmentServerPort>
+          <DevelopmentServerPort>8787</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:9595/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

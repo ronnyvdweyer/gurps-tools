@@ -68,7 +68,7 @@ $.fn.extend({
         $(this).html(html);
 
         return this;
-    },
+    }
 });
 
 
