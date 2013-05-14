@@ -65,6 +65,12 @@ namespace SCv20_Tools.Web.Areas.Api.Controllers {
 
         [HttpPost, AjaxHandleError]
         public JsonResult RemoveQuality(int campaignId, int qualityId) {
+            if (campaignId == 0) {
+                ModelState.AddModelError("YearDetails", "Campo é obrigatorio");
+                ModelState.AddModelError("BaseNetWorthFormatted", "Campo é obrigatorio");
+                throw new InvalidModelStateException(campaignId);
+            }
+
             var q = _campaignQualityRepository
                 .FindBy(e => e.CampaignId == campaignId)
                 .Where(e => e.QualityId == qualityId)
@@ -78,5 +84,29 @@ namespace SCv20_Tools.Web.Areas.Api.Controllers {
 
             return Json(new { done = true });
         }
+
+
+        [HttpPost, AjaxHandleError]
+        public JsonResult Save(CampaignModel form) {
+            if (!ModelState.IsValid) {
+                throw new InvalidModelStateException(form);
+            }
+            
+            var c = _campaignRepository.FindBy(e => e.Id == form.id).FirstOrDefault();
+
+            if (c == null)
+                c = new Campaign();
+
+            c.Name = form.name;
+            c.StartingLevel = form.startitngLevel;
+            c.Summary = form.summary;
+            c.YearDetails = form.yearDetails;
+            c.YearId = form.yearId;
+            _campaignRepository.Edit(c);
+            _campaignRepository.Commit();
+
+            return null;
+        }
+
     }
 }

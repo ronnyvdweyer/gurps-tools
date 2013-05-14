@@ -33,13 +33,32 @@ function ajaxSetup(doc) {
         $('#ajaxLoader').hide();
 
         var data = $.parseJSON(jqxhr.responseText);
-        $msg.attr("class", "").addClass("error");
+
+        if (data.isvalidation)
+            $msg.attr("class", "").addClass("warn");
+        else
+            $msg.attr("class", "").addClass("error");
+
+
         $msg.fadeIn('fast');
 
-        if (data == null || data == undefined)
+        if (data == null || data == undefined) {
             $("#ajaxMessage .message").html("Internal Server Error. Unknown reason.");
-        else 
-            $("#ajaxMessage .message").html(data.message + "<br/><pre>" + data.stack + "</pre>");
+        }
+        else {
+            if (!data.isvalidation) {
+                $("#ajaxMessage .message").html(data.message + (data.stack !== "" ? "<br/><pre>" + data.stack + "</pre>" : ""));
+            }
+            else {
+                var msg = "";
+                for (var i = 0; i < data.errors.length; i++) {
+                    msg += "- " + data.errors[i].Value + "<br/>";
+                    var key = data.errors[i].Key;
+                    $(":input[name=" + key + "]").css("background-color", "yellow");
+                }
+                $("#ajaxMessage .message").html(data.message + "<br/>" + msg);
+            }
+        }
     });
 }
 
@@ -73,9 +92,9 @@ $.fn.extend({
 
 
 function require(pathToScript) {
-    var script  = document.createElement("script");
+    var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = pathToScript;       // use this for linked script
-  //script.text = "alert('voila!');"    // use this for inline script
+    script.src = pathToScript;       // use this for linked script
+    //script.text = "alert('voila!');"    // use this for inline script
     document.head.appendChild(script);
 }

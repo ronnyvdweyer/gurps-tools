@@ -101,6 +101,8 @@
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\CampaignController.cs" />
     <Compile Include="Areas\Api\Controllers\QualityController.cs" />
+    <Compile Include="Areas\Api\Models\CampaignModel.cs" />
+    <Compile Include="Areas\Api\Models\ModelAdapter.cs" />
     <Compile Include="Areas\Api\Models\QualityModel.cs" />
     <Compile Include="Models\CampaignModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -115,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Api\Scripts\campaign.api.js" />
+    <Content Include="Areas\Api\Scripts\mission.api.js" />
     <Content Include="Areas\Api\Scripts\quality.api.js" />
     <Content Include="Content\Images\ico-close.gif" />
     <Content Include="Content\Images\ico-error.png" />
@@ -201,7 +204,9 @@
     <Content Include="Content\Scripts\jquery\jquery.validate.min.js" />
     <Content Include="Content\Scripts\modernizr\modernizr-2.5.3.js" />
     <Content Include="Views\Campaigns\edit.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -218,7 +223,9 @@
     <Content Include="Content\Scripts\microsoft\MicrosoftMvcAjax.debug.js" />
     <Content Include="Content\Scripts\microsoft\MicrosoftMvcValidation.js" />
     <Content Include="Content\Scripts\microsoft\MicrosoftMvcValidation.debug.js" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />

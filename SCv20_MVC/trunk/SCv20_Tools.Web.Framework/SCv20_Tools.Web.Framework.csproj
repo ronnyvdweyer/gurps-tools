@@ -88,6 +88,7 @@
     <Compile Include="Html\Input\TextBoxBuilder.cs" />
     <Compile Include="Html\Input\TextBoxOptions.cs" />
     <Compile Include="Html\_Factory\SpycraftControlsFactory.cs" />
+    <Compile Include="InvalidModelStateException.cs" />
     <Compile Include="JsonNetResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

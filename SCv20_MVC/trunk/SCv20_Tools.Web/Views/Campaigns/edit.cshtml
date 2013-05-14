@@ -14,14 +14,11 @@
             </div>
             <div class="grid-1">
                 @Html.LabelFor(m => m.StartingLevel)
-
             </div>
             <div class="grid-1">
                 @Html.MeHZ().TextBoxFor(m => m.StartingLevel)
             </div>
-
         </div>
-
 
         <div class="group">
             <div class="grid-1">
@@ -30,14 +27,12 @@
             <div class="grid-1">
                 @Html.MeHZ().TextBoxFor(m => m.BaseReputation)
             </div>
-
             <div class="grid-1">
                 @Html.LabelFor(m => m.BaseNetWorth)
             </div>
             <div class="grid-2">
                 @Html.MeHZ().TextBoxFor(m => m.BaseNetWorth)
             </div>
-
             <div class="grid-1">
                 @Html.LabelFor(m => m.BaseXPFormatted)
             </div>
@@ -88,7 +83,6 @@
             <div class="grid-2" id="avaliableQualities">
                 @Html.MeHZ().DropDownListFor(m => m.SelectedQualityId, ds => ds.ListAvaliableQualities, "Id", "Name", null)
             </div>
-
             <div class="grid-1 al-l">
                 <button type="button" value="add-quality" id="btnAddQuality">Add Quality</button>
             </div>
@@ -98,7 +92,6 @@
             <div class="grid-1">
                 <input type="text" id="txtQualityBonusAD" disabled="disabled" />
             </div>
-
             <div class="grid-1">
                 <input type="text" id="txtQualityBonusXP" disabled="disabled" />
             </div>
@@ -115,9 +108,9 @@
         </div>
     </div>
     
-    <div id="xpto">...</div>
-    
     <div id="qualityList"></div>
 }
 
-<script type="text/javascript" src="/views/campaigns/edit.js"></script>
+@section scripts {
+    <script type="text/javascript" src="/views/campaigns/edit.js"></script>
+}
