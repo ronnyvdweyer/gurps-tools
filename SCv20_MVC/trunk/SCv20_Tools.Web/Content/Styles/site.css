@@ -2,6 +2,8 @@
 @import url(layout.css);
 @import url(menu.css);
 */
+/*background-color: #ddd;*/
+
 @import url(layout_grid.css);
 
 h1 {
@@ -26,22 +28,18 @@ table {
 
 
 input[type="text"], .text {
+    background-color: #eeeeee;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0px 0px 2px rgba(128, 128, 128, 0.75) inset;
+    display: block;
+    font-family: 'Trebuchet MS';
+    height: 2em;
+    line-height: 2em;
     margin-left: 0em;
     padding: 0;
     padding-left: 1%;
     width: 99%;
-    height: 2em;
-    border: 0;
-    border-radius: 3px;
-    background-color: #eeeeee;
-    /*-webkit-box-shadow: 0 0 2px inset;*/
-    /*box-shadow: 0 0 2px inset;*/
-    box-shadow: 0px 0px 2px rgba(128, 128, 128, 0.75) inset;
-    font-size: 12pt;
-    font-family: 'Trebuchet MS';
-    line-height: 2em;
-    /*background-color: #ddd;*/
-    display: block;
 }
 
     input[type="text"]:focus {
@@ -49,22 +47,21 @@ input[type="text"], .text {
     }
 
 textarea, .textarea {
+    background-color: #eeeeee;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0px 0px 2px rgba(128, 128, 128, 0.75) inset;
+    display: block;
+    font-family: 'Trebuchet MS';
+    font-size: 1em;   
+    height: 2.5em;
     margin: 0;
     padding: 0;
     padding-left: .5%;
     padding-right: .5%;
-    height: 2.5em;
-    width: 99.0%;
-    border: 0;
-    border-radius: 3px;
-    background-color: #eeeeee;
-    box-shadow: 0px 0px 2px rgba(128, 128, 128, 0.75) inset;
-    font-size: 12pt;
-    font-family: 'Trebuchet MS';
     resize: none;
-    /*background-color: #ddd;*/
     text-align: justify;
-    display: block;
+    width: 99.0%;
 }
 
     textarea:focus {
@@ -76,17 +73,15 @@ textarea, .textarea {
 }
 
 label, .label {
+    background-color: #eeeeee;
+    border: 0;
+    cursor: pointer;
     display: block;
+    font-weight: normal;
+    height: 2em;
+    line-height: 2em;
     padding-left: 2%;
     width: 98%;
-    height: 2em;
-    border: 0;
-    background-color: #eeeeee;
-    font-weight: normal;
-    font-size: 12pt;
-    font-family: 'Trebuchet MS';
-    line-height: 2em;
-    cursor: pointer;
 }
 
 .label {
@@ -95,52 +90,21 @@ label, .label {
 
 
 select {
+    background-color: #eeeeee;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0px 0px 2px rgba(128, 128, 128, 0.75) inset;
+    font-family: 'Trebuchet MS';
+    height: 2em;
     margin-left: 0em;
     padding: 0;
     padding: 4px 4px 3px 1%;
-    /*padding-top: 4px;
-    padding-right: 4px;
-    padding-bottom: 3px;
-    padding-left: 1%;*/
     width: 99%;
-    height: 2em;
-    border: 0;
-    border-radius: 3px;
-    background-color: #eeeeee;
-    box-shadow: 0px 0px 2px rgba(128, 128, 128, 0.75) inset;
-    font-size: 12pt;
-    font-family: 'Trebuchet MS';
-    /*background-color: #ddd;*/
 }
 
     select:focus {
         background-color: #fffeee;
     }
-
-
-
-
-/*.label {
-    font-size: 12pt;
-    border: 0;
-    padding: 0;
-    border-radius: 0px;
-    background-color: #ddd;
-    height: 1.5em;
-    font-family: 'Trebuchet MS';
-    font-weight:bold;
-    padding-left:5px;
-    width:10em;
-    margin-right:15px;
-}*/
-
-
-
-/*.form {
-    margin-bottom: 2em;
-    padding: 2px;
-    border: 2px solid #efefef;
-}*/
 
 
 .al-l {
@@ -163,6 +127,8 @@ button {
     border: 1px solid silver;
     padding: 3px;
     border-radius: 5px;
+    font-family: 'Trebuchet MS';
+   
 }
 
     button:active {
@@ -184,6 +150,6 @@ button {
     }
 
 div.form .group button {
-    line-height: 2em;
-    padding: 1px 3px 0px 3px;
+    height: 2em;
+    padding: 1px 3px 4px 3px;
 }
