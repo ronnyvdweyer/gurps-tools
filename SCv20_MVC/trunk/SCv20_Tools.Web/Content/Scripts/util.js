@@ -20,12 +20,12 @@ function ajaxSetup(doc) {
     $(document).ajaxSend(function () {
         $('#ajaxLoader').show();
         //$('#ajaxLoader').fadeIn('fast');
-        $msg.fadeOut('fast');
+        //$msg.fadeOut('fast');
     });
 
 
     $(document).ajaxComplete(function () {
-        $('#ajaxLoader').fadeOut('slow');
+        $('#ajaxLoader').hide();
     })
 
 

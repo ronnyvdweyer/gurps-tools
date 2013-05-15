@@ -24,7 +24,12 @@ page.module = (function () {
             fn_campaignQualitiesTmpl = doT.template(tmpl);
         });
 
-        $('#avaliableQualities').on("change keyup", "#SelectedQualityId", getQualityDetail);
+        //$('#avaliableQualities').on("keyup", "#SelectedQualityId", function (e) {
+        //    console.debug(e);
+        //    getQualityDetail(this);
+        //});
+
+        $('#avaliableQualities').on("change", "#SelectedQualityId", getQualityDetail);
         $('#qualityList').on("click", ".remove", removeQuality);
         $('#btnAddQuality').click(addQuality);
 
@@ -41,17 +46,19 @@ page.module = (function () {
     // **************************************************************
     // Loads all avaliabe qualities
     // **************************************************************
-    getAllQualities = function () {
+    getAllQualities = function (fDoneCallback) {
         var api = new campaignApi();
-
         api.getAvaliable(_campaignId, function (data) {
             if (data.done) {
                 var o = $(fn_avaliableQualitiesTmpl(data.ds));
                 $('option[value=' + _qualityId + ']', o).attr('selected', 'selected')
                 $("#avaliableQualities").html(o);
-                o.focus();
-                o.change();
+                //o.focus();
+                //o.change();
+                if (fDoneCallback !== undefined)
+                    fDoneCallback();
             }
+            
         });
     },
 
@@ -119,12 +126,16 @@ page.module = (function () {
         _lastSelIndex = sel[0].selectedIndex; ;
         _qualityId = qid;
 
+        $("#btnAddQuality").attr("disabled", "disabled");
+
         var api = new campaignApi();
         api.removeQuality(_campaignId, qid, function (data) {
             if (data.done) {
                 row.remove();
-                getAllQualities();
-                //getAllCampaignQualities();
+                getAllQualities(function () {
+                    $('#SelectedQualityId').focus();
+                    $('#SelectedQualityId').change();
+                });
             }
         });
     }

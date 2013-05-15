@@ -65,11 +65,11 @@ namespace SCv20_Tools.Web.Areas.Api.Controllers {
 
         [HttpPost, AjaxHandleError]
         public JsonResult RemoveQuality(int campaignId, int qualityId) {
-            if (campaignId == 0) {
-                ModelState.AddModelError("YearDetails", "Campo é obrigatorio");
-                ModelState.AddModelError("BaseNetWorthFormatted", "Campo é obrigatorio");
-                throw new InvalidModelStateException(campaignId);
-            }
+            //if (campaignId == 0) {
+            //    ModelState.AddModelError("YearDetails", "Campo é obrigatorio");
+            //    ModelState.AddModelError("BaseNetWorthFormatted", "Campo é obrigatorio");
+            //    throw new InvalidModelStateException(campaignId);
+            //}
 
             var q = _campaignQualityRepository
                 .FindBy(e => e.CampaignId == campaignId)

@@ -64,13 +64,21 @@
                 @Html.LabelFor(m => m.Concept)
             </div>
             <div class="grid-4">
-                @Html.MeHZ().TextAreaFor(m => m.Concept, null)
+                @Html.MeHZ().TextAreaFor(m => m.Concept, new TextBoxOptions { Style = "height:auto", HtmlAttributes = new { rows = "2", cols = "100" } })
             </div>
             <div class="grid-1">
                 @Html.LabelFor(m => m.CreatedOn)
             </div>
             <div class="grid-1">
                 @Html.MeHZ().TextBoxFor(m => m.CreatedOn, new TextBoxOptions { Disabled = true })
+            </div>
+        </div>
+        <div class="group">
+            <div class="grid-1">
+                &nbsp;
+            </div>
+            <div class="grid-1">
+                <button type="button" value="save" style="width: 100%">Save</button>
             </div>
         </div>
 
@@ -84,7 +92,7 @@
                 @Html.MeHZ().DropDownListFor(m => m.SelectedQualityId, ds => ds.ListAvaliableQualities, "Id", "Name", null)
             </div>
             <div class="grid-1 al-l">
-                <button type="button" value="add-quality" id="btnAddQuality">Add Quality</button>
+                <button type="button" value="add-quality" id="btnAddQuality" disabled="disabled">Add Quality</button>
             </div>
             <div class="grid-1 al-c">
                 <label for="txtQualityBonusAD">AD/XP Bonus</label>
@@ -102,11 +110,14 @@
                 <label for="txtQualityDetails">Description</label>
             </div>
             <div class="grid-6">
-                <textarea id="txtQualityDetails" disabled="disabled" style="height: 5em" rows="4" cols="200"></textarea>
+                <textarea id="txtQualityDetails" disabled="disabled" style="height: auto;" rows="5" cols="200"></textarea>
             </div>
-
         </div>
+
+
     </div>
+    
+    
     
     <div id="qualityList"></div>
 }

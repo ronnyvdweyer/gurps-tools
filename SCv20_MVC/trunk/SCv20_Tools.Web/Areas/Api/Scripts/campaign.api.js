@@ -30,7 +30,7 @@ campaignApi.prototype.removeQuality = function (campaignId, qualityId, fDone) {
     $.ajax('/api/campaign/removeQuality', {
         type: 'POST',
         dataType: 'json',
-        data: { "campaignId": 0, "qualityId": qualityId }
+        data: { "campaignId": campaignId, "qualityId": qualityId }
     }).done(fDone);
 }
 
