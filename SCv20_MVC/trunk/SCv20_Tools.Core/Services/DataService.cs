@@ -73,7 +73,7 @@ namespace SCv20_Tools.Core.Services {
                             where !(from o in aaa select o.QualityId).Contains(c.Id)
                             select c;
 
-                var r = query.OrderBy(e=>e.Name).ToList();
+                var r = query.OrderBy(e => e.Name).ToList();
 
                 //var availQualities = (from Q in repoQuality.FindAll()
                 //                      where !(from CQ in campaignQualities
@@ -117,6 +117,18 @@ namespace SCv20_Tools.Core.Services {
             repo1.Commit();
 
             return c;
+        }
+
+        public IList<Mission> GetAllMissions() {
+            var repo = Repository<Mission>.GetInstance();
+            var data = repo.FindAll().ToList();
+            return data;
+        }
+
+        public IList<Caliber> GetAllCalibers() {
+            var repo = Repository<Caliber>.GetInstance();
+            var data = repo.FindAll().ToList();
+            return data;
         }
     }
 }

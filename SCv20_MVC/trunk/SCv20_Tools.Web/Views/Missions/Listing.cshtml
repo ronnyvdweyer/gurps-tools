@@ -1,0 +1,15 @@
+﻿@model SCv20_Tools.Web.Models.MissionListingModel
+@{ ViewBag.Title = "Mission Listing"; }
+
+@using (Html.BeginForm()) {
+    <div id="missionList">
+        @Html.EditorFor(m => m.Missions)
+        
+        
+        @Html.DisplayFor(m => m.Missions)
+        @Html.DisplayFor(m => m.Missions)
+        @Html.DisplayFor(m => m.Missions)
+        @Html.DisplayFor(m => m.Missions)
+        @Html.DisplayFor(m => m.Missions)
+    </div>
+}

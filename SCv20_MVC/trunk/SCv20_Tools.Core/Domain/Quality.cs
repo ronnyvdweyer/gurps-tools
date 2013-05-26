@@ -15,11 +15,11 @@ namespace SCv20_Tools.Core.Domain {
         /// <summary>
         /// Initializes a new instance of the <see cref="Quality"/> class.
         /// </summary>
-        public Quality() { 
-        
+        public Quality() {
+
         }
 
-        
+
         /// <summary>
         /// ID da Quality.
         /// </summary>
@@ -80,45 +80,18 @@ namespace SCv20_Tools.Core.Domain {
         }
 
 
-        /// <summary>
-        /// Dummy data value
-        /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public virtual ICollection<Dummy> Dummy {
-            get;
-            set;
-        }
-
+        #region -- Navigation Properties -----------------------------------------------------------
 
         public virtual ICollection<CampaignQuality> CampaignQualities {
             get;
             set;
         }
 
-
-    }
-
-
-    public class Dummy {
-        public virtual int Id {
+        public virtual ICollection<MissionQuality> MissionQualities {
             get;
             set;
         }
 
-        public virtual string Value {
-            get;
-            set;
-        }
-        
-        public virtual int QualityId {
-            get;
-            set;
-        }
-
-        [ForeignKey("QualityId")][Required]
-        public virtual Quality Quality {
-            get;
-            set;
-        }
+        #endregion
     }
 }

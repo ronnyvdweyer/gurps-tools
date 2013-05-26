@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using SCv20_Tools.Core.Domain;
 
 namespace SCv20_Tools.Core.Domain {
 
@@ -19,13 +16,11 @@ namespace SCv20_Tools.Core.Domain {
             Qualities = new List<CampaignQuality>();
         }
 
-
         [Key]
         public virtual int Id {
             get;
             set;
         }
-
 
         [Range(2, 20)]
         public virtual int BaseReputation {
@@ -33,13 +28,11 @@ namespace SCv20_Tools.Core.Domain {
             set;
         }
 
-
         [Range(100000, 2000000)]
         public virtual decimal BaseNetWorth {
             get;
             set;
         }
-
 
         [Range(0, 20)]
         public virtual int StartingLevel {
@@ -47,13 +40,11 @@ namespace SCv20_Tools.Core.Domain {
             set;
         }
 
-
         [MaxLength(10)]
         public virtual string Code {
             get;
             set;
         }
-
 
         [MaxLength(100)]
         public virtual string Name {
@@ -61,6 +52,10 @@ namespace SCv20_Tools.Core.Domain {
             set;
         }
 
+        public int YearId {
+            get;
+            set;
+        }
 
         [MaxLength(100)]
         public virtual string YearDetails {
@@ -68,13 +63,11 @@ namespace SCv20_Tools.Core.Domain {
             set;
         }
 
-
         [MaxLength(200)]
         public virtual string Concept {
             get;
             set;
         }
-
 
         [MaxLength(1000)]
         public virtual string Summary {
@@ -82,10 +75,18 @@ namespace SCv20_Tools.Core.Domain {
             set;
         }
 
-
         public virtual DateTime CreatedOn {
             get;
             set;
+        }
+
+        [NotMapped]
+        public string BaseNetWorthFormatted {
+            get {
+                //var format = BaseNetWorth.ToString("$ #,0.##").Replace(",", ".");
+                var format = String.Format("{0:C0}", BaseNetWorth);
+                return format;
+            }
         }
 
         #region -- Relationships --------------------------------------------------------
@@ -96,35 +97,16 @@ namespace SCv20_Tools.Core.Domain {
             set;
         }
 
-
-        //public virtual ICollection<Quality> Qualities {
-        //    get;
-        //    set;
-        //}
-
-
-        public int YearId {
-            get;
-            set;
-        }
-
-
         public virtual ICollection<CampaignQuality> Qualities {
             get;
             set;
         }
 
-
+        public virtual ICollection<CampaignMission> Missions {
+            get;
+            set;
+        }
 
         #endregion -- Relationships --------------------------------------------------------
-
-        [NotMapped]
-        public string BaseNetWorthFormatted {
-            get {
-                //var format = BaseNetWorth.ToString("$ #,0.##").Replace(",", ".");
-                var format = String.Format("{0:C0}", BaseNetWorth);
-                return format;
-            }
-        }
     }
 }

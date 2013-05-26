@@ -2,6 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace SCv20_Tools.Core.Services {
 
@@ -9,8 +10,10 @@ namespace SCv20_Tools.Core.Services {
         private static SerializationService _instance;
 
         private SerializationService() {
-            Settings = new JsonSerializerSettings();
-            Formatting = Newtonsoft.Json.Formatting.Indented;
+            Settings = new JsonSerializerSettings() { 
+                ContractResolver = new CamelCasePropertyNamesContractResolver(), 
+                Formatting       = Newtonsoft.Json.Formatting.Indented 
+            };
         }
 
         public Formatting Formatting {

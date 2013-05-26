@@ -52,10 +52,17 @@ namespace SCv20_Tools.Core.Data {
             set;
         }
 
+        public virtual DbSet<ObjectiveType> ObjectiveTypes {
+            get;
+            set;
+        }
+
         public virtual DbSet<HistoricalConversion> HistoricalConversions {
             get;
             set;
         }
+
+
 
         public virtual DbSet<Campaign> Campaigns {
             get;
@@ -63,6 +70,16 @@ namespace SCv20_Tools.Core.Data {
         }
 
         public virtual DbSet<CampaignQuality> CampaignQualities {
+            get;
+            set;
+        }
+
+        public virtual DbSet<Mission> Missions {
+            get;
+            set;
+        }
+
+        public virtual DbSet<MissionQuality> MissionQualities {
             get;
             set;
         }

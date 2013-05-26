@@ -104,6 +104,7 @@
     <Compile Include="Areas\Api\Models\CampaignModel.cs" />
     <Compile Include="Areas\Api\Models\ModelAdapter.cs" />
     <Compile Include="Areas\Api\Models\QualityModel.cs" />
+    <Compile Include="Models\CaliberModel.cs" />
     <Compile Include="Models\CampaignModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MissionsController.cs" />
@@ -111,6 +112,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CampaignSummaryModel.cs" />
+    <Compile Include="Models\MissionListingModel.cs" />
+    <Compile Include="Models\MissionSummaryModel.cs" />
     <Compile Include="Models\QualityModel.cs" />
     <Compile Include="Models\HistoricalConversionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -243,6 +246,9 @@
     <Content Include="Views\Campaigns\tmpl\_qualityListTmpl.cshtml" />
     <None Include="Views\Campaigns\tmpl\avaliableQualitiesTmpl.shtml" />
     <None Include="Views\Campaigns\tmpl\qualityListTmpl.shtml" />
+    <Content Include="Views\Missions\Listing.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MissionSummaryModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MissionSummaryModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
