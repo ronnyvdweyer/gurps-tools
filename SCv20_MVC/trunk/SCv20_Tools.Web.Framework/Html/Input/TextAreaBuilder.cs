@@ -34,15 +34,15 @@ namespace SCv20_Tools.Web.Framework.Html.Input {
                 return null;
 
             var builder = new TagBuilder("textarea");
+            var value = _options.Value;
+            _options.Value = null;
 
             TagBuilderHelper.Process(builder, _options);
 
             TagBuilderHelper.AddValidation(_helper, builder);
             
             //TODO: Ugly Hack. Try to get it better...
-            var value = _options.Value;
-            _options.Value = null;
-
+           
             builder.SetInnerText(value);
 
             return builder.ToString();

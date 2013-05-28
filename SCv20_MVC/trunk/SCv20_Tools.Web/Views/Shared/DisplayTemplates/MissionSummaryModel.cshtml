@@ -13,7 +13,7 @@
             </div>
 
             <div class="grid-1">
-                <span class="text"><b style="display: inline-block; width: 75px">Caliber:</b> @Html.ValueFor(m => m.Caliber)</span>
+                <span class="text"><b style="display: inline-block; width: 75px">Caliber:</b> @Html.ValueFor(m => m.CaliberFormatted)</span>
             </div>
         </div>
 
@@ -34,7 +34,7 @@
 
         <div class="group command" >
             <div class="grid-8 al-r">
-                <button type="button" value="save" style="" data-id="@Model.MissionId">Edit</button>
+                <button type="button" value="save" style="" data-id="@Model.Id">Edit</button>
             </div>
         </div>
     </div>

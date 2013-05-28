@@ -130,5 +130,23 @@ namespace SCv20_Tools.Core.Services {
             var data = repo.FindAll().ToList();
             return data;
         }
+
+        public Mission GetMission(int id) {
+            var repo = Repository<Mission>.GetInstance();
+            var data = repo.GetById(id);
+            return data;
+        }
+
+        public Mission SaveMission(Mission mission) {
+            var repo = Repository<Mission>.GetInstance();
+            if (mission.Id > 0)
+                mission = repo.Edit(mission);
+            else
+                mission = repo.Create(mission);
+
+            repo.Commit();
+
+            return mission;
+        }
     }
 }

@@ -123,6 +123,7 @@
     <Content Include="Areas\Api\Scripts\campaign.api.js" />
     <Content Include="Areas\Api\Scripts\mission.api.js" />
     <Content Include="Areas\Api\Scripts\quality.api.js" />
+    <Content Include="Content\Images\buttons.gif" />
     <Content Include="Content\Images\ico-close.gif" />
     <Content Include="Content\Images\ico-error.png" />
     <Content Include="Content\Images\ico-info.png" />
@@ -131,6 +132,8 @@
     <Content Include="Content\Images\head-logo.gif" />
     <Content Include="Content\Images\loading1.gif" />
     <Content Include="Content\Images\ico-warn.png" />
+    <Content Include="Content\Images\toolbar.gif" />
+    <Content Include="Content\jquery.cleditor.css" />
     <Content Include="Content\Scripts\doT.js" />
     <Content Include="Content\Scripts\doT.min.js" />
     <Content Include="Content\Scripts\util.js" />
@@ -207,6 +210,8 @@
     <Content Include="Content\Scripts\jquery\jquery.validate.js" />
     <Content Include="Content\Scripts\jquery\jquery.validate.min.js" />
     <Content Include="Content\Scripts\modernizr\modernizr-2.5.3.js" />
+    <Content Include="Scripts\jquery.cleditor.js" />
+    <Content Include="Scripts\jquery.cleditor.min.js" />
     <Content Include="Views\Campaigns\edit.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -249,6 +254,7 @@
     <Content Include="Views\Missions\Listing.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MissionSummaryModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MissionSummaryModel.cshtml" />
+    <Content Include="Views\Missions\Editing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

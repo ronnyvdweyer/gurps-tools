@@ -1,52 +1,72 @@
 ﻿@model SCv20_Tools.Web.Models.MissionSummaryModel
-<div class="form">
-    <div class="fieldset grid-7" style="padding: 10px; border-radius: 8px; border: 2px solid silver; background-color: rgb(219, 238, 243); background-color: #fff;">
-        <div class="group">
-            <div class="grid-1">
-                @Html.LabelFor(m => m.Code)
-            </div>
-
-            <div class="grid-2">
-                @Html.MeHZ().TextBoxFor(m => m.Code, new TextBoxOptions { MaxLength = 10, AutoFocus = true })
-            </div>
+@*<div class="fieldset grid-7" style="padding: 10px; border-radius: 8px; border: 2px solid silver; background-color: rgb(219, 238, 243); background-color: #fff;">*@
+    <div class="group">
+        <div class="grid-1">
+            @Html.LabelFor(m => m.Code)
         </div>
 
-        <div class="group">
-            <div class="grid-1">
-                @Html.LabelFor(m => m.Name)
-            </div>
-            <div class="grid-5">
-                @Html.MeHZ().TextBoxFor(m => m.Name, new TextBoxOptions { MaxLength = 100 })
-            </div>
+        <div class="grid-2">
+            @Html.MeHZ().TextBoxFor(m => m.Code, new TextBoxOptions { MaxLength = 10, AutoFocus = true })
+        </div>
+        
+        <div class="grid-3">&nbsp;</div>
 
-            <div class="grid-1">
-                @Html.LabelFor(m => m.Caliber)
-            </div>
-
-            <div class="grid-1">
-                @Html.MeHZ().DropDownListFor(m => m.CaliberId, m => m.CaliberList, "CaliberId", "Value", new DropDownListOptions { FirstItemText = "-- Selecione --", FirstItemValue = "0" })
-            </div>
+        <div class="grid-1">
+            @Html.LabelFor(m => m.TotalPartyLevel)
         </div>
 
-        <div class="group">
-            <div class="grid-7">
-                <span class="text"><b style="display: inline-block; width: 95px">Motivation:</b> @Html.ValueFor(m => m.Motivation)</span>
-            </div>
-            <div class="grid-1">
-                <span class="text"><b style="display: inline-block; width: 70px">Threat:</b> @Html.ValueFor(m => m.AdjustedThreatLevelFormatted)</span>
-            </div>
+        <div class="grid-1">
+            @Html.MeHZ().TextBoxFor(m => m.TotalPartyLevel, new TextBoxOptions { MaxLength = 10 })
         </div>
 
-        <div class="group">
-            <div class="grid-8">
-                <span class="textarea" style="height: auto">@Html.ValueFor(m => m.Briefing)</span>
-            </div>
+
+    </div>
+
+    <div class="group">
+        <div class="grid-1">
+            @Html.LabelFor(m => m.Name)
+        </div>
+        <div class="grid-5">
+            @Html.MeHZ().TextBoxFor(m => m.Name, new TextBoxOptions { MaxLength = 100 })
         </div>
 
-        <div class="group command">
-            <div class="grid-8 al-r">
-                <button type="button" value="save" style="" data-id="@Model.MissionId">Edit</button>
-            </div>
+        <div class="grid-1">
+            @Html.LabelFor(m => m.CaliberList)
+        </div>
+
+        <div class="grid-1">
+            @Html.MeHZ().DropDownListFor(m => m.CaliberId, m => m.CaliberList, "CaliberId", "Value",
+                    new DropDownListOptions { FirstItemText = null, FirstItemValue = null })
         </div>
     </div>
-</div>
+
+    <div class="group">
+        <div class="grid-1">
+            @Html.LabelFor(m => m.Motivation)
+        </div>
+        <div class="grid-5">
+            @Html.MeHZ().TextBoxFor(m => m.Motivation, new TextBoxOptions { MaxLength = 100 })
+        </div>
+        <div class="grid-1">
+            @Html.LabelFor(m => m.AdjustedThreatLevelList)
+        </div>
+
+        <div class="grid-1">
+            @Html.MeHZ().DropDownListFor(m => m.AdjustedThreatLevel, m => m.AdjustedThreatLevelList, "Value", "ValueFormatted",
+                    new DropDownListOptions { FirstItemText = null, FirstItemValue = null })
+        </div>
+    </div>
+
+    <div class="group">
+        <div class="grid-8">
+            @Html.MeHZ().TextAreaFor(m => m.Briefing, new TextBoxOptions { ID = "dalton", Style = "height:auto", HtmlAttributes = new { rows = "20", cols = "100", spellcheck = "false" } })
+        </div>
+    </div>
+
+    <div class="group command">
+        <div class="grid-8 al-r">
+            <button type="submit" name="save-edit" value="@Model.Id" data-id="@Model.Id">Save</button>
+        </div>
+    </div>
+@*</div>*@
+
