@@ -25,11 +25,13 @@ namespace SCv20_Tools.Web.Models {
             set;
         }
 
+
         [Range(-2, +2)]
         public int AdjustedThreatLevel {
             get;
             set;
         }
+
 
         [Required, MaxLength(100), Display(Name = "Mission Name")]
         public string Name {
@@ -37,11 +39,13 @@ namespace SCv20_Tools.Web.Models {
             set;
         }
 
+
         [MaxLength(10)]
         public string Code {
             get;
             set;
         }
+
 
         [MaxLength(150)]
         public string Motivation {
@@ -49,11 +53,13 @@ namespace SCv20_Tools.Web.Models {
             set;
         }
 
+
         [MaxLength(4000), AllowHtml]
         public string Briefing {
             get;
             set;
         }
+
 
         [Required]
         public int CaliberId {
@@ -61,25 +67,13 @@ namespace SCv20_Tools.Web.Models {
             set;
         }
 
+
         [Range(1, 100), Display(Name = "Total Party Level")]
         public int TotalPartyLevel {
             get;
             set;
         }
 
-        public string AdjustedThreatLevelFormatted {
-            get {
-                if (AdjustedThreatLevel > 0)
-                    return string.Format("+{0}", AdjustedThreatLevel);
-                else
-                    return string.Format("-{0}", AdjustedThreatLevel);
-            }
-        }
-
-        public string CaliberFormatted {
-            get;
-            set;
-        }
 
         [Display(Name = "Caliber")]
         public List<CaliberModel> CaliberList {
@@ -87,26 +81,29 @@ namespace SCv20_Tools.Web.Models {
             set;
         }
 
+
         [Display(Name = "Threat Adjust")]
         public List<MissionSummaryModel.ThreatAdjust> AdjustedThreatLevelList {
             get;
             set;
         }
 
-        public Mission ToEntity() {
-            var entity = new Mission {
-                Id = this.Id,
-                AdjustedThreatLevel = this.AdjustedThreatLevel,
-                Briefing = this.Briefing,
-                CaliberId = this.CaliberId,
-                Code = this.Code,
-                Motivation = this.Motivation,
-                Name = this.Name,
-                TotalPartyLevel = this.TotalPartyLevel
-            };
 
-            return entity;
+        public string AdjustedThreatLevelFormatted {
+            get {
+                if (AdjustedThreatLevel > 0)
+                    return string.Format("+{0}", AdjustedThreatLevel);
+                else
+                    return string.Format("{0}", AdjustedThreatLevel);
+            }
         }
+
+
+        public string CaliberFormatted {
+            get;
+            set;
+        }
+
 
         public MissionSummaryModel MapFrom(Mission entity) {
             if (entity == null)
@@ -124,6 +121,26 @@ namespace SCv20_Tools.Web.Models {
             return this;
         }
 
+
+        public Mission ToEntity() {
+            var entity = new Mission {
+                Id = this.Id,
+                AdjustedThreatLevel = this.AdjustedThreatLevel,
+                Briefing = this.Briefing,
+                CaliberId = this.CaliberId,
+                Code = this.Code,
+                Motivation = this.Motivation,
+                Name = this.Name,
+                TotalPartyLevel = this.TotalPartyLevel
+            };
+
+            return entity;
+        }
+
+
+        /// <summary>
+        /// Nestes Class Representing the possivel theat level adjustment.
+        /// </summary>
         public class ThreatAdjust {
 
             public int Value { get; set; }

@@ -18,8 +18,22 @@ namespace SCv20_Tools.Web {
             filters.Add(new HandleErrorAttribute());
         }
 
+
         public static void RegisterRoutes(RouteCollection routes) {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                "MissionDefault",
+                "Mission/{missionid}/{action}/{id}",
+                new {
+                    controller  = "Mission",
+                    missionid   =  UrlParameter.Optional,
+                    action      = "Index",
+                    id          =  UrlParameter.Optional
+                }, new {
+                    missionid   = @"\d+",
+                }
+            );
 
             routes.MapRoute(
                 "Default",                      // Route name
@@ -30,8 +44,8 @@ namespace SCv20_Tools.Web {
                     id          = UrlParameter.Optional
                 } // Parameter defaults
             );
-
         }
+
 
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();

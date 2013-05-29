@@ -107,7 +107,7 @@
     <Compile Include="Models\CaliberModel.cs" />
     <Compile Include="Models\CampaignModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MissionsController.cs" />
+    <Compile Include="Controllers\MissionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,7 +241,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_sysMenu.cshtml" />
     <Content Include="Views\Campaigns\index.cshtml" />
-    <Content Include="Views\Missions\Index.cshtml" />
+    <Content Include="Views\Mission\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Campaigns\_menu.cshtml" />
     <Content Include="Views\Shared\_menu.cshtml" />
@@ -251,10 +251,11 @@
     <Content Include="Views\Campaigns\tmpl\_qualityListTmpl.cshtml" />
     <None Include="Views\Campaigns\tmpl\avaliableQualitiesTmpl.shtml" />
     <None Include="Views\Campaigns\tmpl\qualityListTmpl.shtml" />
-    <Content Include="Views\Missions\Listing.cshtml" />
+    <Content Include="Views\Mission\Listing.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MissionSummaryModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MissionSummaryModel.cshtml" />
-    <Content Include="Views\Missions\Editing.cshtml" />
+    <Content Include="Views\Mission\Editing.cshtml" />
+    <Content Include="Views\Mission\_nav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

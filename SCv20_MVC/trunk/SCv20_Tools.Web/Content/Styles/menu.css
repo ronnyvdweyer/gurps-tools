@@ -68,3 +68,34 @@
         color: #000;
         text-decoration: underline;
     }
+
+
+ #navMenu {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        border: 0px solid black;
+    }
+    
+    #navMenu li {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+        border-right: 0px solid silver;
+    }
+    
+        #navMenu li a {
+            display: inline-block;
+            margin: 0 0px 0 0px;
+            text-decoration: none;
+            color: #fff;
+            padding: 0px 6px 0px 6px;
+            line-height: 20px;
+            font-weight: bold;
+        }
+    
+     #navMenu a:hover {
+        background-color: #fff;
+        text-decoration: underline;
+        color: #000;
+    }

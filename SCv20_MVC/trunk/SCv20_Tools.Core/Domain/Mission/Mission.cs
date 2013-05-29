@@ -47,7 +47,7 @@ namespace SCv20_Tools.Core.Domain {
             set;
         }
 
-        [Required, Range(1, 20)]
+        [Required, Range(1, 100)]
         public int TotalPartyLevel {
             get;
             set;

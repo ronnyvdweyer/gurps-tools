@@ -1,0 +1,19 @@
+﻿@model SCv20_Tools.Web.Models.MissionSummaryModel
+@{ ViewBag.Title = "Edit Mission Summary"; }
+
+@using (Html.BeginForm()) {
+    <div class="form">
+        @Html.EditorFor(m => m)
+    </div>
+}
+@section scripts {
+    <script type="text/javascript">
+        $("#dalton").cleditor({ width: "99.5%", height:"320px" });
+    </script>
+}
+
+
+@section header {
+    <script src="/scripts/jquery.cleditor.min.js"></script>
+    <link href="/content/jquery.cleditor.css" rel="stylesheet" />
+}
