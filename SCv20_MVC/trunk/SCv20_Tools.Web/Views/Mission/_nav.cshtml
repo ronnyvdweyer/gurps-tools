@@ -1,9 +1,12 @@
-﻿<ul id="navMenu">
-    <li> <a href="@Url.Action("Summary",       "Mission", ViewContext.RouteData.Values)">SUMMARY</a></li>
-    <li>|<a href="@Url.Action("Qualities",     "Mission", ViewContext.RouteData.Values)">QUALITIES</a></li>
-    <li>|<a href="@Url.Action("Complications", "Mission", ViewContext.RouteData.Values)">COMPLICATIONS</a></li>
-    <li>|<a href="@Url.Action("Bundles",       "Mission", ViewContext.RouteData.Values)">BUNDLE</a></li>
-    <li>|<a href="@Url.Action("Scenes",        "Mission", ViewContext.RouteData.Values)">SCENES</a>
-    </li>
+﻿@{
+    var baseRoute = new { missionid = ViewContext.RouteData.Values["id"], action = "Qualities" };
+}
+<ul id="navMenu">
+    <li> <a href="@Url.Action("Editing",       "Mission")">SUMMARY</a></li>
+    <li>|<a href="@Url.Action("Qualities",     "Mission", baseRoute)">QUALITIES</a></li>
+    <li>|<a href="@Url.Action("Complications", "Mission", baseRoute)">COMPLICATIONS</a></li>
+    <li>|<a href="@Url.Action("Bundles",       "Mission", baseRoute)">BUNDLE</a></li>
+    <li>|<a href="@Url.Action("Scenes",        "Mission", baseRoute)">SCENES</a></li>
 </ul>
 
+@*<text>Route:@Url.RouteUrl("MissionDefault", new { missionid = ViewContext.RouteData.Values["id"], action="Qualities" })</text>*@

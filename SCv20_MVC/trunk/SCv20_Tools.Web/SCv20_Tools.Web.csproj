@@ -124,6 +124,7 @@
     <Content Include="Areas\Api\Scripts\mission.api.js" />
     <Content Include="Areas\Api\Scripts\quality.api.js" />
     <Content Include="Content\Images\buttons.gif" />
+    <Content Include="Content\Images\ico-get-info.png" />
     <Content Include="Content\Images\ico-close.gif" />
     <Content Include="Content\Images\ico-error.png" />
     <Content Include="Content\Images\ico-info.png" />
@@ -256,6 +257,8 @@
     <Content Include="Views\Shared\EditorTemplates\MissionSummaryModel.cshtml" />
     <Content Include="Views\Mission\Editing.cshtml" />
     <Content Include="Views\Mission\_nav.cshtml" />
+    <Content Include="Views\Mission\Create.cshtml" />
+    <Content Include="Views\Mission\_createOrUpdateSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

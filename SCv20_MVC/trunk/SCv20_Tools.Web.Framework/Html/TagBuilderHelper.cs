@@ -102,8 +102,17 @@ namespace SCv20_Tools.Web.Framework.Html {
                 throw new InvalidOperationException("Tag Name not defined");
 
             if (htmlHelper.ViewData.ModelState.TryGetValue(elementName, out state)) {
-                if (state.Errors.Count > 0)
+                if (state.Errors.Count > 0) {
                     builder.AddCssClass(HtmlHelper.ValidationInputCssClassName);
+                    builder.Attributes.Add("data-validation-error", "true");
+
+                    var msg = new string[state.Errors.Count];
+                    int idx = 0;
+                    foreach (var e in state.Errors) {
+                        msg[idx++] = "\"" + e.ErrorMessage +"\"";
+                    }
+                    builder.Attributes.Add("data-validation-messages", "{\"text\":[" + string.Join(",", msg) + "]}");
+                }
             }
         }
     }

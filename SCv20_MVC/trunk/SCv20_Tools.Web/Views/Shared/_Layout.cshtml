@@ -40,7 +40,7 @@
             <div class="title">
                 <div style="display:inline-block">@ViewBag.Title</div>
                 <div style="display:inline-block; float:right; background-color:#000; line-height:2em; margin-bottom:1em; padding:0 25px 0 5px; color:#fff; font-weight:bold">
-                    @Html.Partial("_nav")
+                    @RenderSection("navigation", false)
                 </div>
             </div>
             <div class="content">

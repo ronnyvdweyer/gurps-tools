@@ -6,13 +6,12 @@
 
 $(function (doc) {
     init(doc)
+    processValidationMessages();
 });
-
 
 function init(doc) {
     ajaxSetup(doc);
 }
-
 
 function ajaxSetup(doc) {
     var $msg = $("#ajaxMessage");
@@ -26,7 +25,14 @@ function ajaxSetup(doc) {
 
     $(document).ajaxComplete(function () {
         $('#ajaxLoader').hide();
-    })
+    });
+
+
+    //$(document).ajaxSuccess(function () {
+    //    $msg.attr("class", "").addClass("info");
+    //    $("#ajaxMessage .message").html("Operação realizada com sucesso");
+    //    $msg.fadeIn('fast');//.fadeOut(2000);
+    //});
 
 
     $(document).ajaxError(function (event, jqxhr, settings, exception) {
@@ -38,7 +44,6 @@ function ajaxSetup(doc) {
             $msg.attr("class", "").addClass("warn");
         else
             $msg.attr("class", "").addClass("error");
-
 
         $msg.fadeIn('fast');
 
@@ -62,11 +67,10 @@ function ajaxSetup(doc) {
     });
 }
 
-
 $.fn.extend({
     tmpl: function (tmplSource, tmplData) {
         ///	<summary>
-        ///     &#10; This method is an Adapter to doT.js client template engine. This uses the jquery selected element (this) as the template 
+        ///     &#10; This method is an Adapter to doT.js client template engine. This uses the jquery selected element (this) as the template
         ///     &#10; target element. This is an part of MyCustomExtensions. Go to http://olado.github.io/doT/ for more information.
         ///	</summary>
         ///	<param name="tmplSource" type="jQuery">jQuery selector that contains the template specification.</param>
@@ -82,7 +86,6 @@ $.fn.extend({
         var html = func(tmplData);          // Executes the template function and stores the result HTML.
         console.log(func.toString());
 
-
         // Replaces the jQuery selected element HTML with the result HTML.
         $(this).html(html);
 
@@ -90,11 +93,55 @@ $.fn.extend({
     }
 });
 
-
 function require(pathToScript) {
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.src = pathToScript;       // use this for linked script
     //script.text = "alert('voila!');"    // use this for inline script
     document.head.appendChild(script);
+}
+
+function processValidationMessages() {
+    $(document).on("focus", ".input-validation-error", function (e) {
+        var $this = $(this);
+        var $icon = $this.parent().find(".icon-error");
+        var position = $this.position();
+        var messages = $this.data("validation-messages");
+
+        if ($icon.length > 0) {
+            $icon.show();
+        }
+        else {
+            $icon = $("<span>").addClass("icon-error");//.appendTo(".form");
+            $icon.attr("title", messages.text[0]);
+            $this.parent().append($icon);
+        }
+
+        /*+ $this.width() - 5*/;
+        var x = (position.left) - 05;
+        var y = (position.top) - 15 + ($this.height() - $icon.height()) / 2;
+
+        $icon.css("left", x + "px").css("top", y + "px");
+    });
+
+    $(document).on("blur", ".input-validation-error", function (e) {
+        var $this = $(this);
+        var $icon = $this.parent().find(".icon-error");
+        if ($icon.length > 0) {
+            $icon.hide();
+        }
+    });
+
+    $(window).resize(function (e) {
+        var $errors = $(".input-validation-error").each(function (index) {
+            var $this = $(this);
+            var $icon = $this.parent().find(".icon-error");
+            var position = $this.position();
+            if ($icon.length > 0) {
+                var x = (position.left) - 05;
+                var y = (position.top) - 15 + ($this.height() - $icon.height()) / 2;
+                $icon.css("left", x + "px").css("top", y + "px");
+            }
+        });
+    });
 }

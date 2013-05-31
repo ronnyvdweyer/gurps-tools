@@ -5,14 +5,15 @@
     background-color: #305330;
     background-color: silver;
     font-size: 10pt;
-    /*font-family: 'Trebuchet MS';*/
     font-family: Verdana;
+    /*font-family: 'Trebuchet MS';*/
 }
 
 #header {
     right: 0;
     left: 0;
     background-color: black;
+    -webkit-box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
     box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
 }
 
@@ -53,6 +54,7 @@
     border: 2px solid black;
     border-radius: 8px;
     background-color: whitesmoke;
+    -webkit-box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
     box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
     /*border-color: #ddd #aaa #aaa #ddd;*/
     /*border-right: 0px solid black;*/
@@ -78,7 +80,7 @@
     height: 100%;
     border: 2px solid black;
     border-radius: 8px 0 0px 0px;
-    background-color: #fff/*whitesmoke*/;
+    background-color: #fff /*whitesmoke*/;
     /*box-shadow: -1px -1px 3px rgba(50, 50, 50, 0.75);*/
 }
 
@@ -87,8 +89,8 @@
         height: 2em;
         background-color: #000;
         color: #fff;
-        line-height: 2em;
         font-weight: bold;
+        line-height: 2em;
     }
 
     #main .content {
@@ -98,22 +100,20 @@
         bottom: 0em;
         left: 0em;
         overflow-y: scroll;
-        padding: 10px 10px 0 10px;
+        padding: 15px 15px 0 15px;
     }
 
 #footer {
     position: fixed;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
     background-color: black;
 }
 
     #footer .content {
         height: 1.5em;
     }
-
-
 
 #ajaxLoader {
     position: fixed;
@@ -147,6 +147,7 @@
     vertical-align: central;
     font-weight: bold;
     /*background-position: .4em .4em;*/
+    min-height:2em;
 }
 
     #ajaxMessage.error {
@@ -154,6 +155,7 @@
         background-color: #F2DEDE;
         background-image: url(/Content/Images/ico-error.png);
         background-position: 10px 5px;
+        -webkit-box-shadow: 1px 1px 1px 2px rgba(255,0,0, .1);
         box-shadow: 1px 1px 1px 2px rgba(255,0,0, .1);
         color: #B94A48;
     }
@@ -163,6 +165,7 @@
         background-color: #FCF8E3;
         background-image: url(/Content/Images/ico-warn.png);
         background-position: 10px 4px;
+        -webkit-box-shadow: 1px 1px 1px 2px rgba(255, 235, 0, .2);
         box-shadow: 1px 1px 1px 2px rgba(255, 235, 0, .2);
         color: #C09853;
     }
@@ -172,25 +175,26 @@
         background-color: #d9edf7;
         background-image: url(/Content/Images/ico-info.png);
         background-position: 10px 7px;
+        -webkit-box-shadow: 1px 1px 1px 2px rgba(0, 0, 255, .1);
         box-shadow: 1px 1px 1px 2px rgba(0, 0, 255, .1);
         color: #3A87AD;
     }
 
     #ajaxMessage .close {
+        z-index: 5;
         display: block;
         float: right;
         margin-right: 5px;
         padding: 0;
         border: 0px solid;
         font-size: .8em;
-        z-index:5;
     }
 
         #ajaxMessage .close span {
             display: block;
             display: table;
             width: 16px;
-            height: 1.5em;
+            height: 2.35em;
             border: 0px solid;
             background-image: url(/Content/Images/ico-close.gif);
             background-position: center center;
@@ -198,6 +202,17 @@
         }
 
     #ajaxMessage .message {
-        font-size: .9em;
         max-height: 20em;
+        font-size: 1em;
+        line-height:2em;
     }
+
+.icon-error {
+    position: absolute;
+    z-index: 9000;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(/Content/Images/ico-get-info.png);
+    cursor: help;
+}

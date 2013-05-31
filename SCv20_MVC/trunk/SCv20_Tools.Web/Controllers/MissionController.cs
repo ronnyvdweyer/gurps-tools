@@ -24,6 +24,27 @@ namespace SCv20_Tools.Web.Controllers {
 
 
         [HttpGet]
+        public ActionResult Create() {
+            var model = new MissionSummaryModel();
+            PrepareModelForView(model, null);
+            return View(model);
+        }
+
+
+        [HttpPost, FormValueRequired("save")]
+        public ActionResult Create(MissionSummaryModel model) {
+            if (!ModelState.IsValid) {
+                PrepareModelForView(model, null);
+                return View(model);
+            }
+
+            var mission = _dataService.SaveMission(model.ToEntity());
+            PrepareModelForView(model, mission);
+            return RedirectToAction("Editing", new { id = mission.Id });
+        }
+
+
+        [HttpGet]
         public ActionResult Listing() {
             var model = new MissionListingModel();
             var list = _dataService.GetAllMissions();
@@ -58,20 +79,40 @@ namespace SCv20_Tools.Web.Controllers {
         }
 
 
-        [HttpPost, FormValueRequired("save-edit")]
+        [HttpPost/*, FormValueRequired("save-edit")*/]
         public ActionResult Editing(MissionSummaryModel model) {
+            if (!ModelState.IsValid) {
+                PrepareModelForView(model, null);
+                return PartialView("_createOrUpdateSummary", model);
+            }
+
             var mission = _dataService.SaveMission(model.ToEntity());
             PrepareModelForView(model, mission);
-            return View(model);
+            return PartialView("_createOrUpdateSummary", model);
         }
 
 
         [HttpGet]
-        public ActionResult AddQuality(int? missionid, int? id) {
-            return Json(new {
-                mission_id = missionid,
-                quality_id = id
-            }, JsonRequestBehavior.AllowGet);
+        //GET: /Mission/{missionid}/Qualities
+        public ActionResult Qualities(int? missionid) {
+
+            var msg = new string[5];
+
+            msg[0] = "Mensagem 1";
+            msg[1] = "Mensagem 2";
+            msg[2] = "Mensagem 3";
+            msg[3] = "Mensagem 4";
+            msg[4] = "Mensagem 5";
+
+            if (missionid == null)
+                return RedirectToAction("");
+
+            return Json(new { data = msg }, JsonRequestBehavior.AllowGet);
+
+            //return Json(new {
+            //    mission_id = missionid,
+            //    quality_id = 3
+            //}, JsonRequestBehavior.AllowGet);
         }
 
 

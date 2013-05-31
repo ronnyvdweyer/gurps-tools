@@ -18,8 +18,6 @@
         <div class="grid-1">
             @Html.MeHZ().TextBoxFor(m => m.TotalPartyLevel, new TextBoxOptions { MaxLength = 10 })
         </div>
-
-
     </div>
 
     <div class="group">
@@ -59,13 +57,7 @@
 
     <div class="group">
         <div class="grid-8">
-            @Html.MeHZ().TextAreaFor(m => m.Briefing, new TextBoxOptions { ID = "dalton", Style = "height:auto", HtmlAttributes = new { rows = "20", cols = "100", spellcheck = "false" } })
-        </div>
-    </div>
-
-    <div class="group command">
-        <div class="grid-8 al-r">
-            <button type="submit" name="save-edit" value="@Model.Id" data-id="@Model.Id">Save</button>
+            @Html.MeHZ().TextAreaFor(m => m.Briefing, new TextBoxOptions { ID = "editor", Style = "height:auto", HtmlAttributes = new { rows = "20", cols = "100", spellcheck = "false" } })
         </div>
     </div>
 @*</div>*@
