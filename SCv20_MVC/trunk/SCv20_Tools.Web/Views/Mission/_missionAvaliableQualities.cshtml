@@ -1,0 +1,46 @@
+﻿@model SCv20_Tools.Web.Models.MissionQualitiesModel
+<div class="group">
+    <div class="grid-2">
+        @Html.MeHZ().DropDownListFor(m => m.SelectedQualityId, ds => ds.AvaliableQualities, "Id", "Name", null)
+    </div>
+    <div class="grid-3">
+        <button type="button" name="add" id="btnAddQuality" data-mission-id="@Model.ID" data-quality-id="">
+            Add Quality</button>
+    </div>
+    <div class="grid-1 al-c">
+        <span class="label">AD/XP Bonus:</span>
+    </div>
+    <div class="grid-1">
+        <input type="text" id="txtQualityBonusAD" disabled="disabled" />
+    </div>
+    <div class="grid-1">
+        <input type="text" id="txtQualityBonusXP" disabled="disabled" />
+    </div>
+</div>
+<div class="group">
+    <div class="grid-8">
+        <textarea id="txtQualityDetails" disabled="disabled" style="height: auto;" rows="2" cols="200"></textarea>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#SelectedQualityId").change(function (e) {
+            var id = $(this).val();
+
+            if (id == 0) {
+                $("#btnAddQuality").attr("disabled", "disabled");
+                $("#btnAddQuality").attr("data-quality-id", null);
+            } else {
+                $("#btnAddQuality").attr("data-quality-id", id);
+                $("#btnAddQuality").removeAttr("disabled");
+            }
+
+            var api = new qualityApi();
+            api.getDetails(id, function (data) {
+                $("#txtQualityBonusAD").val(data.bonusADFormated);
+                $("#txtQualityBonusXP").val(data.bonusXPFormated);
+                $("#txtQualityDetails").html(data.description);
+            });
+        });
+    });
+</script>

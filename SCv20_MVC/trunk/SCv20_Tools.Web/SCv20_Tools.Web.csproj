@@ -104,6 +104,7 @@
     <Compile Include="Areas\Api\Models\CampaignModel.cs" />
     <Compile Include="Areas\Api\Models\ModelAdapter.cs" />
     <Compile Include="Areas\Api\Models\QualityModel.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Models\CaliberModel.cs" />
     <Compile Include="Models\CampaignModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -113,6 +114,7 @@
     </Compile>
     <Compile Include="Models\CampaignSummaryModel.cs" />
     <Compile Include="Models\MissionListingModel.cs" />
+    <Compile Include="Models\MissionQualitiesModel.cs" />
     <Compile Include="Models\MissionSummaryModel.cs" />
     <Compile Include="Models\QualityModel.cs" />
     <Compile Include="Models\HistoricalConversionModel.cs" />
@@ -259,10 +261,16 @@
     <Content Include="Views\Mission\_nav.cshtml" />
     <Content Include="Views\Mission\Create.cshtml" />
     <Content Include="Views\Mission\_createOrUpdateSummary.cshtml" />
+    <Content Include="Views\Mission\_missionInfo.cshtml" />
+    <Content Include="Views\Mission\Qualities.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\QualityModel.cshtml" />
+    <Content Include="Views\Mission\_missionAvaliableQualities.cshtml" />
+    <Content Include="Views\Mission\_missionQualities.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Api\Views\Shared\" />
+    <Folder Include="Views\Common\" />
     <Folder Include="Views\Shared\SpyCraftHtml\" />
   </ItemGroup>
   <ItemGroup>

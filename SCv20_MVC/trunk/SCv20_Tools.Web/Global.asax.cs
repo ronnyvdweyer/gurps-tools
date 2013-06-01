@@ -24,14 +24,14 @@ namespace SCv20_Tools.Web {
 
             routes.MapRoute(
                 "MissionDefault",
-                "Mission/{missionid}/{action}/{id}",
+                "Mission/{id}/{action}/{key}",
                 new {
                     controller  = "Mission",
-                    missionid   =  UrlParameter.Optional,
+                    id          =  UrlParameter.Optional,
                     action      = "Index",
-                    id          =  UrlParameter.Optional
+                    key         =  UrlParameter.Optional
                 }, new {
-                    missionid   = @"\d+",
+                    id  = @"\d+",
                 }
             );
 

@@ -47,6 +47,10 @@ input[type="text"], .text {
     input[type="text"]:focus {
         background-color: #fffeee;
     }
+    
+    .text {
+        background-color: #eeeeee;
+    }
 
 textarea, .textarea {
     display: block;
@@ -79,6 +83,7 @@ textarea, .textarea {
 .textarea {
     overflow-y: auto;
     padding-right: 4px;
+    padding: 4px 4px 4px 4px;
 }
 
 label, .label {
@@ -177,6 +182,17 @@ div.form .command {
 
     div.form .command button {
         width: 100px;
+    }
+
+    div.panel {
+        /*border:1px solid silver;*/
+         overflow:hidden;
+        padding:10px 5px 10px 10px;
+        margin-bottom: 20px;
+        background-color: #fff;
+        -webkit-box-shadow: 0px 0px 2px rgba(128, 128, 128, 0.75) inset;
+        box-shadow: 0px 0px 2px rgba(128, 128, 128, 0.75) inset;
+        border-radius: 8px;
     }
 
 .input-validation-error {

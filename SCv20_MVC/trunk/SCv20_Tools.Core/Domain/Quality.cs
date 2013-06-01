@@ -93,5 +93,14 @@ namespace SCv20_Tools.Core.Domain {
         }
 
         #endregion
+
+        public override bool Equals(object obj) {
+            var other = (Quality)obj;
+            return (this.Id == other.Id);
+        }
+
+        public override int GetHashCode() {
+            return this.Id;
+        }
     }
 }

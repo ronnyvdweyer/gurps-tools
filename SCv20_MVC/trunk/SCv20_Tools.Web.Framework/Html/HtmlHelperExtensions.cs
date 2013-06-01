@@ -23,20 +23,34 @@ namespace SCv20_Tools.Web.Framework.Html {
 
         #region -- ASP.Net MVC Base Helper Extensions -----------------------------------------------
 
-        public static string IdFor<TModel, TResult>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TResult>> targetModelProperty) {
+        /// <summary>
+        /// MEHZ: Part of Custom Base Helper Extensions. Display element ID for the specified targetModelProperty.
+        /// </summary>
+        public static IHtmlString IdFor<TModel, TResult>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TResult>> targetModelProperty) {
             var name = ExpressionHelper.GetExpressionText(targetModelProperty);
             //--> Bloco Necessário quando estiver usando um EditorFor.
             string fullName = helper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
             string fullId = helper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldId(name);
             //<--
-            return fullId;
+            return new HtmlString(fullId);
         }
 
+        /// <summary>
+        /// MEHZ: Part of Custom Base Helper Extensions. Display element value for the specified targetModelProperty.
+        /// </summary>
         public static IHtmlString ValueFor<TModel, TResult>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TResult>> targetModelProperty) {
             var value = ModelMetadata.FromLambdaExpression(targetModelProperty, helper.ViewData).Model;
-            var html = Convert.ToString(value).Replace(Environment.NewLine, "<br/>");
+            var html  = Convert.ToString(value).Replace(Environment.NewLine, "<br/>");
             
             return new HtmlString(html);
+        }
+
+        /// <summary>
+        /// MEHZ: Part of Custom Base Helper Extensions. Display element Label for the specified targetModelProperty.
+        /// </summary>
+        public static IHtmlString DisplayNameFor<TModel, TResult>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TResult>> targetModelProperty) {
+            var value = ModelMetadata.FromLambdaExpression(targetModelProperty, helper.ViewData).GetDisplayName();
+            return new HtmlString(value);
         }
 
         #endregion -- ASP.Net MVC Base Helper Extensions -----------------------------------------------

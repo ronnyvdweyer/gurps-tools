@@ -1,0 +1,27 @@
+﻿@model SCv20_Tools.Web.Models.QualityModel
+<div class="panel">
+    <div class="group">
+        <div class="grid-1">
+            <span class="label">@Html.DisplayNameFor(m => m.Name)</span>
+        </div>
+        <div class="grid-5">
+            <span class="text">@Html.ValueFor(m => m.Name)</span>
+        </div>
+        <div class="grid-1">
+            <span class="label">AD/XP Bonus</span>
+        </div>
+        <div class="grid-1">
+            <span class="text">@Html.ValueFor(m => m.BonusADFormated) / @Html.ValueFor(m => m.BonusXPFormated)</span>
+        </div>
+    </div>
+    <div class="group">
+        <div class="grid-8">
+            <span class="textarea" style="height: auto">@Html.ValueFor(m => m.Description)</span>
+        </div>
+    </div>
+    @*<div class="group command">*@
+    <div class="grid-8 al-r">
+        <button type="button" value="remove" class="btnRemove" data-quality-id="@Html.ValueFor(m => m.Id)">remove</button>
+    </div>
+    @*</div>*@
+</div>

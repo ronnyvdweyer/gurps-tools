@@ -1,0 +1,39 @@
+﻿@model SCv20_Tools.Web.Models.MissionQualitiesModel
+<div class="partial">
+    @{if (Model.Qualities.Count() == 0) { 
+        <div class="panel"><h4>No Qualities Found</h4></div>
+    }}
+    
+    <span>@Html.ValueFor(m => m.BonusXPCalculated)</span><br/>
+    <span>@Html.ValueFor(m => m.BonusADCalculated)</span>
+
+    @foreach (var item in Model.Qualities) { 
+        <div class="panel">
+            <div class="group">
+                <div class="grid-1">
+                    <span class="label">@Html.DisplayNameFor(m => item.Name)</span>
+                </div>
+                <div class="grid-5">
+                    <span class="text">@Html.ValueFor(m => item.Name)</span>
+                </div>
+                <div class="grid-1 al-c">
+                    <span class="label">AD/XP Bonus</span>
+                </div>
+                <div class="grid-1 al-r">
+                    <span class="text">@Html.ValueFor(m => item.BonusADFormated) / @Html.ValueFor(m => item.BonusXPFormated)</span>
+                </div>
+            </div>
+            <div class="group">
+                <div class="grid-8">
+                    <span class="textarea" style="height: auto">@Html.ValueFor(m => item.Description)</span>
+                </div>
+            </div>
+            @*<div class="group command">*@
+            <div class="grid-8 al-r">
+                <button type="button" value="remove" class="btnRemove" data-quality-id="@Html.ValueFor(m => item.Id)">
+                    remove</button>
+            </div>
+            @*</div>*@
+        </div>
+    }
+</div>

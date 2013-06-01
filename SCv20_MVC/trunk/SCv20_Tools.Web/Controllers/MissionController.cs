@@ -62,8 +62,6 @@ namespace SCv20_Tools.Web.Controllers {
                 CaliberList = cals.Select(cal => CaliberModel.MapFrom(cal)).ToList()
             }).ToList();
 
-
-
             return View(model);
         }
 
@@ -94,26 +92,73 @@ namespace SCv20_Tools.Web.Controllers {
 
         [HttpGet]
         //GET: /Mission/{missionid}/Qualities
-        public ActionResult Qualities(int? missionid) {
+        public ActionResult Qualities(int? id, int? key) {
+            var model = new MissionQualitiesModel();
+            var qualities = _dataService.GetAllMissionQualities(id);
 
-            var msg = new string[5];
+            model.Qualities = qualities.Select(item => QualityModel.MapFrom(item)).ToList();
+            model.ID = id;
 
-            msg[0] = "Mensagem 1";
-            msg[1] = "Mensagem 2";
-            msg[2] = "Mensagem 3";
-            msg[3] = "Mensagem 4";
-            msg[4] = "Mensagem 5";
-
-            if (missionid == null)
-                return RedirectToAction("");
-
-            return Json(new { data = msg }, JsonRequestBehavior.AllowGet);
-
-            //return Json(new {
-            //    mission_id = missionid,
-            //    quality_id = 3
-            //}, JsonRequestBehavior.AllowGet);
+            return View(model);
         }
+
+
+        [HttpPost]
+        public ActionResult AddQuality(int id, int key) {
+            _dataService.AddMissionQuality(id, key);
+            return DisplayAvaliableQualities(id);
+        }
+
+
+        [HttpPost, AjaxHandleError]
+        public ActionResult RemoveQuality(int id, int key) {
+            _dataService.RemoveMissionQuality(id, key);
+
+            var model = new MissionQualitiesModel();
+            var qualities = _dataService.GetAllMissionQualities(id);
+
+            model.Qualities = qualities.Select(item => QualityModel.MapFrom(item)).ToList();
+            model.ID = id;
+
+            return PartialView("_missionQualities", model);
+        }
+
+
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        public ActionResult DisplayInfo(int id) {
+            var mission = _dataService.GetMission(id);
+            var model = new MissionSummaryModel();
+            model.MapFrom(mission);
+            return PartialView("_missionInfo", model);
+        }
+
+
+
+
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        public ActionResult DisplayAvaliableQualities(int id) {
+            var model = new MissionQualitiesModel();
+            var qualities = _dataService.GetAllMissionAvaliableQualities(id);
+
+            model.AvaliableQualities = qualities.Select(item => QualityModel.MapFrom(item)).ToList();
+            model.ID = id;
+
+            return PartialView("_missionAvaliableQualities", model);
+        }
+
+
+
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        public ActionResult DisplayQualities(int id) {
+            var model = new MissionQualitiesModel();
+            var qualities = _dataService.GetAllMissionQualities(id);
+
+            model.Qualities = qualities.Select(item => QualityModel.MapFrom(item)).ToList();
+            model.ID = id;
+
+            return PartialView("_missionQualities", model);
+        }
+
 
 
         [NonAction]

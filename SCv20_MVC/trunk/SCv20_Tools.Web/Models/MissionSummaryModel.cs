@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using SCv20_Tools.Core.Domain;
+using System.Linq;
 
 namespace SCv20_Tools.Web.Models {
 
@@ -91,10 +92,10 @@ namespace SCv20_Tools.Web.Models {
 
         public string AdjustedThreatLevelFormatted {
             get {
-                if (AdjustedThreatLevel > 0)
-                    return string.Format("+{0}", AdjustedThreatLevel);
-                else
-                    return string.Format("{0}", AdjustedThreatLevel);
+                var value = AdjustedThreatLevelList
+                    .Where(tl => tl.Value == AdjustedThreatLevel)
+                    .Select(v => v.ValueFormatted).FirstOrDefault();
+                return value;
             }
         }
 
@@ -117,6 +118,7 @@ namespace SCv20_Tools.Web.Models {
             this.Motivation = entity.Motivation;
             this.Name = entity.Name;
             this.TotalPartyLevel = entity.TotalPartyLevel;
+            this.CaliberFormatted = entity.Caliber.Value;
 
             return this;
         }

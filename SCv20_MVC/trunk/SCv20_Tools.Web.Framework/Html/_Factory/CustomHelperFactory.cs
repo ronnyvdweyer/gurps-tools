@@ -86,6 +86,7 @@ namespace SCv20_Tools.Web.Framework.Html {
             meta.FullId        = _helper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldId(meta.FieldName);
             meta.FullName      = _helper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(meta.FieldName);
             meta.ValueAsObject = ModelMetadata.FromLambdaExpression(expression, _helper.ViewData).Model;
+            meta.DisplayName   = ModelMetadata.FromLambdaExpression(expression, _helper.ViewData).DisplayName;
 
             return meta;
         }
@@ -108,6 +109,8 @@ namespace SCv20_Tools.Web.Framework.Html {
         public object ValueAsObject { get; set; }
 
         public string ValueAsText { get; set; }
+
+        public string DisplayName { get; set; }
     }
 
     #endregion -- Support Classes and Methods ------------------------------------------------------

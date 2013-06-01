@@ -148,5 +148,41 @@ namespace SCv20_Tools.Core.Services {
 
             return mission;
         }
+
+
+        public List<Quality> GetAllMissionQualities(int? missionid) {
+            var repo = Repository<MissionQuality>.GetInstance();
+            var data = repo.FindAll();
+            var query = data.Where(e => e.MissionId == missionid).Select(r => r.Quality);
+
+            return query.OrderBy(e => e.Name).ToList();
+        }
+
+        public List<Quality> GetAllMissionAvaliableQualities(int? missionid) {
+            //TODO: Must improve this to ensure performance
+            var repoAll = Repository<Quality>.GetInstance();
+            var repoSub = Repository<MissionQuality>.GetInstance();
+            
+            var all = repoAll.FindBy(e => e.IsSeasonsOnly == false);
+            var sub = repoSub.FindBy(e => e.MissionId == missionid).Select(e => e.Quality);
+            var tmp = all.ToList().Except( sub.ToList() );
+
+            return tmp.ToList().OrderBy(e => e.Name).ToList();
+        }
+
+        public void AddMissionQuality(int missionid, int qualityid) {
+            var repo = Repository<MissionQuality>.GetInstance();
+            repo.Create(new MissionQuality { MissionId = missionid, QualityId = qualityid });
+            repo.Commit();
+        }
+
+        public void RemoveMissionQuality(int missionid, int qualityid) {
+            var repo = Repository<MissionQuality>.GetInstance();
+            var data = repo.FindBy(e => e.MissionId == missionid).Where(e => e.QualityId == qualityid).FirstOrDefault();
+            if (data != null) {
+                repo.Remove(data.Id);
+                repo.Commit();
+            }
+        }
     }
 }
