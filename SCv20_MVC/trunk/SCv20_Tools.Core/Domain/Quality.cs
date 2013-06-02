@@ -78,6 +78,21 @@ namespace SCv20_Tools.Core.Domain {
             get;
             set;
         }
+        
+
+        [NotMapped]
+        public string BonusADFormated {
+            get {
+                return BonusAD.ToString("+#;-#;+0") + " AD";
+            }
+        }
+
+        [NotMapped]
+        public string BonusXPFormated {
+            get {
+                return BonusXP.ToString("+#;-#;+0") + " XP";
+            }
+        }
 
 
         #region -- Navigation Properties -----------------------------------------------------------

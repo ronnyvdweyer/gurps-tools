@@ -64,25 +64,6 @@ namespace SCv20_Tools.Core.Domain {
             set;
         }
 
-        /// <summary>
-        /// Calculated: Returns Calculated Party Threat Level.
-        /// </summary>
-        [NotMapped]
-        public int PartyThreatLevel {
-            get {
-                return Convert.ToInt32(Math.Ceiling((TotalPartyLevel / 5.0)));
-            }
-        }
-
-        /// <summary>
-        /// Calculated: Returns Calculated Mission Threat Level Ajusted.
-        /// </summary>
-        [NotMapped]
-        public int ThreatLevel {
-            get {
-                return (PartyThreatLevel + AdjustedThreatLevel);
-            }
-        }
 
         #region -- Relationships ------------------------------------------------------------------
 
@@ -103,5 +84,36 @@ namespace SCv20_Tools.Core.Domain {
         }
 
         #endregion -- Relationships ------------------------------------------------------------------
+
+
+        /// <summary>
+        /// Calculated: Returns Calculated Party Threat Level.
+        /// </summary>
+        [NotMapped]
+        public int PartyThreatLevel {
+            get {
+                return Convert.ToInt32(Math.Ceiling((TotalPartyLevel / 5.0)));
+            }
+        }
+
+        /// <summary>
+        /// Calculated: Returns Calculated Mission Threat Level Ajusted.
+        /// </summary>
+        [NotMapped]
+        public int ThreatLevel {
+            get {
+                return (PartyThreatLevel + AdjustedThreatLevel);
+            }
+        }
+
+        /// <summary>
+        /// Calculated: Returns AdjustedThreatLevel formated.
+        /// </summary>
+        [NotMapped]
+        public string AdjustedThreatLevelFormated {
+            get {
+                return AdjustedThreatLevel.ToString("+#;-#;+0");
+            }
+        }
     }
 }

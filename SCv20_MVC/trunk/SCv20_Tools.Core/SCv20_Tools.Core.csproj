@@ -82,10 +82,16 @@
     <None Include="App.config" />
     <None Include="Domain\Mission\SCv20_Mission.cd" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SCv20_Tools.Core.Domain.Mission.datasource" />
+    <None Include="Properties\DataSources\SCv20_Tools.Core.Domain.Quality.datasource" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Data\Seed\Qualities.json.js" />
     <EmbeddedResource Include="Data\Seed\Rewards.json.js" />
+    <EmbeddedResource Include="Reports\Mission.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
