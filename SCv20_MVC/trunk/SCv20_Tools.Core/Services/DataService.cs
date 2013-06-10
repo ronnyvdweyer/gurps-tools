@@ -21,6 +21,18 @@ namespace SCv20_Tools.Core.Services {
             }
         }
 
+        public void AddMissionQuality(int missionid, int qualityid) {
+            var repo = Repository<MissionQuality>.GetInstance();
+            repo.Create(new MissionQuality { MissionId = missionid, QualityId = qualityid });
+            repo.Commit();
+        }
+
+        public IList<Caliber> GetAllCalibers() {
+            var repo = Repository<Caliber>.GetInstance();
+            var data = repo.FindAll().ToList();
+            return data;
+        }
+
         public IList<Campaign> GetAllCampaigns() {
             var repo = Repository<Campaign>.GetInstance();
             var data = repo.FindAll().ToList();
@@ -39,6 +51,31 @@ namespace SCv20_Tools.Core.Services {
         public IList<HistoricalConversion> GetAllHistoricalConversions() {
             var repo = Repository<HistoricalConversion>.GetInstance();
             return repo.FindAll().OrderBy(e => e.Order).ToList();
+        }
+
+        public List<Quality> GetAllMissionAvaliableQualities(int? missionid) {
+            var repoAll = Repository<Quality>.GetInstance();
+            var repoSub = Repository<MissionQuality>.GetInstance();
+
+            var all = repoAll.FindBy(e => e.IsSeasonsOnly == false);
+            var sub = repoSub.FindBy(e => e.MissionId == missionid).Select(e => e.Quality);
+            var tmp = all.ToList().Except(sub.ToList());
+
+            return tmp.ToList().OrderBy(e => e.Name).ToList();
+        }
+
+        public List<Quality> GetAllMissionQualities(int? missionid) {
+            var repo = Repository<MissionQuality>.GetInstance();
+            var data = repo.FindAll();
+            var query = data.Where(e => e.MissionId == missionid).Select(r => r.Quality);
+
+            return query.OrderBy(e => e.Name).ToList();
+        }
+
+        public IList<Mission> GetAllMissions() {
+            var repo = Repository<Mission>.GetInstance();
+            var data = repo.FindAll().ToList();
+            return data;
         }
 
         public IList<Quality> GetAllQualities(bool? isSeason) {
@@ -99,81 +136,17 @@ namespace SCv20_Tools.Core.Services {
             return GetAllCareerLevels().Where(e => e.Key == level).FirstOrDefault();
         }
 
-        public Quality GetQuality(int id) {
-            var repo = Repository<Quality>.GetInstance();
-            var data = repo.GetById(id);
-
-            return data;
-        }
-
-        public Campaign SaveCampaign(Campaign c) {
-            var repo1 = Repository<Campaign>.GetInstance();
-
-            if (c.Id > 0)
-                c = repo1.Edit(c);
-            else
-                c = repo1.Create(c);
-
-            repo1.Commit();
-
-            return c;
-        }
-
-        public IList<Mission> GetAllMissions() {
-            var repo = Repository<Mission>.GetInstance();
-            var data = repo.FindAll().ToList();
-            return data;
-        }
-
-        public IList<Caliber> GetAllCalibers() {
-            var repo = Repository<Caliber>.GetInstance();
-            var data = repo.FindAll().ToList();
-            return data;
-        }
-
         public Mission GetMission(int id) {
             var repo = Repository<Mission>.GetInstance();
             var data = repo.GetById(id);
             return data;
         }
 
-        public Mission SaveMission(Mission mission) {
-            var repo = Repository<Mission>.GetInstance();
-            if (mission.Id > 0)
-                mission = repo.Edit(mission);
-            else
-                mission = repo.Create(mission);
+        public Quality GetQuality(int id) {
+            var repo = Repository<Quality>.GetInstance();
+            var data = repo.GetById(id);
 
-            repo.Commit();
-
-            return mission;
-        }
-
-
-        public List<Quality> GetAllMissionQualities(int? missionid) {
-            var repo = Repository<MissionQuality>.GetInstance();
-            var data = repo.FindAll();
-            var query = data.Where(e => e.MissionId == missionid).Select(r => r.Quality);
-
-            return query.OrderBy(e => e.Name).ToList();
-        }
-
-        public List<Quality> GetAllMissionAvaliableQualities(int? missionid) {
-            //TODO: Must improve this to ensure performance
-            var repoAll = Repository<Quality>.GetInstance();
-            var repoSub = Repository<MissionQuality>.GetInstance();
-            
-            var all = repoAll.FindBy(e => e.IsSeasonsOnly == false);
-            var sub = repoSub.FindBy(e => e.MissionId == missionid).Select(e => e.Quality);
-            var tmp = all.ToList().Except( sub.ToList() );
-
-            return tmp.ToList().OrderBy(e => e.Name).ToList();
-        }
-
-        public void AddMissionQuality(int missionid, int qualityid) {
-            var repo = Repository<MissionQuality>.GetInstance();
-            repo.Create(new MissionQuality { MissionId = missionid, QualityId = qualityid });
-            repo.Commit();
+            return data;
         }
 
         public void RemoveMissionQuality(int missionid, int qualityid) {
@@ -183,6 +156,88 @@ namespace SCv20_Tools.Core.Services {
                 repo.Remove(data.Id);
                 repo.Commit();
             }
+        }
+
+        public Campaign SaveCampaign(Campaign entity) {
+            var repo1 = Repository<Campaign>.GetInstance();
+
+            if (entity.Id > 0)
+                entity = repo1.Edit(entity);
+            else
+                entity = repo1.Create(entity);
+
+            repo1.Commit();
+
+            return entity;
+        }
+
+        public Mission SaveMission(Mission entity) {
+            var repo = Repository<Mission>.GetInstance();
+            if (entity.Id > 0)
+                entity = repo.Edit(entity);
+            else
+                entity = repo.Create(entity);
+
+            repo.Commit();
+
+            return entity;
+        }
+
+        public Scene SaveScene(Scene entity) {
+            var repo = Repository<Scene>.GetInstance();
+            if (entity.ID > 0) {
+                entity = repo.Edit(entity);
+            }
+            else {
+                entity.CreatedOn = DateTime.Now;
+                entity = repo.Create(entity);
+            }
+            repo.Commit();
+
+            return entity;
+        }
+
+        public Scene GetScene(int id) {
+            var repo = Repository<Scene>.GetInstance();
+            var data = repo.GetById(id);
+            return data;
+        }
+
+        public IList<Scene> GetAllScenes(int missionid) {
+            var repo = Repository<Scene>.GetInstance();
+            var data = repo.FindBy(e => e.MissionID == missionid).OrderBy(e=>e.Order).ToList();
+            return data;
+        }
+
+        public SceneObjective GetSceneObjective(int id) {
+            var repo = Repository<SceneObjective>.GetInstance();
+            var data = repo.GetById(id);
+            return data;
+        }
+
+        public IList<ObjectiveType> GetAllObjectiveTypes() {
+            var repo = Repository<ObjectiveType>.GetInstance();
+            return repo.FindAll().OrderBy(e => e.Name).ToList();
+        }
+
+        public ObjectiveGrade GetObjetiveTypeDetail(int typeid, int gradeid) {
+            var repo = Repository<ObjectiveGrade>.GetInstance();
+            var data = repo.FindBy(e => e.ObjectiveTypeId == typeid).Where(e => e.Grade == gradeid).FirstOrDefault();
+            return data;
+        }
+
+        public SceneObjective SaveSceneObjective(SceneObjective entity) {
+            var repo = Repository<SceneObjective>.GetInstance();
+            if (entity.Id > 0) {
+                entity = repo.Edit(entity);
+            }
+            else {
+                //TODO: entity.CreatedOn = DateTime.Now;
+                entity = repo.Create(entity);
+            }
+            repo.Commit();
+
+            return entity;
         }
     }
 }

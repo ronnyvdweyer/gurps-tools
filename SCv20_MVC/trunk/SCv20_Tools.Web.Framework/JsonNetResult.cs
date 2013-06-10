@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace SCv20_Tools.Web.Framework {
 
@@ -14,7 +16,8 @@ namespace SCv20_Tools.Web.Framework {
         public JsonNetResult() {
             Settings = new JsonSerializerSettings {
                 ReferenceLoopHandling = ReferenceLoopHandling.Error,
-                Formatting = Formatting.Indented
+                Formatting = Formatting.Indented,
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
         }
 

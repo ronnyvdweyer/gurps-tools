@@ -1,0 +1,30 @@
+﻿@model SCv20_Tools.Web.Models.SceneModel
+@{ ViewBag.Title = "Editing Scene"; }
+
+@section header {
+    <script type="text/javascript" src="/scripts/jquery.cleditor.min.js"></script>
+    <link href="/content/jquery.cleditor.css" rel="stylesheet" />
+}
+
+@section scripts {
+    <script type="text/javascript" src="/views/scene/_sceneObjective.cshtml.js"></script>
+    <script type="text/javascript">
+        $("#editor").cleditor({ width: "99.75%", height: "180px" });
+    </script>
+}
+@using (Html.BeginForm()) {
+    <div id="summary">
+        @Html.Partial("_sceneSummary", @Model)
+    </div>
+    
+    foreach (var id in @Model.SceneObjectivesID) {
+        <div style="margin-top: 20px;">
+            @{Html.RenderAction("GetObjetive", new { id = id });}
+        </div>
+    }
+}
+
+<script type="text/javascript">
+    /// <reference path="/content/scripts/jquery/jquery-1.7.1.min.js" />
+
+</script>

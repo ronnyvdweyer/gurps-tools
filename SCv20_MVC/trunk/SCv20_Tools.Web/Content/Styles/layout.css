@@ -147,7 +147,7 @@
     vertical-align: central;
     font-weight: bold;
     /*background-position: .4em .4em;*/
-    min-height:2em;
+    min-height: 2em;
 }
 
     #ajaxMessage.error {
@@ -204,7 +204,7 @@
     #ajaxMessage .message {
         max-height: 20em;
         font-size: 1em;
-        line-height:2em;
+        line-height: 2em;
     }
 
 .icon-error {
@@ -216,3 +216,60 @@
     background-image: url(/Content/Images/ico-get-info.png);
     cursor: help;
 }
+
+.portlet {
+    border: 2px solid silver;
+    background-color: #fff;
+    min-width: 1000px;
+}
+
+    .portlet .header {
+        margin: 3px;
+        line-height: 2em;
+        padding-left: 5px;
+        background-color: #000;
+        color: #fff;
+        overflow: hidden;
+    }
+
+        .portlet .header .h-title {
+            float: left;
+            margin-right: 5px;
+            display: inline-block;
+            width: 80%;
+            cursor: pointer;
+        }
+
+        .portlet .header .h-tools {
+            float: right;
+            margin-right: 5px;
+            display: inline-block;
+        }
+
+        .portlet .header a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+            .portlet .header a:hover {
+                color: #000;
+                background-color: #F6F5EA;
+            }
+
+    .portlet .form {
+        overflow: hidden;
+        display: block;
+        margin: 0px 3px 0px 3px;
+        padding: 0;
+        height: auto;
+    }
+
+    .portlet .body.hide {
+        overflow: hidden;
+        height: 0;
+    }
+
+    .portlet .body.show {
+        overflow: hidden;
+        height: auto;
+    }

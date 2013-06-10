@@ -1,17 +1,12 @@
 ﻿/// <reference path="jquery/jquery-1.7.1.js" />
 /// <reference path="doT.js" />
 
-//require('/content/scripts/doT.js');
-//require('/areas/api/scripts/quality.api.js');
-
 $(function (doc) {
-    init(doc)
+    ajaxSetup(doc);
+    setupPortlet();
     processValidationMessages();
 });
 
-function init(doc) {
-    ajaxSetup(doc);
-}
 
 function ajaxSetup(doc) {
     var $msg = $("#ajaxMessage");
@@ -22,49 +17,53 @@ function ajaxSetup(doc) {
         //$msg.fadeOut('fast');
     });
 
-
     $(document).ajaxComplete(function () {
         $('#ajaxLoader').hide();
     });
 
+    $(document).ajaxError(function (event, jqxhr, settings, exception) {
+        $('#ajaxLoader').hide();
+
+        console.debug(jqxhr);
+
+        if (jqxhr.status === 404) {
+            $("#ajaxMessage .message").html("AJAX Request to invalid URL!");
+            $msg.attr("class", "").addClass("error");
+            $msg.fadeIn('fast');
+            return;
+        }
+
+        var data = $.parseJSON(jqxhr.responseText);
+        if (data == null || data == undefined) {
+            $("#ajaxMessage .message").html("Internal Server Error. Unknown reason.");
+            $msg.attr("class", "").addClass("error");
+            $msg.fadeIn('fast');
+            return;
+        }
+
+        if (data.isvalidation) {
+            var msg = "";
+            for (var i = 0; i < data.errors.length; i++) {
+                msg += "- " + data.errors[i].value + "<br/>";
+                var key = data.errors[i].key;
+                $(":input[name=" + key + "]").css("background-color", "yellow");
+            }
+            $("#ajaxMessage .message").html(data.message + "<br/>" + msg);
+            $msg.attr("class", "").addClass("warn");
+            $msg.fadeIn('fast');
+        }
+        else {
+            $("#ajaxMessage .message").html(data.message + (data.stack !== "" ? "<br/><pre>" + data.stack + "</pre>" : ""));
+            $msg.attr("class", "").addClass("error");
+            $msg.fadeIn('fast');
+        }
+    });
 
     //$(document).ajaxSuccess(function () {
     //    $msg.attr("class", "").addClass("info");
     //    $("#ajaxMessage .message").html("Operação realizada com sucesso");
     //    $msg.fadeIn('fast');//.fadeOut(2000);
     //});
-
-
-    $(document).ajaxError(function (event, jqxhr, settings, exception) {
-        $('#ajaxLoader').hide();
-
-        var data = $.parseJSON(jqxhr.responseText);
-
-        if (data.isvalidation)
-            $msg.attr("class", "").addClass("warn");
-        else
-            $msg.attr("class", "").addClass("error");
-
-        $msg.fadeIn('fast');
-
-        if (data == null || data == undefined) {
-            $("#ajaxMessage .message").html("Internal Server Error. Unknown reason.");
-        }
-        else {
-            if (!data.isvalidation) {
-                $("#ajaxMessage .message").html(data.message + (data.stack !== "" ? "<br/><pre>" + data.stack + "</pre>" : ""));
-            }
-            else {
-                var msg = "";
-                for (var i = 0; i < data.errors.length; i++) {
-                    msg += "- " + data.errors[i].Value + "<br/>";
-                    var key = data.errors[i].Key;
-                    $(":input[name=" + key + "]").css("background-color", "yellow");
-                }
-                $("#ajaxMessage .message").html(data.message + "<br/>" + msg);
-            }
-        }
-    });
 }
 
 $.fn.extend({
@@ -143,5 +142,12 @@ function processValidationMessages() {
                 $icon.css("left", x + "px").css("top", y + "px");
             }
         });
+    });
+}
+
+function setupPortlet() {
+    $(document).on("click", ".portlet .h-title", function (e) {
+        var $body = $(this).closest(".portlet").find(".body");
+        $body.toggleClass("show").toggleClass("hide");
     });
 }

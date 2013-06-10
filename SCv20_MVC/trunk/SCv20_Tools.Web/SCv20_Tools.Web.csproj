@@ -105,10 +105,12 @@
     <Compile Include="Areas\Api\Models\ModelAdapter.cs" />
     <Compile Include="Areas\Api\Models\QualityModel.cs" />
     <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\Mission\SceneController.cs" />
+    <Compile Include="Models\Mission\SceneModel.cs" />
     <Compile Include="Models\CaliberModel.cs" />
     <Compile Include="Models\CampaignModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MissionController.cs" />
+    <Compile Include="Controllers\Mission\MissionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -116,8 +118,10 @@
     <Compile Include="Models\MissionListingModel.cs" />
     <Compile Include="Models\MissionQualitiesModel.cs" />
     <Compile Include="Models\MissionSummaryModel.cs" />
+    <Compile Include="Models\ObjectiveModel.cs" />
     <Compile Include="Models\QualityModel.cs" />
     <Compile Include="Models\HistoricalConversionModel.cs" />
+    <Compile Include="Models\Mission\SceneObjectiveModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\CampaignsController.cs" />
   </ItemGroup>
@@ -204,9 +208,18 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Styles\deprecated\_mvc-template.css" />
     <Content Include="Areas\Api\Views\Web.config" />
+    <Content Include="Content\Scripts\doT.min.js.map">
+      <DependentUpon>doT.js</DependentUpon>
+    </Content>
     <None Include="Content\Scripts\jquery\jquery-1.7.1.intellisense.js" />
     <Content Include="Content\Scripts\jquery\jquery-1.7.1.js" />
     <Content Include="Content\Scripts\jquery\jquery-1.7.1.min.js" />
+    <Content Include="Content\Scripts\jquery\jquery-1.7.1.min.js.map">
+      <DependentUpon>jquery-1.7.1.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jquery\jquery.unobtrusive-ajax.min.js.map">
+      <DependentUpon>jquery.unobtrusive-ajax.js</DependentUpon>
+    </Content>
     <None Include="Content\Scripts\jquery\jquery.validate-vsdoc.js" />
     <Content Include="Content\Widgets\jqueryUI\jquery-ui-1.8.20.js" />
     <Content Include="Content\Widgets\jqueryUI\jquery-ui-1.8.20.min.js" />
@@ -216,6 +229,7 @@
     <Content Include="Scripts\jquery.cleditor.js" />
     <Content Include="Scripts\jquery.cleditor.min.js" />
     <Content Include="Views\Campaigns\edit.js" />
+    <Content Include="Views\Scene\_sceneObjective.cshtml.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -252,6 +266,18 @@
     <Content Include="Views\Campaigns\tmpl\_qualityList.cshtml" />
     <Content Include="Views\Shared\_requiredScripts.cshtml" />
     <Content Include="Views\Campaigns\tmpl\_qualityListTmpl.cshtml" />
+    <Content Include="Content\Scripts\jquery\jquery.validate.min.js.map">
+      <DependentUpon>jquery.validate.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jquery\jquery.validate.unobtrusive.min.js.map">
+      <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Widgets\jqueryUI\jquery-ui-1.8.20.min.js.map">
+      <DependentUpon>jquery-ui-1.8.20.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.cleditor.min.js.map">
+      <DependentUpon>jquery.cleditor.js</DependentUpon>
+    </Content>
     <None Include="Views\Campaigns\tmpl\avaliableQualitiesTmpl.shtml" />
     <None Include="Views\Campaigns\tmpl\qualityListTmpl.shtml" />
     <Content Include="Views\Mission\Listing.cshtml" />
@@ -266,6 +292,11 @@
     <Content Include="Views\Shared\EditorTemplates\QualityModel.cshtml" />
     <Content Include="Views\Mission\_missionAvaliableQualities.cshtml" />
     <Content Include="Views\Mission\_missionQualities.cshtml" />
+    <Content Include="Views\Scene\Create.cshtml" />
+    <Content Include="Views\Scene\_sceneSummary.cshtml" />
+    <Content Include="Views\Scene\Editing.cshtml" />
+    <Content Include="Views\Scene\_sceneObjective.cshtml" />
+    <Content Include="Views\Scene\_nav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,18 @@
+﻿@model SCv20_Tools.Web.Models.SceneModel
+@{ ViewBag.Title = "Create Scene"; }
+
+@section header {
+    <script type="text/javascript" src="/scripts/jquery.cleditor.min.js"></script>
+    <link href="/content/jquery.cleditor.css" rel="stylesheet" />
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $("#editor").cleditor({ width: "99.75%", height: "320px" });
+    </script>
+}
+@using (Html.BeginForm()) {
+    <div id="summary">
+        @Html.Partial("_sceneSummary", @Model)
+    </div>
+}

@@ -64,6 +64,7 @@
     <Compile Include="Domain\Campaign\Campaign.cs" />
     <Compile Include="Domain\Campaign\CampaignMission.cs" />
     <Compile Include="Domain\Campaign\CampaignQuality.cs" />
+    <Compile Include="Data\IgnoreOnUpdate.cs" />
     <Compile Include="Domain\Mission\MissionQuality.cs" />
     <Compile Include="Domain\HistoricalConversion.cs" />
     <Compile Include="Domain\Mission\Mission.cs" />

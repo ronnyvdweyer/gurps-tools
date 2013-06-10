@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using SCv20_Tools.Core.Domain;
 using SCv20_Tools.Core.Services;
@@ -9,6 +7,7 @@ using SCv20_Tools.Web.Framework;
 using SCv20_Tools.Web.Models;
 
 namespace SCv20_Tools.Web.Controllers {
+
     public class MissionController : Controller {
         private readonly DataService _dataService;
 
@@ -16,12 +15,10 @@ namespace SCv20_Tools.Web.Controllers {
             _dataService = DataService.GetInstance();
         }
 
-
         [HttpGet]
         public ActionResult Index() {
             return View();
         }
-
 
         [HttpGet]
         public ActionResult Create() {
@@ -29,7 +26,6 @@ namespace SCv20_Tools.Web.Controllers {
             PrepareModelForView(model, null);
             return View(model);
         }
-
 
         [HttpPost, FormValueRequired("save")]
         public ActionResult Create(MissionSummaryModel model) {
@@ -42,7 +38,6 @@ namespace SCv20_Tools.Web.Controllers {
             PrepareModelForView(model, mission);
             return RedirectToAction("Editing", new { id = mission.Id });
         }
-
 
         [HttpGet]
         public ActionResult Listing() {
@@ -65,7 +60,6 @@ namespace SCv20_Tools.Web.Controllers {
             return View(model);
         }
 
-
         [HttpGet]
         public ActionResult Editing(int id) {
             var model = new MissionSummaryModel();
@@ -75,7 +69,6 @@ namespace SCv20_Tools.Web.Controllers {
 
             return View(model);
         }
-
 
         [HttpPost/*, FormValueRequired("save-edit")*/]
         public ActionResult Editing(MissionSummaryModel model) {
@@ -89,7 +82,6 @@ namespace SCv20_Tools.Web.Controllers {
             return PartialView("_createOrUpdateSummary", model);
         }
 
-
         [HttpGet]
         //GET: /Mission/{missionid}/Qualities
         public ActionResult Qualities(int? id, int? key) {
@@ -102,13 +94,11 @@ namespace SCv20_Tools.Web.Controllers {
             return View(model);
         }
 
-
         [HttpPost]
         public ActionResult AddQuality(int id, int key) {
             _dataService.AddMissionQuality(id, key);
             return DisplayAvaliableQualities(id);
         }
-
 
         [HttpPost, AjaxHandleError]
         public ActionResult RemoveQuality(int id, int key) {
@@ -123,7 +113,6 @@ namespace SCv20_Tools.Web.Controllers {
             return PartialView("_missionQualities", model);
         }
 
-
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         public ActionResult DisplayInfo(int id) {
             var mission = _dataService.GetMission(id);
@@ -131,9 +120,6 @@ namespace SCv20_Tools.Web.Controllers {
             model.MapFrom(mission);
             return PartialView("_missionInfo", model);
         }
-
-
-
 
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         public ActionResult DisplayAvaliableQualities(int id) {
@@ -146,8 +132,6 @@ namespace SCv20_Tools.Web.Controllers {
             return PartialView("_missionAvaliableQualities", model);
         }
 
-
-
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         public ActionResult DisplayQualities(int id) {
             var model = new MissionQualitiesModel();
@@ -158,8 +142,6 @@ namespace SCv20_Tools.Web.Controllers {
 
             return PartialView("_missionQualities", model);
         }
-
-
 
         [NonAction]
         private void PrepareModelForView(MissionSummaryModel model, Mission mission) {

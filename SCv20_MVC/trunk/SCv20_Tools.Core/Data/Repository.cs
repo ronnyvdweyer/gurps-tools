@@ -3,6 +3,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using SCv20_Tools.Core.Domain;
 
 namespace SCv20_Tools.Core.Data {
 
@@ -92,7 +93,28 @@ namespace SCv20_Tools.Core.Data {
             if (entity == null)
                 throw new ArgumentNullException("entity");
 
-            this._context.Entry(entity).State = System.Data.EntityState.Modified;
+            var hasSpecialAnnotation = typeof(T).GetProperties().Select(x => x.GetCustomAttributes(typeof(IgnoreOnUpdateAttribute), true)).Any();
+            if (!hasSpecialAnnotation)
+                this._context.Entry(entity).State = System.Data.EntityState.Modified;
+            else {
+                this._context.Set<T>().Attach(entity);
+                var props = typeof(T).GetProperties();
+                foreach (var p in props) {
+                    var hasAttr = p.GetCustomAttributes(typeof(IgnoreOnUpdateAttribute), true).Any();
+                    if (hasAttr)
+                        this._context.Entry(entity).Property(p.Name).IsModified = false;
+                    else {
+                        // TODO: Ugly Hack to parse Attribute
+                        try {
+                            this._context.Entry(entity).Property(p.Name).IsModified = true;
+                        }
+                        catch (Exception ex) {
+                            var msg = ex.Message;
+                        }
+                    }
+
+                }
+            }
 
             //  http://stackoverflow.com/questions/5672255/an-object-with-the-same-key-already-exists-in-the-objectstatemanager-the-object
             //  this._context.Entry(entity).CurrentValues.SetValues(EntityState.Modified);
@@ -144,16 +166,16 @@ namespace SCv20_Tools.Core.Data {
         /// <param name="ex">The exception to be parsed into a friendly message.</param>
         /// <returns>String containing the parsed exception messages.</returns>
         private string BuildValidationMessage(DbEntityValidationException ex) {
-                StringBuilder sb = new StringBuilder();
-                foreach (var failure in ex.EntityValidationErrors) {
-                    sb.AppendFormat("'{0}' failed validation.\n", failure.Entry.Entity.GetType());
-                    foreach (var error in failure.ValidationErrors) {
-                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
-                        sb.AppendLine();
-                    }
+            StringBuilder sb = new StringBuilder();
+            foreach (var failure in ex.EntityValidationErrors) {
+                sb.AppendFormat("'{0}' failed validation.\n", failure.Entry.Entity.GetType());
+                foreach (var error in failure.ValidationErrors) {
+                    sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                    sb.AppendLine();
                 }
+            }
 
-                return sb.ToString();
+            return sb.ToString();
         }
 
 

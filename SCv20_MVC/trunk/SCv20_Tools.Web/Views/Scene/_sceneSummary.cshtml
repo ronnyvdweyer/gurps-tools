@@ -1,0 +1,41 @@
+﻿@model SCv20_Tools.Web.Models.SceneModel
+<div class="portlet scene-summary">
+    <div class="header">
+        <span class="h-title">Scene</span>
+        <span class="h-tools">
+            <a href="#">[delete]</a>
+        </span>
+    </div>
+    <div class="body show">
+        <div class="form">
+            <div class="group">
+                <div class="grid-1">
+                    @Html.LabelFor(m => m.Name)
+                </div>
+                <div class="grid-4">
+                    @Html.MeHZ().TextBoxFor(m => m.Name, null)
+                </div>
+                <div class="grid-1">
+                    @Html.LabelFor(m => m.SceneTypeID)
+                </div>
+                <div class="grid-1">
+                    @Html.MeHZ().DropDownListFor(m => m.SceneTypeID, m => m.SceneTypes, "Value", "Text", new DropDownListOptions { FirstItemText = null, FirstItemValue = null })
+                </div>
+
+                <div class="grid-1">
+                    <span class="text al-c" title="Created On">@Html.ValueFor(m => m.CreatedOn)</span>
+                </div>
+            </div>
+            <div class="group">
+                <div class="grid-8">
+                    @Html.MeHZ().TextAreaFor(m => m.Description, new TextBoxOptions { ID = "editor", Style = "height:auto", HtmlAttributes = new { rows = "10", cols = "100", spellcheck = "false" } })
+                </div>
+            </div>
+        </div>
+        <div class="controls al-r" style="margin: 0px 3px 6px 3px">
+            <button type="submit" id="cmdAdd" value="save" style="width: 100px; float: left">Add </button>
+            <button type="submit" id="cmdSave" value="save" style="width: 100px;">Save </button>
+        </div>
+    </div>
+</div>
+
