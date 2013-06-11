@@ -16,11 +16,18 @@ $(".portlet.scene-objective")
         });
     })
     .on("click", "#save", function () {
-        var $form = $(this).closest(".form");
-        var model = $form.find(":input").serialize();
-        $.post("/scene/objective/SaveObjetive", model).done(function (data) {
-            $form.find("#ID").val(data.id);
+        var $part = $(this).closest(".portlet");
+
+        //var $form = $(this).closest(".form");
+        var model = $part.find(":input").serialize();
+
+        console.log(model);
+        console.log( $part.html() );
+
+        $.post("/scene/saveObjetive", model).done(function (data) {
+            $part.find("#ID").val(data.id);
         });
+
     })
     .on("click", "#delete", function () {
         alert('delete-me');

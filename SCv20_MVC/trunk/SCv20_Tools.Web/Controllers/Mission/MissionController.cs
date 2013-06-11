@@ -8,7 +8,7 @@ using SCv20_Tools.Web.Models;
 
 namespace SCv20_Tools.Web.Controllers {
 
-    public class MissionController : Controller {
+    public class MissionController : BaseController {
         private readonly DataService _dataService;
 
         public MissionController() {

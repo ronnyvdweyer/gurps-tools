@@ -3,9 +3,10 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using SCv20_Tools.Core.Domain;
 using System.Linq;
+using System;
 
 namespace SCv20_Tools.Web.Models {
-
+    [Serializable]
     public class SceneObjectiveModel {
 
         public SceneObjectiveModel() {
@@ -33,7 +34,7 @@ namespace SCv20_Tools.Web.Models {
         }
 
 
-        [MaxLength(100), DisplayName("Description")]
+        [Required, MaxLength(100), DisplayName("Description")]
         public string Description {
             get;
             set;

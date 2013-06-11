@@ -75,7 +75,7 @@ namespace SCv20_Tools.Web.Controllers {
             return PartialView("_sceneObjective", model);
         }
 
-        [HttpPost, AjaxHandleError]
+        [HttpPost, AjaxHandleError] // POST: /Scene/SaveObjective/{id}
         public ActionResult SaveObjetive(SceneObjectiveModel model) {
             if (!ModelState.IsValid)
                 throw new InvalidModelStateException(model);
@@ -83,7 +83,7 @@ namespace SCv20_Tools.Web.Controllers {
             var entity = model.MapToSceneObjectiveEntity();
             entity = _dataService.SaveSceneObjective(entity);
 
-            return Json(new { done = true, id = entity.Id });
+            return AjaxResult(new { id = entity.Id }); 
         }
     }
 }
