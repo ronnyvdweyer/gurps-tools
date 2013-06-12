@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
@@ -157,6 +158,9 @@ namespace SCv20_Tools.Core.Data {
                 var msg = BuildValidationMessage(ex);
                 throw new DbEntityValidationException("Entity Validation Failed - Errors Follow in " + msg);
             }
+            //catch (DbUpdateException ex) {
+            //    var msg = ex.Message;
+            //}
         }
 
 

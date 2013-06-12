@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using SCv20_Tools.Core.Domain;
 using SCv20_Tools.Core.Services;
 
@@ -11,18 +13,24 @@ namespace SCv20_Tools.Core.Data {
     internal class DataContextInitializer : DropCreateDatabaseIfModelChanges<DataContext> {
 
         protected override void Seed(DataContext context) {
-            LoadCaliber().ForEach(c => context.Calibers.Add(c));
-            LoadQualities().ForEach(c => context.Qualities.Add(c));
-            LoadObjectiveTypes().ForEach(c => context.ObjectiveTypes.Add(c));
+            try {
+                LoadCaliber().ForEach(c => context.Calibers.Add(c));
+                LoadQualities().ForEach(c => context.Qualities.Add(c));
+                LoadObjectiveTypes().ForEach(c => context.ObjectiveTypes.Add(c));
 
-            LoadHistoricalConversion().ForEach(c => context.HistoricalConversions.Add(c));
+                LoadHistoricalConversion().ForEach(c => context.HistoricalConversions.Add(c));
 
-            context.SaveChanges();
+                context.SaveChanges();
 
-            context.Campaigns.Add(CreateSampleCampaign(context));
-            context.Missions.Add(CreateSampleMission(context));
+                context.Campaigns.Add(CreateSampleCampaign(context));
+                context.Missions.Add(CreateSampleMission(context));
+                context.Scenes.Add(CreateSampleScene(context));
+            }
+            catch (DbEntityValidationException ex) {
+                var msg = BuildValidationMessage(ex);
+                throw new DbEntityValidationException("Entity Validation Failed - Errors Follow in " + msg);
+            }
         }
-
 
         private static List<Caliber> LoadCaliber() {
             var list = new List<Caliber> {
@@ -302,27 +310,45 @@ namespace SCv20_Tools.Core.Data {
             return c;
         }
 
-
         private Mission CreateSampleMission(DataContext context) {
-
             var m = new Mission() {
-                TotalPartyLevel     = 20,
+                TotalPartyLevel = 20,
                 AdjustedThreatLevel = 1,
-                Name                = "Break the Ice",
-                Code                = "MAGICARPA",
-                CaliberId           = 2,
-                Motivation          = "Suspendisse vitae odio nec felis tincidunt mattis sit. Mauris tristique luctus turpis, ac aliquet magna elementum vel.",
-                Briefing            = "Mauris tristique luctus turpis, ac aliquet magna elementum vel. Aenean eget velit non dui mattis laoreet. In sodales imperdiet magna laoreet bibendum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean sollicitudin velit et erat rhoncus molestie. Morbi convallis, felis nec dignissim imperdiet, mi erat feugiat leo, sit amet placerat magna dui sed libero. Donec eget blandit urna. Nullam dui mi, tincidunt nec euismod quis, tincidunt vitae nunc. Etiam auctor scelerisque fringilla. Duis quis aliquet libero.\r\n\r\n" +
+                Name = "Break the Ice",
+                Code = "GITS-0001",
+                CaliberId = 2,
+                Motivation = "Suspendisse vitae odio nec felis tincidunt mattis sit. Mauris tristique luctus turpis, ac aliquet magna elementum vel.",
+                Briefing = "Mauris tristique luctus turpis, ac aliquet magna elementum vel. Aenean eget velit non dui mattis laoreet. In sodales imperdiet magna laoreet bibendum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean sollicitudin velit et erat rhoncus molestie. Morbi convallis, felis nec dignissim imperdiet, mi erat feugiat leo, sit amet placerat magna dui sed libero. Donec eget blandit urna. Nullam dui mi, tincidunt nec euismod quis, tincidunt vitae nunc. Etiam auctor scelerisque fringilla. Duis quis aliquet libero.\r\n\r\n" +
                                       "Nunc a purus diam, quis lacinia dolor. Duis urna nisl, malesuada vitae malesuada ac, laoreet in justo. Sed non nunc leo, sed fermentum neque. Aliquam hendrerit ornare leo, at vehicula turpis rutrum eu. Nulla sagittis arcu at dui tristique in commodo risus elementum. Sed aliquam pretium est, vitae porta massa eleifend eget. Fusce a sapien ipsum, ullamcorper commodo nibh. Ut pretium est vel tortor mattis molestie. Vestibulum vulputate dui sed sapien scelerisque sit amet fringilla lacus hendrerit. Nulla ut sapien a mauris vehicula consectetur id vitae nulla.\r\n\r\n" +
                                       "Mauris euismod orci justo, quis eleifend quam. Cras commodo tortor mi, ut imperdiet leo. Etiam semper, ipsum ac pulvinar accumsan, erat sem aliquet lacus, nec elementum nulla quam in sem. Duis fringilla sollicitudin convallis. Integer fermentum mauris orci. Maecenas pulvinar mollis ultrices. Integer viverra, tortor id venenatis tempor, mauris libero consequat dolor, non condimentum massa neque et erat. Fusce sit amet nunc sed erat aliquet euismod nec et orci. Nullam sed erat ligula, ut scelerisque arcu. Proin in nisi magna, id tincidunt erat. Proin et mi at sem euismod ultrices.",
                 Qualities = new List<MissionQuality>() {
-                    new MissionQuality { QualityId = 3, MissionId = 1 }
+                    new MissionQuality { QualityId = 3, MissionId = 1 },
+                    new MissionQuality { QualityId = 7, MissionId = 1 }
                 }
             };
 
             return m;
         }
 
+        private Scene CreateSampleScene(DataContext ctx) {
+            var scene = new Scene {
+                MissionID = 1,
+                Order = 1,
+                Description = "Mauris tristique luctus turpis, ac aliquet magna elementum vel. Aenean eget velit non dui mattis laoreet. In sodales imperdiet magna laoreet bibendum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean sollicitudin velit et erat rhoncus molestie. Morbi convallis, felis nec dignissim imperdiet, mi erat feugiat leo, sit amet placerat magna dui sed libero. Donec eget blandit urna. Nullam dui mi, tincidunt nec euismod quis, tincidunt vitae nunc. Etiam auctor scelerisque fringilla. Duis quis aliquet libero.\r\n\r\n" +
+                              "Nunc a purus diam, quis lacinia dolor. Duis urna nisl, malesuada vitae malesuada ac, laoreet in justo. Sed non nunc leo, sed fermentum neque. Aliquam hendrerit ornare leo, at vehicula turpis rutrum eu. Nulla sagittis arcu at dui tristique in commodo risus elementum. Sed aliquam pretium est, vitae porta massa eleifend eget. Fusce a sapien ipsum, ullamcorper commodo nibh. Ut pretium est vel tortor mattis molestie. Vestibulum vulputate dui sed sapien scelerisque sit amet fringilla lacus hendrerit. Nulla ut sapien a mauris vehicula consectetur id vitae nulla.\r\n\r\n" +
+                              "Mauris euismod orci justo, quis eleifend quam. Cras commodo tortor mi, ut imperdiet leo. Etiam semper, ipsum ac pulvinar accumsan, erat sem aliquet lacus, nec elementum nulla quam in sem. Duis fringilla sollicitudin convallis. Integer fermentum mauris orci. Maecenas pulvinar mollis ultrices. Integer viverra, tortor id venenatis tempor, mauris libero consequat dolor, non condimentum massa neque et erat. Fusce sit amet nunc sed erat aliquet euismod nec et orci. Nullam sed erat ligula, ut scelerisque arcu. Proin in nisi magna, id tincidunt erat. Proin et mi at sem euismod ultrices.",
+                IsDramatic = true,
+                CreatedOn = new DateTime(2013, 06, 01, 20, 00, 00)
+            };
+
+            scene.Objectives = new List<SceneObjective>() {
+                new SceneObjective {Order = 1, /*CaliberID = 2, ObjectiveTypeID = 1, */ Description  = "Describe the Sample objective #1", GradeId = 2, IsCritical = false, IsPlot = false },
+                new SceneObjective {Order = 2, /*CaliberID = 4, ObjectiveTypeID = 4, */ Description  = "Describe the Sample objective #2", GradeId = 14, IsCritical = true,  IsPlot = false },
+                new SceneObjective {Order = 3, /*CaliberID = 1, ObjectiveTypeID = 8, */ Description  = "Describe the Sample objective #3", GradeId = 28, IsCritical = false, IsPlot = true }
+            };
+
+            return scene;
+        }
 
         private static string GetSeedResource(string resourceID) {
             var assembly = Assembly.GetExecutingAssembly();
@@ -339,5 +365,23 @@ namespace SCv20_Tools.Core.Data {
         }
 
         #endregion -- Sample Initial Data ------------------------------------------------------------
+
+        /// <summary>
+        /// Builds a friendly message for the given Repository Validation Erros.
+        /// </summary>
+        /// <param name="ex">The exception to be parsed into a friendly message.</param>
+        /// <returns>String containing the parsed exception messages.</returns>
+        public static string BuildValidationMessage(DbEntityValidationException ex) {
+            StringBuilder sb = new StringBuilder();
+            foreach (var failure in ex.EntityValidationErrors) {
+                sb.AppendFormat("'{0}' failed validation.\n", failure.Entry.Entity.GetType());
+                foreach (var error in failure.ValidationErrors) {
+                    sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                    sb.AppendLine();
+                }
+            }
+
+            return sb.ToString();
+        }
     }
 }

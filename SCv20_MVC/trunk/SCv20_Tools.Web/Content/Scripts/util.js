@@ -104,8 +104,9 @@ function processValidationMessages() {
     $(document).on("focus", ".input-validation-error", function (e) {
         var $this = $(this);
         var $icon = $this.parent().find(".icon-error");
-        var position = $this.position();
+        var position = $this.position(); //$this.position();
         var messages = $this.data("validation-messages");
+        var scrollPos = $("#main .content").scrollTop();
 
         if ($icon.length > 0) {
             $icon.show();
@@ -118,7 +119,7 @@ function processValidationMessages() {
 
         /*+ $this.width() - 5*/;
         var x = (position.left) - 05;
-        var y = (position.top) - 15 + ($this.height() - $icon.height()) / 2;
+        var y = (position.top + scrollPos) - 15 + ($this.height() - $icon.height()) / 2;
 
         $icon.css("left", x + "px").css("top", y + "px");
     });
@@ -132,13 +133,14 @@ function processValidationMessages() {
     });
 
     $(window).resize(function (e) {
+        var scrollPos = $("#main .content").scrollTop();
         var $errors = $(".input-validation-error").each(function (index) {
             var $this = $(this);
             var $icon = $this.parent().find(".icon-error");
             var position = $this.position();
             if ($icon.length > 0) {
                 var x = (position.left) - 05;
-                var y = (position.top) - 15 + ($this.height() - $icon.height()) / 2;
+                var y = (position.top + scrollPos) - 15 + ($this.height() - $icon.height()) / 2;
                 $icon.css("left", x + "px").css("top", y + "px");
             }
         });
@@ -151,3 +153,77 @@ function setupPortlet() {
         $body.toggleClass("show").toggleClass("hide");
     });
 }
+
+
+function validate(target, model) {
+    if (model === null || model === undefined) {
+        throw "\n Source: [util.js]" +
+              "\n Method: validate() :: No model data supplied. Please check.";
+        return;
+    }
+
+    if (target === null || target === undefined) {
+        throw "\n Source: [util.js]" +
+              "\n Method: validate() :: No target defined. Please check."
+    }
+
+    validateDefaultModel(model);
+    removeError(target);
+
+    if (model.valid) return true;
+
+    for (var i = 0; i < model.errors.length; i++) {
+        var str = { text: [] };
+        var fld = model.errors[i].field;    //Name
+        var msg = model.errors[i].error;    //Error message;
+        str.text.push(msg);
+        attachError(target, fld, JSON.stringify(str));
+    }
+
+    function attachError(target, field, message) {
+        $targets = $(target).find(":input[name=" + field + "]");
+        $targets.addClass("input-validation-error");
+        $targets.attr("data-validation-messages", message);
+    }
+
+    function removeError(target) {
+        $targets = $(target).find(":input") ;//.find(":input[name=" + field + "]");
+        $targets.removeClass("input-validation-error");
+    }
+
+    return false;
+}
+
+
+function validateDefaultModel(model) {
+    var i = 0;
+    for (prop in model) {
+        i += model.hasOwnProperty("valid")   ? 0 : 1;
+        i += model.hasOwnProperty("errors")  ? 0 : 1;
+        i += model.hasOwnProperty("message") ? 0 : 1;
+        i += model.hasOwnProperty("model")   ? 0 : 1;
+      //i += model.hasOwnProperty("html")    ? 0 : 1;
+    }
+
+    if (i == 0 && model.errors !== null) {
+        for (prop in model.errors[0]) {
+            i += model.errors[0].hasOwnProperty("field") ? 0 : 1;
+            i += model.errors[0].hasOwnProperty("error") ? 0 : 1;
+        }
+    }
+
+    if (i > 0)
+        throw "\n Source: [util.js]" +
+              "\n Method: validate() :: Invalid JSON model supplied. Please check." +
+              '\n Expected: {"valid": "<true | false>", "errors": [{"field": "<FieldName>", "error": "<ErrorDescription>"}], "message": "<SomeMessage>", "model": {<SomeObject>}"}' +
+              "\n Received: " + JSON.stringify(model);
+}
+
+window.onerror = function (msg, url, line) {
+    $('#ajaxLoader').hide();
+    //alert("Error: " + msg + "\nurl: " + url + "\nline #: " + line);
+    //TODO: Report this error via ajax so you can keep track of what pages have JS issues.
+    //If you return true, then error alerts (like in older versions of Internet Explorer) will be suppressed.
+
+    return false;
+};

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SCv20_Tools.Core.Domain {
@@ -11,11 +12,13 @@ namespace SCv20_Tools.Core.Domain {
             set;
         }
 
+        [Required]
         public int SceneId {
             get;
             set;
         }
 
+        [Required]
         public int GradeId {
             get;
             set;
@@ -65,18 +68,33 @@ namespace SCv20_Tools.Core.Domain {
 
         #region -- Navigation Properties -----------------------------------------------------------
 
-        [Required, ForeignKey("SceneId")]
+        [ForeignKey("SceneId")]
         public virtual Scene Scene {
             get;
             set;
         }
 
-        [Required, ForeignKey("GradeId")]
+        [ForeignKey("GradeId")]
         public virtual ObjectiveGrade Grade {
             get;
             set;
         }
 
+        [NotMapped]
+        public virtual Caliber Caliber {
+            get;
+            set;
+        }
+
         #endregion -- Navigation Properties -----------------------------------------------------------
+
+        [NotMapped]
+        public Int32 CaliberID { get; set; }
+
+        [Range(1,10)]
+        public int Order { get; set; }
+
+        [NotMapped]
+        public int ObjectiveTypeID { get; set; }
     }
 }

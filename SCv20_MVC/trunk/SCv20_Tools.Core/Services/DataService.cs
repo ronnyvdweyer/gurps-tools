@@ -228,6 +228,13 @@ namespace SCv20_Tools.Core.Services {
 
         public SceneObjective SaveSceneObjective(SceneObjective entity) {
             var repo = Repository<SceneObjective>.GetInstance();
+            var rep1 = Repository<ObjectiveGrade>.GetInstance();
+
+            var xpto = rep1.FindBy(e => e.ObjectiveTypeId == entity.ObjectiveTypeID).Where(e => e.Grade == entity.GradeId).FirstOrDefault();
+
+            var objectiveGradeId = xpto.Id;
+            entity.GradeId = objectiveGradeId;
+
             if (entity.Id > 0) {
                 entity = repo.Edit(entity);
             }

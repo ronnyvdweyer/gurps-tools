@@ -1,4 +1,6 @@
 ﻿/// <reference path="/content/scripts/jquery/jquery-1.7.1.min.js" />
+/// <reference path="/content/scripts/util.js" />
+
 $(".portlet.scene-objective")
     .on("change", "#selType, #selGrade", function () {
         var $form = $(this).closest(".form");
@@ -17,17 +19,13 @@ $(".portlet.scene-objective")
     })
     .on("click", "#save", function () {
         var $part = $(this).closest(".portlet");
-
-        //var $form = $(this).closest(".form");
         var model = $part.find(":input").serialize();
 
-        console.log(model);
-        console.log( $part.html() );
-
         $.post("/scene/saveObjetive", model).done(function (data) {
-            $part.find("#ID").val(data.id);
+            if (!validate($part, data))
+                return;
+            $part.find("#ID").val(data.model.id);
         });
-
     })
     .on("click", "#delete", function () {
         alert('delete-me');

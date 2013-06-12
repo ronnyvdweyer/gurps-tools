@@ -60,7 +60,7 @@ namespace SCv20_Tools.Web.Controllers {
 
             var scene = _dataService.SaveScene(model.MapToSceneEntity());
 
-            return RedirectToAction("Editing", new { missionid = model.MissionID, id = model.ID });
+            return RedirectToAction("Editing", new { missionid = scene.MissionID, id = scene.ID});
         }
 
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
@@ -78,7 +78,8 @@ namespace SCv20_Tools.Web.Controllers {
         [HttpPost, AjaxHandleError] // POST: /Scene/SaveObjective/{id}
         public ActionResult SaveObjetive(SceneObjectiveModel model) {
             if (!ModelState.IsValid)
-                throw new InvalidModelStateException(model);
+                return AjaxResult(model);
+            //    throw new InvalidModelStateException(model);
 
             var entity = model.MapToSceneObjectiveEntity();
             entity = _dataService.SaveSceneObjective(entity);

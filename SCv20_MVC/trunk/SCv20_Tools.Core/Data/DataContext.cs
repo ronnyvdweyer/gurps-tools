@@ -1,5 +1,8 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.Entity.Validation;
 using SCv20_Tools.Core.Domain;
 
 namespace SCv20_Tools.Core.Data {
@@ -8,8 +11,18 @@ namespace SCv20_Tools.Core.Data {
         private static DataContext _instance;
 
         public DataContext() : base("DEFAULT") {
-            Database.SetInitializer(new DataContextInitializer());
-            Database.Initialize(true);
+            try {
+
+                Database.SetInitializer(new DataContextInitializer());
+                Database.Initialize(true);
+            }
+            catch (DataException ex) {
+                if (ex.InnerException != null && ex.InnerException is DbEntityValidationException) {
+                    var msg = DataContextInitializer.BuildValidationMessage(ex.InnerException as DbEntityValidationException);
+                    throw new DbEntityValidationException("Entity Validation Failed - Errors Follow in " + msg);
+                }
+                throw ex;
+            }
         }
 
         public static DataContext BuildContext() {
@@ -31,6 +44,13 @@ namespace SCv20_Tools.Core.Data {
             //http://stackoverflow.com/questions/8136026/unidirectional-many-to-many-realtionship-with-code-first-entity-framework
 
             //modelBuilder.Entity<Campaign>().HasMany(m => m.Qualities).WithMany();
+
+            //modelBuilder.Entity<SceneObjective>()
+                //.HasRequired(i => i.Caliber).WithMany().WillCascadeOnDelete(false);//.WithMany().Map(x => x.MapKey("XX")).WillCascadeOnDelete(false);
+                //.WithRequiredPrincipal(i=>i.Id).WillCascadeOnDelete(false);
+                //.HasForeignKey(t => t.Id)
+                //.WillCascadeOnDelete(false);
+
 
             base.OnModelCreating(modelBuilder);
         }
@@ -80,6 +100,16 @@ namespace SCv20_Tools.Core.Data {
         }
 
         public virtual DbSet<MissionQuality> MissionQualities {
+            get;
+            set;
+        }
+
+        public virtual DbSet<Scene> Scenes {
+            get;
+            set;
+        }
+
+        public virtual DbSet<SceneObjective> SceneObjectives {
             get;
             set;
         }

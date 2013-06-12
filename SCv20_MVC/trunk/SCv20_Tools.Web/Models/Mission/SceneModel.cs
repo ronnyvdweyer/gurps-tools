@@ -103,7 +103,6 @@ namespace SCv20_Tools.Web.Models {
 
             if (this.SceneObjectivesID.Count == 0) {
                 this.SceneObjectivesID.Add(0);
-                this.SceneObjectivesID.Add(0);
             }
 
             return this;

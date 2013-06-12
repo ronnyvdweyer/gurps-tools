@@ -14,6 +14,7 @@ namespace SCv20_Tools.Web.Models {
             this.PlotTypes = new List<PlotType>() { new PlotType(0, "Plot?"), new PlotType(1, "Yes") };
             this.SceneObjectiveTypes = new List<SceneObjectiveType>();
             this.SceneObjectiveGrades = new List<SceneObjectiveGrade>();
+            this.Order = 1;
         }
 
         /// <summary>
@@ -42,14 +43,14 @@ namespace SCv20_Tools.Web.Models {
 
 
         [Range(1, 5, ErrorMessage = "Please, select an objetive grade."), DisplayName("Grade")]
-        public int? GradeID {
+        public int GradeID {
             get;
             set;
         }
 
 
-        [Range(1, int.MaxValue, ErrorMessage="Please, select an objetive type."), DisplayName("Type")]
-        public int? ObjectiveTypeID {
+        [Range(1, int.MaxValue, ErrorMessage = "Please, select an objetive type."), DisplayName("Type")]
+        public int ObjectiveTypeID {
             get;
             set;
         }
@@ -67,6 +68,12 @@ namespace SCv20_Tools.Web.Models {
             get;
             set;
         }
+
+        public int Order { 
+            get; 
+            set; 
+        }
+
 
 
         public List<CriticalType> CriticalTypes {
@@ -210,11 +217,13 @@ namespace SCv20_Tools.Web.Models {
                 this.ID = objective.Id;
                 this.SceneID = objective.SceneId;
                 this.Description = objective.Description;
-                this.GradeID = objective.GradeId;
-                this.ObjectiveTypeID = objective.Grade.ObjectiveTypeId;
+                
+                this.GradeID = objective.Grade.Grade;// .GradeId;           == Caliber
+                this.ObjectiveTypeID = objective.Grade.ObjectiveTypeId; //  == TypeId
+
                 this.CriticalTypeSelected = objective.IsCritical ? 1 : 0;
                 this.PlotTypeSelected = objective.IsPlot ? 1 : 0;
-                this.ObjectiveTypeDescription = objective.Grade.ObjectiveType.Description;
+                this.ObjectiveTypeDescription = objective.Grade.Description;
                 this.ObjectiveTypeXPFormated = objective.Grade.ObjectiveGradeXPFormatted;
             }
 
@@ -223,9 +232,9 @@ namespace SCv20_Tools.Web.Models {
             }
 
             if (types != null) {
-                this.SceneObjectiveTypes = types.Select(item=>SceneObjectiveType.CreateFrom(item)).ToList();
+                this.SceneObjectiveTypes = types.Select(item => SceneObjectiveType.CreateFrom(item)).ToList();
             }
-            
+
             return this;
         }
 
@@ -236,12 +245,13 @@ namespace SCv20_Tools.Web.Models {
             entity.Id = this.ID;
             entity.Description = this.Description;
             entity.SceneId = this.SceneID;
-            entity.GradeId = this.GradeID.HasValue? this.GradeID.Value : 1;
+            entity.GradeId = this.GradeID;
             entity.IsCritical = this.CriticalTypeSelected == 1 ? true : false;
             entity.IsPlot = this.PlotTypeSelected == 1 ? true : false;
             entity.Description = this.Description;
-            //TODO: entity.ObjectiveTypeID = this.ObjectiveTypeID;
-            
+            entity.ObjectiveTypeID = this.ObjectiveTypeID;
+            entity.Order = this.Order;
+
             return entity;
         }
 
@@ -250,7 +260,6 @@ namespace SCv20_Tools.Web.Models {
             var model = new SceneObjectiveModel();
             return model.MapFrom(objective, calibers, types);
         }
-
 
     }
 }
