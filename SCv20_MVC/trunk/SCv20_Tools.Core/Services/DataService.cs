@@ -230,16 +230,15 @@ namespace SCv20_Tools.Core.Services {
             var repo = Repository<SceneObjective>.GetInstance();
             var rep1 = Repository<ObjectiveGrade>.GetInstance();
 
-            var xpto = rep1.FindBy(e => e.ObjectiveTypeId == entity.ObjectiveTypeID).Where(e => e.Grade == entity.GradeId).FirstOrDefault();
-
-            var objectiveGradeId = xpto.Id;
-            entity.GradeId = objectiveGradeId;
+            var grade = rep1.FindBy(e => e.ObjectiveTypeId == entity.ObjectiveTypeID).Where(e => e.Grade == entity.GradeId).FirstOrDefault();
+            entity.GradeId = grade.Id;
 
             if (entity.Id > 0) {
                 entity = repo.Edit(entity);
             }
             else {
-                //TODO: entity.CreatedOn = DateTime.Now;
+                var order = repo.FindBy(e => e.Id == entity.SceneId).Max(e => e.Order) + 1;
+                entity.Order = order;
                 entity = repo.Create(entity);
             }
             repo.Commit();

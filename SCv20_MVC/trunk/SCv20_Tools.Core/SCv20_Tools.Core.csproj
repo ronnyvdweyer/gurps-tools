@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\CoreException.cs" />
     <Compile Include="Data\IEntity.cs" />
     <Compile Include="Data\IPagedList.cs" />
     <Compile Include="Data\IRepository.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Domain\Objective\ObjectiveType.cs" />
     <Compile Include="Domain\Objective\ObjectiveGrade.cs" />
     <Compile Include="Domain\Quality.cs" />
+    <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AssetService.cs" />

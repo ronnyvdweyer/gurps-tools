@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using SCv20_Tools.Core.Domain;
+using SCv20_Tools.Core.Extensions;
 
 namespace SCv20_Tools.Core.Data {
 
@@ -158,9 +159,10 @@ namespace SCv20_Tools.Core.Data {
                 var msg = BuildValidationMessage(ex);
                 throw new DbEntityValidationException("Entity Validation Failed - Errors Follow in " + msg);
             }
-            //catch (DbUpdateException ex) {
-            //    var msg = ex.Message;
-            //}
+            catch (DbUpdateException ex) {
+                var msg = ex.InnerException.GetInnerExceptionMessage();
+                throw new CoreException(msg, ex);
+            }
         }
 
 

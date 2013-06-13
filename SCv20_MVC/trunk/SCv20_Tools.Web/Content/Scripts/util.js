@@ -24,8 +24,6 @@ function ajaxSetup(doc) {
     $(document).ajaxError(function (event, jqxhr, settings, exception) {
         $('#ajaxLoader').hide();
 
-        console.debug(jqxhr);
-
         if (jqxhr.status === 404) {
             $("#ajaxMessage .message").html("AJAX Request to invalid URL!");
             $msg.attr("class", "").addClass("error");

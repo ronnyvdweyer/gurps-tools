@@ -63,8 +63,7 @@ namespace SCv20_Tools.Web.Controllers {
             return RedirectToAction("Editing", new { missionid = scene.MissionID, id = scene.ID});
         }
 
-        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
-        // Mission/{missionid}/Scenes/Objective/{id}
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post), AjaxHandleError]   //POST/GET: Mission/{missionid}/Scenes/Objective/{id}
         public ActionResult GetObjetive(int missionid, int id) {
             var objective = _dataService.GetSceneObjective(id);
             var calibers = _dataService.GetAllCalibers();
@@ -75,11 +74,23 @@ namespace SCv20_Tools.Web.Controllers {
             return PartialView("_sceneObjective", model);
         }
 
+
+        [HttpGet, AjaxHandleError]
+        public ActionResult CreateEmptyObjective(int sceneid) {
+            var calibers = _dataService.GetAllCalibers();
+            var types = _dataService.GetAllObjectiveTypes();
+
+            var model = SceneObjectiveModel.CreateFrom(null, calibers, types);
+            model.SceneID = sceneid;
+
+            return PartialView("_sceneObjective", model);
+        }
+
+
         [HttpPost, AjaxHandleError] // POST: /Scene/SaveObjective/{id}
         public ActionResult SaveObjetive(SceneObjectiveModel model) {
             if (!ModelState.IsValid)
                 return AjaxResult(model);
-            //    throw new InvalidModelStateException(model);
 
             var entity = model.MapToSceneObjectiveEntity();
             entity = _dataService.SaveSceneObjective(entity);

@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using SCv20_Tools.Core.Domain;
 using System.Linq;
-using System;
+using SCv20_Tools.Core.Domain;
 
 namespace SCv20_Tools.Web.Models {
+
     [Serializable]
     public class SceneObjectiveModel {
 
@@ -25,7 +26,6 @@ namespace SCv20_Tools.Web.Models {
             set;
         }
 
-
         /// <summary>
         /// Scene ID.
         /// </summary>
@@ -34,13 +34,11 @@ namespace SCv20_Tools.Web.Models {
             set;
         }
 
-
         [Required, MaxLength(100), DisplayName("Description")]
         public string Description {
             get;
             set;
         }
-
 
         [Range(1, 5, ErrorMessage = "Please, select an objetive grade."), DisplayName("Grade")]
         public int GradeID {
@@ -48,13 +46,11 @@ namespace SCv20_Tools.Web.Models {
             set;
         }
 
-
         [Range(1, int.MaxValue, ErrorMessage = "Please, select an objetive type."), DisplayName("Type")]
         public int ObjectiveTypeID {
             get;
             set;
         }
-
 
         [DisplayName("Critical?")]
         public int CriticalTypeSelected {
@@ -62,43 +58,41 @@ namespace SCv20_Tools.Web.Models {
             set;
         }
 
-
         [DisplayName("Plot?")]
         public int PlotTypeSelected {
             get;
             set;
         }
 
-        public int Order { 
-            get; 
-            set; 
+        public int Order {
+            get;
+            set;
         }
 
-
+        public string OrderFormatted {
+            get;
+            private set;
+        }
 
         public List<CriticalType> CriticalTypes {
             get;
             set;
         }
 
-
         public List<PlotType> PlotTypes {
             get;
             set;
         }
-
 
         public List<SceneObjectiveType> SceneObjectiveTypes {
             get;
             set;
         }
 
-
         public List<SceneObjectiveGrade> SceneObjectiveGrades {
             get;
             set;
         }
-
 
         public string ObjectiveTypeDescription {
             get;
@@ -109,8 +103,6 @@ namespace SCv20_Tools.Web.Models {
             get;
             set;
         }
-
-
 
         #region -- Nested Specific Classes ---------------------------------------------------------
 
@@ -210,14 +202,15 @@ namespace SCv20_Tools.Web.Models {
 
         #endregion -- Nested Specific Classes ---------------------------------------------------------
 
-
         public SceneObjectiveModel MapFrom(SceneObjective objective, IList<Caliber> calibers, IList<ObjectiveType> types) {
-
             if (objective != null) {
                 this.ID = objective.Id;
                 this.SceneID = objective.SceneId;
+
+                this.Order = objective.Order;
+                this.OrderFormatted = objective.OrderFormatted;
                 this.Description = objective.Description;
-                
+
                 this.GradeID = objective.Grade.Grade;// .GradeId;           == Caliber
                 this.ObjectiveTypeID = objective.Grade.ObjectiveTypeId; //  == TypeId
 
@@ -238,6 +231,10 @@ namespace SCv20_Tools.Web.Models {
             return this;
         }
 
+        public static SceneObjectiveModel CreateFrom(SceneObjective objective, IList<Caliber> calibers, IList<ObjectiveType> types) {
+            var model = new SceneObjectiveModel();
+            return model.MapFrom(objective, calibers, types);
+        }
 
         public SceneObjective MapToSceneObjectiveEntity() {
             var entity = new SceneObjective();
@@ -254,12 +251,5 @@ namespace SCv20_Tools.Web.Models {
 
             return entity;
         }
-
-
-        public static SceneObjectiveModel CreateFrom(SceneObjective objective, IList<Caliber> calibers, IList<ObjectiveType> types) {
-            var model = new SceneObjectiveModel();
-            return model.MapFrom(objective, calibers, types);
-        }
-
     }
 }

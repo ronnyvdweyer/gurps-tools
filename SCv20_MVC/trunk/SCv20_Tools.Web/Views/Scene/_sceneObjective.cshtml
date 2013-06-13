@@ -1,8 +1,9 @@
 ﻿@model SCv20_Tools.Web.Models.SceneObjectiveModel
-<div class="portlet scene-objective">
+<div class="portlet scene-objective" style="margin-top:20px;">
     <div class="header">
-        <span class="h-title">Objective</span>
+        <span class="h-title">Objective @Html.ValueFor(m=>m.OrderFormatted)</span>
         <span class="h-tools">
+            <a href="#" id="up">[up</a>|<a href="#" id="down">down]</a>
             <a href="#" id="delete">[delete]</a>
         </span>
     </div>
@@ -10,6 +11,7 @@
         <div class="form">
             @Html.HiddenFor(m => m.ID)
             @Html.HiddenFor(m => m.SceneID)
+            @Html.HiddenFor(m => m.Order)
             <div class="group">
                 <div class="grid-1">
                     @Html.MeHZ().DropDownListFor(m => m.ObjectiveTypeID, m => m.SceneObjectiveTypes, "Value", "Text", new DropDownListOptions { FirstItemText = "-- Objective Type --", FirstItemValue = "0", ID = "selType" })

@@ -16,15 +16,24 @@
     <div id="summary">
         @Html.Partial("_sceneSummary", @Model)
     </div>
-    
-    foreach (var id in @Model.SceneObjectivesID) {
-        <div style="margin-top: 20px;">
-            @{Html.RenderAction("GetObjetive", new { id = id });}
-        </div>
-    }
+    <div id="list">
+        @foreach (var id in @Model.SceneObjectivesID) {
+            Html.RenderAction("GetObjetive", new { id = id });
+        }
+    </div>
 }
 
 <script type="text/javascript">
     /// <reference path="/content/scripts/jquery/jquery-1.7.1.min.js" />
+    $(function () {
+        $(".portlet.scene-summary").on("click", "#add", function () {
+            var model = {
+                "sceneid": $(this).data("sceneid")
+            }
 
+            $.get("/scene/CreateEmptyObjective", model).done(function (data) {
+                $(data).prependTo("#list").find("select").first().focus();
+            })
+        })
+    });
 </script>

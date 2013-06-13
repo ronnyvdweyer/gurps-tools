@@ -66,6 +66,16 @@ namespace SCv20_Tools.Core.Domain {
             }
         }
 
+        /// <summary>
+        /// Calculated: Returns Order formated.
+        /// </summary>
+        [NotMapped]
+        public string OrderFormatted {
+            get {
+                return string.Format("#{0}", Order);
+            }
+        }
+
         #region -- Navigation Properties -----------------------------------------------------------
 
         [ForeignKey("SceneId")]
@@ -91,7 +101,7 @@ namespace SCv20_Tools.Core.Domain {
         [NotMapped]
         public Int32 CaliberID { get; set; }
 
-        [Range(1,10)]
+        [Range(1, 10)]
         public int Order { get; set; }
 
         [NotMapped]
