@@ -17,9 +17,7 @@
         @Html.Partial("_sceneSummary", @Model)
     </div>
     <div id="list">
-        @foreach (var id in @Model.SceneObjectivesID) {
-            Html.RenderAction("GetObjetive", new { id = id });
-        }
+        @Html.Partial("listing/_sceneObjectiveList", @Model.SceneObjectivesID)
     </div>
 }
 

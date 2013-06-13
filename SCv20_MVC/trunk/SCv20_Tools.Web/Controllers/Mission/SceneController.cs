@@ -60,7 +60,7 @@ namespace SCv20_Tools.Web.Controllers {
 
             var scene = _dataService.SaveScene(model.MapToSceneEntity());
 
-            return RedirectToAction("Editing", new { missionid = scene.MissionID, id = scene.ID});
+            return RedirectToAction("Editing", new { missionid = scene.MissionID, id = scene.ID });
         }
 
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post), AjaxHandleError]   //POST/GET: Mission/{missionid}/Scenes/Objective/{id}
@@ -95,7 +95,13 @@ namespace SCv20_Tools.Web.Controllers {
             var entity = model.MapToSceneObjectiveEntity();
             entity = _dataService.SaveSceneObjective(entity);
 
-            return AjaxResult(new { id = entity.Id }); 
+            return AjaxResult(new { id = entity.Id });
+        }
+
+        [HttpPost, AjaxHandleError]
+        public ActionResult ReorderObjective(int sceneid, int objectiveid, int offset) {
+            var entity = _dataService.SaveSceneObjectiveOrder(sceneid, objectiveid, offset);
+            return PartialView("Listing/_sceneObjectiveList.cshtml");
         }
     }
 }

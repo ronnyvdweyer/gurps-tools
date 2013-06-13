@@ -297,6 +297,7 @@
     <Content Include="Views\Scene\Editing.cshtml" />
     <Content Include="Views\Scene\_sceneObjective.cshtml" />
     <Content Include="Views\Scene\_nav.cshtml" />
+    <Content Include="Views\Scene\Listing\_sceneObjectiveList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

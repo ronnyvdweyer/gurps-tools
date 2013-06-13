@@ -237,13 +237,34 @@ namespace SCv20_Tools.Core.Services {
                 entity = repo.Edit(entity);
             }
             else {
-                var order = repo.FindBy(e => e.Id == entity.SceneId).Max(e => e.Order) + 1;
+                var order = repo.FindBy(e => e.SceneId == entity.SceneId).Max(e => e.Order) + 1;
                 entity.Order = order;
                 entity = repo.Create(entity);
             }
             repo.Commit();
 
             return entity;
+        }
+
+
+        public SceneObjective SaveSceneObjectiveOrder(int sceneid, int objectiveid, int offset) {
+            var repo = Repository<SceneObjective>.GetInstance();
+
+            var source   = repo.GetById(objectiveid);
+            var newOrder = (source.Order + offset);
+
+            var target = repo.FindBy(e => e.SceneId == sceneid).Where(e => e.Order == newOrder).FirstOrDefault();
+            var maxOrder = repo.FindBy(e => e.SceneId == sceneid).Max(e => e.Order);
+
+            if (target != null) {
+                target.Order = source.Order;
+            }
+            
+            source.Order = (newOrder > maxOrder ? maxOrder : newOrder);
+
+            repo.Commit();
+
+            return source;
         }
     }
 }
