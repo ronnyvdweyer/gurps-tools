@@ -78,6 +78,19 @@ namespace SCv20_Tools.Core.Services {
             return data;
         }
 
+        public IList<ObjectiveType> GetAllObjectiveTypes() {
+            var repo = Repository<ObjectiveType>.GetInstance();
+            return repo.FindAll().OrderBy(e => e.Name).ToList();
+        }
+
+        public IList<SceneObjective> GetAllSceneObjectives(int sceneid) {
+            if (sceneid == 0)
+                throw new ArgumentNullException("sceneid");
+
+            var repo = Repository<SceneObjective>.GetInstance();
+            return repo.FindBy(e => e.SceneId == sceneid).OrderBy(e => e.Order).ToList();
+        }
+
         public IList<Quality> GetAllQualities(bool? isSeason) {
             var repo = Repository<Quality>.GetInstance();
             var data = repo.FindAll();
@@ -125,6 +138,12 @@ namespace SCv20_Tools.Core.Services {
             }
         }
 
+        public IList<Scene> GetAllScenes(int missionid) {
+            var repo = Repository<Scene>.GetInstance();
+            var data = repo.FindBy(e => e.MissionID == missionid).OrderBy(e => e.Order).ToList();
+            return data;
+        }
+
         public Campaign GetCampaign(int id) {
             var repo = Repository<Campaign>.GetInstance();
             var data = repo.GetById(id);
@@ -136,16 +155,34 @@ namespace SCv20_Tools.Core.Services {
             return GetAllCareerLevels().Where(e => e.Key == level).FirstOrDefault();
         }
 
-        public Mission GetMission(int id) {
+        public Mission GetMission(int missionid) {
             var repo = Repository<Mission>.GetInstance();
-            var data = repo.GetById(id);
+            var data = repo.GetById(missionid);
             return data;
         }
 
-        public Quality GetQuality(int id) {
-            var repo = Repository<Quality>.GetInstance();
-            var data = repo.GetById(id);
+        public ObjectiveGrade GetObjetiveTypeDetail(int typeid, int gradeid) {
+            var repo = Repository<ObjectiveGrade>.GetInstance();
+            var data = repo.FindBy(e => e.ObjectiveTypeId == typeid).Where(e => e.Grade == gradeid).FirstOrDefault();
+            return data;
+        }
 
+        public Quality GetQuality(int qualityid) {
+            var repo = Repository<Quality>.GetInstance();
+            var data = repo.GetById(qualityid);
+
+            return data;
+        }
+
+        public Scene GetScene(int sceneid) {
+            var repo = Repository<Scene>.GetInstance();
+            var data = repo.GetById(sceneid);
+            return data;
+        }
+
+        public SceneObjective GetSceneObjective(int objectiveid) {
+            var repo = Repository<SceneObjective>.GetInstance();
+            var data = repo.GetById(objectiveid);
             return data;
         }
 
@@ -197,35 +234,6 @@ namespace SCv20_Tools.Core.Services {
             return entity;
         }
 
-        public Scene GetScene(int id) {
-            var repo = Repository<Scene>.GetInstance();
-            var data = repo.GetById(id);
-            return data;
-        }
-
-        public IList<Scene> GetAllScenes(int missionid) {
-            var repo = Repository<Scene>.GetInstance();
-            var data = repo.FindBy(e => e.MissionID == missionid).OrderBy(e=>e.Order).ToList();
-            return data;
-        }
-
-        public SceneObjective GetSceneObjective(int id) {
-            var repo = Repository<SceneObjective>.GetInstance();
-            var data = repo.GetById(id);
-            return data;
-        }
-
-        public IList<ObjectiveType> GetAllObjectiveTypes() {
-            var repo = Repository<ObjectiveType>.GetInstance();
-            return repo.FindAll().OrderBy(e => e.Name).ToList();
-        }
-
-        public ObjectiveGrade GetObjetiveTypeDetail(int typeid, int gradeid) {
-            var repo = Repository<ObjectiveGrade>.GetInstance();
-            var data = repo.FindBy(e => e.ObjectiveTypeId == typeid).Where(e => e.Grade == gradeid).FirstOrDefault();
-            return data;
-        }
-
         public SceneObjective SaveSceneObjective(SceneObjective entity) {
             var repo = Repository<SceneObjective>.GetInstance();
             var rep1 = Repository<ObjectiveGrade>.GetInstance();
@@ -246,12 +254,11 @@ namespace SCv20_Tools.Core.Services {
             return entity;
         }
 
-
         public SceneObjective SaveSceneObjectiveOrder(int sceneid, int objectiveid, int offset) {
             var repo = Repository<SceneObjective>.GetInstance();
 
-            var source   = repo.GetById(objectiveid);
-            var newOrder = (source.Order + offset);
+            var source = repo.GetById(objectiveid);
+            var newOrder = (source.Order + offset) == 0 ? 1 : (source.Order + offset);
 
             var target = repo.FindBy(e => e.SceneId == sceneid).Where(e => e.Order == newOrder).FirstOrDefault();
             var maxOrder = repo.FindBy(e => e.SceneId == sceneid).Max(e => e.Order);
@@ -259,7 +266,7 @@ namespace SCv20_Tools.Core.Services {
             if (target != null) {
                 target.Order = source.Order;
             }
-            
+
             source.Order = (newOrder > maxOrder ? maxOrder : newOrder);
 
             repo.Commit();

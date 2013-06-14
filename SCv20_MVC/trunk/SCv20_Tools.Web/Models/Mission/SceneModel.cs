@@ -99,7 +99,7 @@ namespace SCv20_Tools.Web.Models {
             this.SceneTypeID = entity.IsDramatic ? 1 : 0;
             this.Order = entity.Order;
             this.CreatedOn = entity.CreatedOn;
-            this.SceneObjectivesID = entity.Objectives.Select(item => item.Id).ToList();
+            this.SceneObjectivesID = entity.Objectives.OrderBy(item => item.Order).Select(item => item.Id).ToList();
 
             if (this.SceneObjectivesID.Count == 0) {
                 this.SceneObjectivesID.Add(0);

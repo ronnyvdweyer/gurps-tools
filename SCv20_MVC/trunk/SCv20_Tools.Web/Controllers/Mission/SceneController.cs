@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using SCv20_Tools.Core.Services;
 using SCv20_Tools.Web.Framework;
 using SCv20_Tools.Web.Models;
 
 namespace SCv20_Tools.Web.Controllers {
+
     public class SceneController : BaseController {
         private readonly DataService _dataService;
 
         public SceneController() {
             _dataService = DataService.GetInstance();
         }
+
 
         [HttpGet]
         public ActionResult Create(int missionid) {
@@ -24,6 +23,7 @@ namespace SCv20_Tools.Web.Controllers {
             var model = SceneModel.CreateFrom(null);
             return View(model);
         }
+
 
         [HttpPost]
         public ActionResult Create(SceneModel model) {
@@ -63,8 +63,9 @@ namespace SCv20_Tools.Web.Controllers {
             return RedirectToAction("Editing", new { missionid = scene.MissionID, id = scene.ID });
         }
 
+
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post), AjaxHandleError]   //POST/GET: Mission/{missionid}/Scenes/Objective/{id}
-        public ActionResult GetObjetive(int missionid, int id) {
+        public ActionResult GetObjetive(int id) {
             var objective = _dataService.GetSceneObjective(id);
             var calibers = _dataService.GetAllCalibers();
             var types = _dataService.GetAllObjectiveTypes();
@@ -72,6 +73,13 @@ namespace SCv20_Tools.Web.Controllers {
             var model = SceneObjectiveModel.CreateFrom(objective, calibers, types);
 
             return PartialView("_sceneObjective", model);
+        }
+
+        
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post), AjaxHandleError]
+        public ActionResult GetObjetiveList(int sceneid) {
+            var model = _dataService.GetAllSceneObjectives(sceneid).Select(item => item.Id).ToList();
+            return PartialView("Listing/_sceneObjectiveList", model);
         }
 
 
@@ -98,10 +106,13 @@ namespace SCv20_Tools.Web.Controllers {
             return AjaxResult(new { id = entity.Id });
         }
 
+
         [HttpPost, AjaxHandleError]
         public ActionResult ReorderObjective(int sceneid, int objectiveid, int offset) {
             var entity = _dataService.SaveSceneObjectiveOrder(sceneid, objectiveid, offset);
-            return PartialView("Listing/_sceneObjectiveList.cshtml");
+            var model = _dataService.GetAllSceneObjectives(sceneid).Select(item => item.Id).ToList();
+
+            return PartialView("Listing/_sceneObjectiveList", model);
         }
     }
 }

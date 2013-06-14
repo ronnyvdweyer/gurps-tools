@@ -17,6 +17,7 @@ $(function () {
                 }
             });
         })
+        
         .on("click", "#save", function () {
             var $part = $(this).closest(".portlet");
             var model = $part.find(":input").serialize();
@@ -27,7 +28,36 @@ $(function () {
                 $part.find("#ID").val(data.model.id);
             });
         })
+        
         .on("click", "#delete", function () {
             alert('delete-me');
+        })
+        
+        .on("click", "#up", function () {
+            reorder(this, -1);
+        })
+        
+        .on("click", "#down", function () {
+            reorder(this, +1);
         });
+
+    function reorder(source, offset) {
+        var $part = $(source).closest(".portlet");
+        var model = {
+            "sceneid"     : $part.find("#SceneID").val(),
+            "objectiveid" : $part.find("#ID").val(),
+            "offset"      : offset
+        }
+
+        if (model.objectiveid == 0) {
+            return;
+        }
+        else {
+            $.post("/scene/reorderObjective", model).done(function (data) {
+                $("#list").html(data);
+            });
+        }
+
+        return model;
+    }
 });
