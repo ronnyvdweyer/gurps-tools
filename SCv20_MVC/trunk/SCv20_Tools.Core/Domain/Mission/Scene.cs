@@ -25,7 +25,7 @@ namespace SCv20_Tools.Core.Domain {
             set;
         }
 
-        [MaxLength(100)]
+        [Required, MaxLength(100)]
         public string Name {
             get;
             set;
