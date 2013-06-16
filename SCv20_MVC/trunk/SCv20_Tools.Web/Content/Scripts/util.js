@@ -1,4 +1,4 @@
-﻿/// <reference path="jquery/jquery-1.7.1.js" />
+﻿/// <reference path="/scripts/jquery-1.10.1.min.js" />
 /// <reference path="doT.js" />
 
 $(function (doc) {

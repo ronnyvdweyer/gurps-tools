@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../Content/Scripts/jquery/jquery-1.7.1.js" />
+﻿/// <reference path="/scripts/jquery-1.10.1.js" />
 
 var campaignApi = function () { }
 

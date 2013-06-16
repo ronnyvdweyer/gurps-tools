@@ -2,7 +2,7 @@
 @{ ViewBag.Title = "Editing Scene"; }
 
 @section header {
-    <script type="text/javascript" src="/scripts/jquery.cleditor.min.js"></script>
+    <script src="/scripts/jquery.cleditor.min.js"></script>
     <link href="/content/jquery.cleditor.css" rel="stylesheet" />
 }
 
@@ -22,7 +22,7 @@
 }
 
 <script type="text/javascript">
-    /// <reference path="/content/scripts/jquery/jquery-1.7.1.min.js" />
+    /// <reference path="/scripts/jquery-1.10.1.min.js" />
     $(function () {
         $(".portlet.scene-summary").on("click", "#add", function () {
             var model = {

@@ -1,4 +1,4 @@
-﻿/// <reference path="/content/scripts/jquery/jquery-1.7.1.min.js" />
+﻿/// <reference path="/scripts/jquery-1.10.1.min.js" />
 /// <reference path="/content/scripts/util.js" />
 $(function () {
     $(document, ".portlet.scene-objective")
