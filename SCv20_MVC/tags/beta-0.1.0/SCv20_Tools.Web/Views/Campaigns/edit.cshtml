@@ -1,0 +1,127 @@
+﻿@model SCv20_Tools.Web.Models.CampaignModel
+@{ ViewBag.Title = "Edit Campaign"; }
+
+@using (Html.BeginForm()) { 
+    <div class="form ">
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="group">
+            <div class="grid-1">
+                @Html.LabelFor(m => m.Name)
+            </div>
+            <div class="grid-4">
+                @Html.MeHZ().TextBoxFor(m => m.Name, new TextBoxOptions { MaxLength = 100, AutoFocus = true })
+            </div>
+            <div class="grid-1">
+                @Html.LabelFor(m => m.StartingLevel)
+            </div>
+            <div class="grid-1">
+                @Html.MeHZ().TextBoxFor(m => m.StartingLevel)
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="grid-1">
+                @Html.LabelFor(m => m.BaseReputation)
+            </div>
+            <div class="grid-1">
+                @Html.MeHZ().TextBoxFor(m => m.BaseReputation)
+            </div>
+            <div class="grid-1">
+                @Html.LabelFor(m => m.BaseNetWorth)
+            </div>
+            <div class="grid-2">
+                @Html.MeHZ().TextBoxFor(m => m.BaseNetWorth)
+            </div>
+            <div class="grid-1">
+                @Html.LabelFor(m => m.BaseXPFormatted)
+            </div>
+            <div class="grid-1">
+                @Html.MeHZ().TextBoxFor(m => m.BaseXPFormatted, new TextBoxOptions { Disabled = true })
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="grid-1">
+                @Html.LabelFor(m => m.YearDetails)
+            </div>
+            <div class="grid-1">
+                @Html.MeHZ().DropDownListFor(m => m.SelectedYearId, m => m.ListHistoricalConversions, "Id", "Year", new DropDownListOptions { FirstItemText = "-- Selecione --", FirstItemValue = "0" })
+            </div>
+            <div class="grid-3">
+                @Html.MeHZ().TextBoxFor(m => m.YearDetails, new TextBoxOptions { MaxLength = 100 })
+            </div>
+            <div class="grid-1">
+                @Html.LabelFor(m => m.BaseNetWorthFormatted, "Networth")
+            </div>
+            <div class="grid-1">
+                @Html.MeHZ().TextBoxFor(m => m.BaseNetWorthFormatted, new TextBoxOptions { Disabled = true })
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="grid-1">
+                @Html.LabelFor(m => m.Concept)
+            </div>
+            <div class="grid-4">
+                @Html.MeHZ().TextAreaFor(m => m.Concept, new TextBoxOptions { Style = "height:auto", HtmlAttributes = new { rows = "2", cols = "100" } })
+            </div>
+            <div class="grid-1">
+                @Html.LabelFor(m => m.CreatedOn)
+            </div>
+            <div class="grid-1">
+                @Html.MeHZ().TextBoxFor(m => m.CreatedOn, new TextBoxOptions { Disabled = true })
+            </div>
+        </div>
+        <div class="group">
+            <div class="grid-1">
+                &nbsp;
+            </div>
+            <div class="grid-1">
+                <button type="button" value="save" style="width: 100%">Save</button>
+            </div>
+        </div>
+
+        <div class="group">&nbsp;</div>
+
+        <div class="group">
+            <div class="grid-1">
+                @Html.LabelFor(m => m.ListAvaliableQualities)
+            </div>
+            <div class="grid-2" id="avaliableQualities">
+                @Html.MeHZ().DropDownListFor(m => m.SelectedQualityId, ds => ds.ListAvaliableQualities, "Id", "Name", null)
+            </div>
+            <div class="grid-1 al-l">
+                <button type="button" value="add-quality" id="btnAddQuality" disabled="disabled">Add Quality</button>
+            </div>
+            <div class="grid-1 al-c">
+                <label for="txtQualityBonusAD">AD/XP Bonus</label>
+            </div>
+            <div class="grid-1">
+                <input type="text" id="txtQualityBonusAD" disabled="disabled" />
+            </div>
+            <div class="grid-1">
+                <input type="text" id="txtQualityBonusXP" disabled="disabled" />
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="grid-1">
+                <label for="txtQualityDetails">Description</label>
+            </div>
+            <div class="grid-6">
+                <textarea id="txtQualityDetails" disabled="disabled" style="height: auto;" rows="5" cols="200"></textarea>
+            </div>
+        </div>
+
+
+    </div>
+    
+    
+    
+    <div id="qualityList"></div>
+}
+
+@section scripts {
+    <script type="text/javascript" src="/views/campaigns/edit.js"></script>
+}

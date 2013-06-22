@@ -1,0 +1,13 @@
+﻿@{
+var baseRoute  = new { 
+    id         = ViewContext.RouteData.Values["id"], 
+    key        = ViewContext.RouteData.Values["key"], 
+    controller = "Mission" };
+}
+<ul id="navMenu">
+    <li> <a href="/Mission/Editing/@baseRoute.id">       SUMMARY       </a></li>
+    <li>|<a href="/Mission/@baseRoute.id/Qualities">     QUALITIES     </a></li>
+    <li>|<a href="/Mission/@baseRoute.id/Complications"> COMPLICATIONS </a></li>
+    <li>|<a href="/Mission/@baseRoute.id/Bundles">       BUNDLES       </a></li>
+    <li>|<a href="/Mission/@baseRoute.id/Scenes">        SCENES        </a></li>
+</ul>

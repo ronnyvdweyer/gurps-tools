@@ -1,0 +1,41 @@
+﻿@model SCv20_Tools.Web.Models.MissionSummaryModel
+<div class="form">
+    <div class="fieldset grid-7" style="padding: 10px; border-radius: 8px; border: 2px solid silver; background-color: rgb(219, 238, 243); background-color: #fff;">
+        <div class="group">
+            <div class="grid-2">
+                <span class="text"><b style="display: inline-block; width: 95px">Mission ID#:</b> @Html.ValueFor(m => m.Code)</span>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="grid-7">
+                <span class="text"><b style="display: inline-block; width: 95px">Mission Name:</b> @Html.ValueFor(m => m.Name)</span>
+            </div>
+
+            <div class="grid-1">
+                <span class="text"><b style="display: inline-block; width: 75px">Caliber:</b> @Html.ValueFor(m => m.CaliberFormatted)</span>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="grid-7">
+                <span class="text"><b style="display: inline-block; width: 95px">Motivation:</b> @Html.ValueFor(m => m.Motivation)</span>
+            </div>
+            <div class="grid-1">
+                <span class="text"><b style="display: inline-block; width: 70px">Threat:</b> @Html.ValueFor(m => m.AdjustedThreatLevelFormatted)</span>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="grid-8">
+                <span class="textarea" style="height: auto">@Html.ValueFor(m => m.Briefing)</span>
+            </div>
+        </div>
+
+        <div class="group command" >
+            <div class="grid-8 al-r">
+                <button type="button" value="save" style="" data-id="@Model.Id">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>

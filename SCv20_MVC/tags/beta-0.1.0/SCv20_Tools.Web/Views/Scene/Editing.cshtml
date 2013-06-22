@@ -1,0 +1,37 @@
+﻿@model SCv20_Tools.Web.Models.SceneModel
+@{ ViewBag.Title = "Editing Scene"; }
+
+@section header {
+    <script src="/scripts/jquery.cleditor.min.js"></script>
+    <link href="/content/jquery.cleditor.css" rel="stylesheet" />
+}
+
+@section scripts {
+    <script type="text/javascript" src="/views/scene/_sceneObjective.cshtml.js"></script>
+    <script type="text/javascript">
+        $("#editor").cleditor({ width: "99.75%", height: "180px" });
+    </script>
+}
+@using (Html.BeginForm()) {
+    <div id="summary">
+        @Html.Partial("_sceneSummary", @Model)
+    </div>
+    <div id="list">
+        @Html.Partial("listing/_sceneObjectiveList", @Model.SceneObjectivesID)
+    </div>
+}
+
+<script type="text/javascript">
+    /// <reference path="/scripts/jquery-1.10.1.min.js" />
+    $(function () {
+        $(".portlet.scene-summary").on("click", "#add", function () {
+            var model = {
+                "sceneid": $(this).data("sceneid")
+            }
+
+            $.get("/scene/CreateEmptyObjective", model).done(function (data) {
+                $(data).prependTo("#list").find("select").first().focus();
+            })
+        })
+    });
+</script>

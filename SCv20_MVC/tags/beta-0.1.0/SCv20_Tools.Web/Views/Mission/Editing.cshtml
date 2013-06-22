@@ -1,0 +1,42 @@
+﻿@model SCv20_Tools.Web.Models.MissionSummaryModel
+@{ ViewBag.Title = "Edit Mission Summary"; }
+
+@section header {
+    <script src="/scripts/jquery.cleditor.min.js"></script>
+    <link href="/content/jquery.cleditor.css" rel="stylesheet" />
+}
+
+@section navigation {
+    @Html.Partial("_nav")
+}
+
+@using (Html.BeginForm()) {
+    <div class="form" id="mission-summary">
+        <div id="partial">
+            @Html.Partial("_createOrUpdateSummary", Model)
+        </div>
+
+        <div class="group command">
+            <div class="grid-8 al-r">
+                <button type="button" id="save" name="save-edit" value="@Model.Id" data-id="@Model.Id">Save</button>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $("#editor").cleditor({ width: "99.75%", height: "320px" });
+
+        $('#save').click(function (e) {
+            $.ajax('@Url.Action("Editing", "Mission")', {
+                type: 'POST',
+                dataType: 'html',
+                data: $("body :input").serialize()
+            }).done(function (html) {
+                $("#partial").html(html);
+                $("#editor").cleditor({ width: "99.75%", height: "320px" });
+            });
+        });
+    </script>
+}

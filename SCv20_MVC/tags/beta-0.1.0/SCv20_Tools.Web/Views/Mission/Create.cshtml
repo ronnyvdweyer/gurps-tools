@@ -1,0 +1,26 @@
+﻿@model SCv20_Tools.Web.Models.MissionSummaryModel
+@{ ViewBag.Title = "Create Mission"; }
+
+@section header {
+    <script type="text/javascript" src="/scripts/jquery.cleditor.min.js"></script>
+    <link href="/content/jquery.cleditor.css" rel="stylesheet" />
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $("#editor").cleditor({ width: "99.75%", height: "320px" });
+    </script>
+}
+
+
+@using (Html.BeginForm()) {
+    <div class="form">
+        @Html.EditorFor(m => m)
+
+        <div class="group command">
+            <div class="grid-8 al-r">
+                <button type="submit" name="save" value="@Model.Id" data-id="@Model.Id">Save</button>
+            </div>
+        </div>
+    </div>
+}

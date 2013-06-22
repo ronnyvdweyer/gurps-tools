@@ -1,0 +1,28 @@
+﻿<ul id="menu">
+    <li class="fixed">
+        <a href="@Url.Action("Index", "Home")"><b>HOME</b></a>
+    </li>
+
+    <li>|</li>
+    
+    <li class="level-1">
+        <a href="@Url.Action("Index", "Campaigns")">Campaigns</a>
+    </li>
+
+    <li>|</li>
+
+    <li class="level-1">
+        <a href="@Url.Action("Index", "Missions")">Missions</a>
+    </li>
+</ul>
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+        var str = location.href.toLowerCase();
+        $('#menu .level-1 a').each(function () {
+            if (str.indexOf(this.href.toLowerCase()) > -1) {
+                $(this).attr("class", "current"); //hightlight parent tab
+            }
+        });
+    //});
+</script>

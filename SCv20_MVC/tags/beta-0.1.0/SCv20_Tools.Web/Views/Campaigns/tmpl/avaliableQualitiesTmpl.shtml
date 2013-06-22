@@ -1,0 +1,6 @@
+﻿<select id="SelectedQualityId" name="SelectedQualityId">
+    <option value="0">-- Please Select --</option>
+    {{~it: value: index}}
+        <option value="{{=value.id}}">{{=value.name}}</option>
+    {{~}}
+</select>

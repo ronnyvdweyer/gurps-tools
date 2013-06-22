@@ -1,0 +1,275 @@
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #305330;
+    background-color: silver;
+    font-size: 10pt;
+    font-family: Verdana;
+    /*font-family: 'Trebuchet MS';*/
+}
+
+#header {
+    right: 0;
+    left: 0;
+    background-color: black;
+    -webkit-box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
+    box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
+}
+
+    #header .title {
+        padding-left: 55px;
+        height: 1.5em;
+        border-bottom: 1px dashed #fff;
+        background-image: url(/Content/Images/head-logo.gif);
+        background-position: left center;
+        background-repeat: no-repeat;
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.5em;
+        line-height: 1.5em;
+    }
+
+    #header .navigation {
+        padding-left: 10px;
+        height: 2em;
+        color: #fff;
+        line-height: 2em;
+    }
+
+#container {
+    position: absolute;
+    top: 4.8em;
+    right: 0;
+    bottom: 1.6em;
+    left: 0;
+    margin: auto;
+}
+
+#left {
+    position: absolute;
+    left: .5em;
+    width: 14em;
+    height: 70%;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    -webkit-box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
+    box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
+    /*border-color: #ddd #aaa #aaa #ddd;*/
+    /*border-right: 0px solid black;*/
+}
+
+    #left .title {
+        padding: 0 10px 0 10px;
+        height: 2em;
+        background-color: #000;
+        color: #fff;
+        font-weight: bold;
+        line-height: 2em;
+    }
+
+    #left .content {
+        padding: 10px 5px 0 5px;
+    }
+
+#main {
+    position: absolute;
+    right: 0em;
+    left: 15.2em;
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 8px 0 0px 0px;
+    background-color: #fff /*whitesmoke*/;
+    /*box-shadow: -1px -1px 3px rgba(50, 50, 50, 0.75);*/
+}
+
+    #main .title {
+        padding: 0 15px 0 15px;
+        height: 2em;
+        background-color: #000;
+        color: #fff;
+        font-weight: bold;
+        line-height: 2em;
+    }
+
+    #main .content {
+        position: absolute;
+        top: 2em;
+        right: 0em;
+        bottom: 0em;
+        left: 0em;
+        overflow-y: scroll;
+        padding: 15px 15px 0 15px;
+    }
+
+#footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+}
+
+    #footer .content {
+        height: 1.5em;
+    }
+
+#ajaxLoader {
+    position: fixed;
+    top: 0;
+    right: 0px;
+    left: 0px;
+    z-index: 3000;
+    display: none;
+    overflow: hidden;
+    height: 100%;
+    background-image: url(/Content/Images/loading2.gif);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    /*background-color: rgba(0, 0, 0, 0.05);*/
+}
+
+#ajaxMessage {
+    position: absolute;
+    top: .3em;
+    right: 0;
+    left: 0;
+    z-index: 30000;
+    display: none;
+    overflow: hidden;
+    margin-right: 3em;
+    margin-bottom: 20px;
+    margin-left: 3em;
+    padding: .5em .5em .5em 3em;
+    border-radius: 12px;
+    background-repeat: no-repeat;
+    vertical-align: central;
+    font-weight: bold;
+    /*background-position: .4em .4em;*/
+    min-height: 2em;
+}
+
+    #ajaxMessage.error {
+        border: 1px solid red;
+        background-color: #F2DEDE;
+        background-image: url(/Content/Images/ico-error.png);
+        background-position: 10px 5px;
+        -webkit-box-shadow: 1px 1px 1px 2px rgba(255,0,0, .1);
+        box-shadow: 1px 1px 1px 2px rgba(255,0,0, .1);
+        color: #B94A48;
+    }
+
+    #ajaxMessage.warn {
+        border: 3px solid #fbeed5;
+        background-color: #FCF8E3;
+        background-image: url(/Content/Images/ico-warn.png);
+        background-position: 10px 4px;
+        -webkit-box-shadow: 1px 1px 1px 2px rgba(255, 235, 0, .2);
+        box-shadow: 1px 1px 1px 2px rgba(255, 235, 0, .2);
+        color: #C09853;
+    }
+
+    #ajaxMessage.info {
+        border: 1px solid #bce8f1;
+        background-color: #d9edf7;
+        background-image: url(/Content/Images/ico-info.png);
+        background-position: 10px 7px;
+        -webkit-box-shadow: 1px 1px 1px 2px rgba(0, 0, 255, .1);
+        box-shadow: 1px 1px 1px 2px rgba(0, 0, 255, .1);
+        color: #3A87AD;
+    }
+
+    #ajaxMessage .close {
+        z-index: 5;
+        display: block;
+        float: right;
+        margin-right: 5px;
+        padding: 0;
+        border: 0px solid;
+        font-size: .8em;
+    }
+
+        #ajaxMessage .close span {
+            display: block;
+            display: table;
+            width: 16px;
+            height: 2.35em;
+            border: 0px solid;
+            background-image: url(/Content/Images/ico-close.gif);
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+    #ajaxMessage .message {
+        max-height: 20em;
+        font-size: 1em;
+        line-height: 2em;
+    }
+
+.icon-error {
+    position: absolute;
+    z-index: 9000;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(/Content/Images/ico-get-info.png);
+    cursor: help;
+}
+
+.portlet {
+    border: 2px solid silver;
+    background-color: #fff;
+    min-width: 1000px;
+}
+
+    .portlet .header {
+        margin: 3px;
+        line-height: 2em;
+        padding-left: 5px;
+        background-color: #000;
+        color: #fff;
+        overflow: hidden;
+    }
+
+        .portlet .header .h-title {
+            float: left;
+            margin-right: 5px;
+            display: inline-block;
+            width: 80%;
+            cursor: pointer;
+        }
+
+        .portlet .header .h-tools {
+            float: right;
+            margin-right: 5px;
+            display: inline-block;
+        }
+
+        .portlet .header a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+            .portlet .header a:hover {
+                color: #000;
+                background-color: #F6F5EA;
+            }
+
+    .portlet .form {
+        overflow: hidden;
+        display: block;
+        margin: 0px 3px 0px 3px;
+        padding: 0;
+        height: auto;
+    }
+
+    .portlet .body.hide {
+        overflow: hidden;
+        height: 0;
+    }
+
+    .portlet .body.show {
+        overflow: hidden;
+        height: auto;
+    }

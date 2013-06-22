@@ -1,0 +1,4 @@
+﻿@model System.Collections.Generic.List<Int32>
+@foreach (var id in @Model) {
+    Html.RenderAction("GetObjetive", new { id = id });
+}

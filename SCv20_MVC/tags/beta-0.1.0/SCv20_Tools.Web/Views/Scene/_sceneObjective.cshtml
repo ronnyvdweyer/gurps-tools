@@ -1,0 +1,51 @@
+﻿@model SCv20_Tools.Web.Models.SceneObjectiveModel
+<div class="portlet scene-objective" style="margin-top: 20px;">
+    <div class="header">
+        <span class="h-title">Objective @Html.ValueFor(m => m.OrderFormatted)</span>
+        <span class="h-tools">
+            <a href="#" id="delete">[delete]</a>
+            <a href="#" id="up">[U]</a>|<a href="#" id="down">[D]</a>
+        </span>
+    </div>
+    <div class="body show">
+        <div class="form">
+            @Html.HiddenFor(m => m.ID)
+            @Html.HiddenFor(m => m.SceneID)
+            @Html.HiddenFor(m => m.Order)
+            <div class="group">
+                <div class="grid-1">
+                    @Html.MeHZ().DropDownListFor(m => m.ObjectiveTypeID, m => m.SceneObjectiveTypes, "Value", "Text", new DropDownListOptions { FirstItemText = "-- Objective Type --", FirstItemValue = "0", ID = "selType" })
+                </div>
+
+                <div class="grid-4">
+                    @Html.MeHZ().TextBoxFor(m => m.Description, new TextBoxOptions { MaxLength = 100 })
+                </div>
+
+                <div class="grid-1">
+                    @Html.MeHZ().DropDownListFor(m => m.CriticalTypeSelected, m => m.CriticalTypes, "Value", "Text", new DropDownListOptions { FirstItemText = null, FirstItemValue = null, Title = "Critical Objetive" })
+                </div>
+                <div class="grid-1">
+                    @Html.MeHZ().DropDownListFor(m => m.PlotTypeSelected, m => m.PlotTypes, "Value", "Text", new DropDownListOptions { FirstItemText = null, FirstItemValue = null, Title = "Plot Objetive" })
+                </div>
+                <div class="grid-1">
+                    @Html.MeHZ().DropDownListFor(m => m.GradeID, m => m.SceneObjectiveGrades, "Value", "Text", new DropDownListOptions { FirstItemText = "Grade?", FirstItemValue = "0", Title = "Grade Level", ID = "selGrade" })
+                </div>
+            </div>
+            <div class="group">
+                <div class="grid-7">
+                    <span class="text" id="sample">@Html.ValueFor(m => m.ObjectiveTypeDescription)</span>
+                </div>
+                <div class="grid-1">
+                    <span class="text" id="basexp">@Html.ValueFor(m => m.ObjectiveTypeXPFormated)</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="controls al-r" style="margin: 0px 3px 6px 3px">
+            <button type="button" id="save" value="save" style="width: 100px;">Save</button>
+        </div>
+    </div>
+</div>
+
+
+

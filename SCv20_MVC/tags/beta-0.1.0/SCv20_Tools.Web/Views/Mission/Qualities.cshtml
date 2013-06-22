@@ -1,0 +1,76 @@
+﻿@model SCv20_Tools.Web.Models.MissionQualitiesModel
+@{ ViewBag.Title = "Mission Qualities"; }
+@section navigation {
+    @Html.Partial("_nav")
+}
+@using (Html.BeginForm()) {
+    <div class="form" id="form" data-mission-id="@Html.ValueFor(m => m.ID)">
+        <div id="info">
+            @{ Html.RenderAction("DisplayInfo", "Mission", new { labelWidth = 125, selectWidth = 384 }); }
+        </div>
+        <div class="group">
+            @{ Html.RenderAction("DisplayAvaliableQualities", "Mission");}
+        </div>
+        
+        <h1>Existing Qualities</h1>
+
+        <div id="qualities" style="margin-top:20px;">
+            @{Html.RenderAction("DisplayQualities", "Mission");}
+        </div>
+    </div>
+}
+
+@section header {
+
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $("#btnAddQuality").click(function () {
+                var id = $(this).data("mission-id");
+                var key = $("#SelectedQualityId").val();
+
+                $.ajax('/mission/addQuality', {
+                    type: 'POST',
+                    dataType: 'html',
+                    data: { "id": id, "key": key }
+                }).done(function (data) {
+                    var $html = $("#SelectedQualityId", data);
+                    $("#SelectedQualityId").html($html.html());
+
+                    $.ajax('/mission/DisplayQualities', {
+                        type: 'GET',
+                        dataType: 'html',
+                        data: { "id": id }
+                    }).done(function (data) {
+                        $("#qualities").html(data);
+                        $("#btnAddQuality").attr('disabled', 'disabled');
+                    });
+                });
+            });
+
+            $(document).on("click", "#qualities .btnRemove", function (e) {
+                var missionid = $("#form").data("mission-id");
+                var qualityid = $(this).data("quality-id");
+                //alert('q=>' + qualityid + ' m=>' + missionid);
+                $.ajax('/mission/removeQuality', {
+                    type: 'POST',
+                    dataType: 'html',
+                    data: { "id": missionid, "key": qualityid }
+                }).done(function (data) {
+                    $("#qualities").html(data);
+                    
+                    $.ajax('/mission/DisplayAvaliableQualities', {
+                        type: 'GET',
+                        dataType: 'html',
+                        data: { "id": missionid }
+                    }).done(function (data) {
+                        var $html = $("#SelectedQualityId", data);
+                        $("#SelectedQualityId").html($html.html());
+                    });
+                });
+            });
+        })
+    </script>
+}

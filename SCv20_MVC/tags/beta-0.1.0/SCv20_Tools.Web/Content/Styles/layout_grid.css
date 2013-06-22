@@ -1,0 +1,241 @@
+﻿/*
+***************************************************************************
+MY GRID FRAMEWORK FOR FORMS ONLY
+***************************************************************************
+*/
+div.form {
+    overflow: hidden;
+    margin-bottom: 20px;
+    min-width: 1000px;
+    width: 100%;
+}
+
+    div.form .group {
+        overflow: hidden;
+        margin-bottom: .5em;
+    }
+
+    /*
+    ***********************************************************************
+    Effective FORM ITEM size based on size of 8 equal columns.
+    ***********************************************************************
+    */
+    div.form .grid-1 {
+        float: left;
+        margin-right: .5%;
+        width: 12%;
+    }
+
+    div.form .grid-2 {
+        float: left;
+        margin-right: .5%;
+        width: 24.5%;
+    }
+
+    div.form .grid-3 {
+        float: left;
+        margin-right: .5%;
+        width: 37%;
+    }
+
+    div.form .grid-4 {
+        float: left;
+        margin-right: .5%;
+        width: 49.5%;
+    }
+
+    div.form .grid-5 {
+        float: left;
+        margin-right: .5%;
+        width: 62%;
+    }
+
+    div.form .grid-6 {
+        float: left;
+        margin-right: .5%;
+        width: 74.5%;
+    }
+
+    div.form .grid-7 {
+        float: left;
+        margin-right: .5%;
+        width: 87%;
+    }
+
+    div.form .grid-8 {
+        float: left;
+        margin-right: .5%;
+        width: 99.5%;
+    }
+
+/*
+***************************************************************************
+MY GRID FRAMEWORK FOR TABLES ONLY
+***************************************************************************
+*/
+div.table {
+    margin-top: 20px;
+    min-width: 1000px;
+}
+
+table {
+    padding: 0;
+
+}
+
+    table caption {
+        padding-left: 0.5%;
+        border-top: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid silver;
+        border-left: 1px solid #ddd;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: #ddd;
+        color: #000;
+        text-align: left;
+        font-weight: bold;
+        line-height: 2em;
+
+    }
+
+    table thead {
+        border-right: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+    }
+
+    table tbody {
+        border-right: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+    }
+
+        table tbody tr:nth-child(odd) {
+            background-color: #F5F3F1;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #F5F3F1;
+        }
+
+        table tbody tr:hover {
+            background-color: #eeefff;
+            cursor: default;
+        }
+
+    table tfoot {
+        height: 1em;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        background-color: #ddd;
+        color: #fff;
+        line-height: 2em;
+    }
+
+    table th,
+    table td {
+        padding: .5em .5% .5em .5%;
+        border-bottom: 1px dotted silver;
+        /*font-size: 12pt;*/
+        font-family: 'Trebuchet MS';
+        border-right: 0px dotted #ddd;
+    }
+
+    table th {
+        padding-top: 0;
+        padding-bottom: 0;
+        border-bottom: 0px solid #fff;
+        background-color: #ddd;
+        text-align: left;
+        font-weight: bold;
+        /*font-size: 11pt;*/
+        line-height: 2em;
+        cursor: pointer;
+        border-right: 0px solid #ddd;
+    }
+
+    /*
+    ***********************************************************************
+    TOTAL Size of TABLE based on size of 8 equal columns (of FORM)
+    ***********************************************************************
+    */
+    table.size-8 {
+        margin-right: 0.5%;
+        width: 99.5%;
+    }
+
+    table.size-7 {
+        margin-right: 0.5%;
+        width: 87%;
+    }
+
+    table.size-6 {
+        margin-right: 0.5%;
+        width: 74.5%;
+    }
+
+    table.size-5 {
+        margin-right: 0.5%;
+        width: 62.0%;
+    }
+
+    table.size-4 {
+        margin-right: 0.5%;
+        width: 49.5%;
+    }
+
+    table.size-3 {
+        margin-right: 0.5%;
+        width: 37.0%;
+    }
+
+    table.size-2 {
+        margin-right: 0.5%;
+        width: 24.5%;
+    }
+
+    table.size-1 {
+        margin-right: 0.5%;
+        width: 12%;
+    }
+
+    /*
+    ***********************************************************************
+    Effective Column size of TABLE.
+    ***********************************************************************
+    */
+    table col.grid-1 {
+        margin-right: .5%;
+        width: 12.5%;
+    }
+
+    table col.grid-2 {
+        margin-right: .5%;
+        width: 25%;
+    }
+
+    table col.grid-3 {
+        margin-right: .5%;
+        width: 37.5%;
+    }
+
+    table col.grid-4 {
+        margin-right: .5%;
+        width: 50%;
+    }
+
+    table col.grid-5 {
+        width: 62.5%;
+    }
+
+    table col.grid-6 {
+        width: 75%;
+    }
+
+    table col.grid-7 {
+        width: 87.5%;
+    }
+
+    table col.grid-8 {
+        width: 100%;
+    }
