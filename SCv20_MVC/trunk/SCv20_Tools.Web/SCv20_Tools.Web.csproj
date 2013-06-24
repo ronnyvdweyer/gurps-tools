@@ -129,6 +129,12 @@
     <Content Include="Areas\Api\Scripts\campaign.api.js" />
     <Content Include="Areas\Api\Scripts\mission.api.js" />
     <Content Include="Areas\Api\Scripts\quality.api.js" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\Images\buttons.gif" />
     <Content Include="Content\Images\ico-get-info.png" />
     <Content Include="Content\Images\ico-close.gif" />
@@ -139,6 +145,7 @@
     <Content Include="Content\Images\head-logo.gif" />
     <Content Include="Content\Images\loading1.gif" />
     <Content Include="Content\Images\ico-warn.png" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\toolbar.gif" />
     <Content Include="Content\jquery.cleditor.css" />
     <Content Include="Content\Scripts\doT.js" />
@@ -222,9 +229,6 @@
     <None Include="Scripts\jquery-1.10.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.1.js" />
     <Content Include="Scripts\jquery-1.10.1.min.js" />
-    <Content Include="Scripts\jquery.cleditor.min.js.map">
-      <DependentUpon>jquery.cleditor.js</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.10.3.js" />
     <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
@@ -235,6 +239,8 @@
     <Content Include="Scripts\knockout-2.2.1.debug.js" />
     <Content Include="Scripts\knockout-2.2.1.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\sammy-0.7.4.js" />
+    <Content Include="Scripts\sammy-0.7.4.min.js" />
     <Content Include="Views\Campaigns\edit.js" />
     <Content Include="Views\Scene\_sceneObjective.cshtml.js" />
     <Content Include="Web.config">
@@ -263,7 +269,6 @@
     <Content Include="Views\Campaigns\tmpl\_qualityList.cshtml" />
     <Content Include="Views\Shared\_requiredScripts.cshtml" />
     <Content Include="Views\Campaigns\tmpl\_qualityListTmpl.cshtml" />
-    <Content Include="Scripts\jquery-1.10.1.min.map" />
     <None Include="Views\Campaigns\tmpl\avaliableQualitiesTmpl.shtml" />
     <None Include="Views\Campaigns\tmpl\qualityListTmpl.shtml" />
     <Content Include="Views\Mission\Listing.cshtml" />
@@ -284,6 +289,8 @@
     <Content Include="Views\Scene\_sceneObjective.cshtml" />
     <Content Include="Views\Scene\_nav.cshtml" />
     <Content Include="Views\Scene\Listing\_sceneObjectiveList.cshtml" />
+    <Content Include="Views\Shared\_Bootstrap.cshtml" />
+    <Content Include="Views\Home\Theme.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

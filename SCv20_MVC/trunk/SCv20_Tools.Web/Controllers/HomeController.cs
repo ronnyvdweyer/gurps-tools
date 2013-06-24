@@ -13,5 +13,10 @@ namespace SCv20_Tools.Web.Controllers {
             return View();
         }
 
+
+        public ActionResult Theme() {
+            return View();
+        }
+
     }
 }

@@ -1,0 +1,206 @@
+﻿@{Layout = null;}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Bootstrap Template</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap -->
+    <link href="/content/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <style type="text/css">
+        body {
+            padding-top: 102px;
+            padding-bottom: 40px;
+        }
+
+        .breadcrumb .icon-home {
+            padding-right: 5px;
+        }
+
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @@media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+        .bs-docs-sidenav .icon-chevron-right {
+            float: right;
+            margin-right: -6px;
+            margin-top: 2px;
+            opacity: 0.25;
+        }
+    </style>
+</head>
+<body>
+    <header id="header" class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar-inner" style="padding-top: 6px;">
+            <div class="container-fluid">
+                <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a href="#" class="brand">SpyCraft v2.0 Online Tools</a>
+
+                <div class="nav-collapse collapse">
+                    <ul class="nav" style="">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+
+                    <form class="navbar-form pull-left">
+                        <div class="input-append">
+                            <input type="text" class="input-xlarge" placeholder="Search here...">
+                            <button class="btn" type="button"><i class="icon-search"></i></button>
+                        </div>
+                    </form>
+
+                    <ul class="nav pull-right">
+                        <li class="dropdown"><a href="#">XXXX</a></li>
+                        <li class="divider-vertical"></li>
+                        <li class="dropdown"><a href="#">YYYY</a></li>
+                        <li class="divider-vertical"></li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-search icon-white"></i><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li class="nav-header">Nav header</li>
+                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="btn-group">
+                                <a class="btn btn-primary" href="#">
+                                    <i class="icon-user icon-white"></i>&nbsp;Logged: <strong>dcernach</strong>
+                                </a>
+                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="icon-pencil"></i>&nbsp;Settings</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#"><i class="icon-pencil"></i>&nbsp;Profile</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#"><i class="icon-off"></i>&nbsp;Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div id="header2" class="navbar navbar-fixed-top" style="top: 53px;">
+        <nav class="navbar-inner" style="padding-top: 6px;">
+            <div class="container-fluid" style="padding-left: 0">
+                <section class="row-fluid">
+                    <div class="span2" style="padding-left: 15px;">
+                        <a href="#" class="brand">Navigation</a>
+                    </div>
+                    <div class="span10">
+                        <ul class="breadcrumb" style="margin-bottom: 0px; padding-left: 0px;">
+                            <li><a href="#"><i class="icon-home"></i>Home</a><span class="divider">/</span></li>
+                            <li><a href="#">Library</a><span class="divider">/</span></li>
+                            <li class="active">Data</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </nav>
+    </div>
+
+
+    <section class="container-fluid" style="padding-left: 0">
+        <section class="row-fluid">
+            <aside id="sidebar" class="span2 " style="position: relative">
+                <ul class="nav nav-list bs-docs-sidenav" style="background-color: #F5F5F5;">
+                    <li class=""><a href="#dropdowns"><i class="icon-chevron-right"></i>Dropdowns</a></li>
+                    <li class=""><a href="#dropdowns"><i class="icon-chevron-right"></i>Dropdowns</a></li>
+                    <li class=""><a href="#buttonGroups"><i class="icon-chevron-right"></i>Button groups</a></li>
+                    <li class=""><a href="#buttonDropdowns"><i class="icon-chevron-right"></i>Button dropdowns</a></li>
+
+                    <li class="divider"></li>
+                    <li class="active"><a href="#navs"><i class="icon-chevron-right"></i>Navs</a></li>
+                    <li class="divider"></li>
+
+                    <li class=""><a href="#navbar"><i class="icon-chevron-right"></i>Navbar</a></li>
+                    <li class=""><a href="#breadcrumbs"><i class="icon-chevron-right"></i>Breadcrumbs</a></li>
+                    <li class=""><a href="#pagination"><i class="icon-chevron-right"></i>Pagination</a></li>
+                    <li class=""><a href="#labels-badges"><i class="icon-chevron-right"></i>Labels and badges</a></li>
+                    <li class=""><a href="#typography"><i class="icon-chevron-right"></i>Typography</a></li>
+                    <li class=""><a href="#thumbnails"><i class="icon-chevron-right"></i>Thumbnails</a></li>
+                    <li class=""><a href="#alerts"><i class="icon-chevron-right"></i>Alerts</a></li>
+                    <li class=""><a href="#progress"><i class="icon-chevron-right"></i>Progress bars</a></li>
+                    <li class=""><a href="#media"><i class="icon-chevron-right"></i>Media object</a></li>
+                    <li class=""><a href="#misc"><i class="icon-chevron-right"></i>Misc</a></li>
+                </ul>
+            </aside>
+
+            <section id="page" class="span10">
+
+                @RenderBody()
+
+                @*
+                <input type="button" value="close" class="btn" id="cmd1" />
+                <input type="button" value="open" class="btn" id="cmd2" />
+                *@
+            </section>
+    </section>
+    </section>
+
+    <footer id="footer" class="navbar navbar-inverse navbar-fixed-bottom">
+        <nav class="navbar-inner" style="">
+            <section class="container-fluid">
+                <a href="#" class="brand">SpyCraft v2.0 Online Tools</a>
+            </section>
+        </nav>
+    </footer>
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="/scripts/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="/content/bootstrap/js/bootstrap.min.js"></script>
+    <!--/Bootstrap -->
+
+    @RenderSection("scripts", false)
+
+    <script type="text/javascript">
+        $("#cmd1").click(function () {
+            close();
+        })
+        $("#cmd2").click(function () {
+            open();
+        })
+        function close() {
+            $('#sidebar').animate({
+                left: -500, duration: 'slow'
+            });
+        }
+        function open() {
+            $('#sidebar').animate({
+                left: 0,
+            });
+        }
+    </script>
+</body>
+
+</html>
