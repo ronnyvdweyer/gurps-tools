@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle minify="true" runOnBuild="true" output="template.css">
+    <!--The order of the <file> elements determines the order of them when bundled.-->
+    <file>/Content/template/css/style.css</file>
+    <file>/Content/template/css/bootstrap.css</file>
+
+    <file>/Content/template/css/jquery-ui-1.8.16.custom.css</file>
+    <file>/Content/template/css/fullcalendar.css</file>
+    <file>/Content/template/css/chosen.css</file>
+    <file>/Content/template/css/glisse.css</file>
+    <file>/Content/template/css/jquery.jgrowl.css</file>
+    <file>/Content/template/css/demo_table.css</file>
+
+    <file>/Content/template/css/jquery.fancybox.css</file>
+    <file>/Content/template/css/icon/font-awesome.css</file>
+    <file>/Content/template/css/bootstrap-responsive.css</file>
+
+    <!--
+    <file>/Content/template/css/color/green.css</file>
+    <file>/Content/template/css/color/red.css</file>
+    <file>/Content/template/css/color/blue.css</file>
+    <file>/Content/template/css/color/orange.css</file>
+    <file>/Content/template/css/color/purple.css</file>
+    -->
+</bundle>
