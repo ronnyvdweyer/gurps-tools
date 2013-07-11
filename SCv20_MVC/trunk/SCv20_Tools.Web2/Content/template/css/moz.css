@@ -1,0 +1,10 @@
+@media screen and (max-width: 950px) {
+    .js-advanced #menu {
+        left: -280px;
+        -moz-transform: translate3d(0px, 0px, 0px);
+        -ms-transform: translate3d(0px, 0px, 0px);
+        -o-transform: translate3d(0px, 0px, 0px);
+        -webkit-transform: translate3d(0px, 0px, 0px);
+        transform: translate3d(0px, 0px, 0px);
+    }
+}

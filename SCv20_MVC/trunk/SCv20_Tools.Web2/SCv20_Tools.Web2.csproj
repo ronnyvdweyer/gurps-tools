@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2836E637-B542-4B07-A778-C9906AF7CA46}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SCv20_Tools.Web</RootNamespace>
+    <AssemblyName>SCv20_Tools.Web2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin, Version=4.95.4924.12383, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AjaxMin.4.95.4924.12392\lib\net40\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="Cassette">
+      <HintPath>..\packages\Cassette.2.2.1\lib\net40-client\Cassette.dll</HintPath>
+    </Reference>
+    <Reference Include="Cassette.Aspnet">
+      <HintPath>..\packages\Cassette.Aspnet.2.2.1\lib\net40\Cassette.Aspnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Cassette.Views">
+      <HintPath>..\packages\Cassette.Views.2.2.1\lib\net40\Cassette.Views.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.1\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http, Version=2.1.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.1.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CassetteConfiguration.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\images\buttons.gif" />
+    <Content Include="Content\images\toolbar.gif" />
+    <Content Include="Content\jquery.cleditor.css" />
+    <Content Include="Content\template\buttons.html" />
+    <Content Include="Content\template\calendar.html" />
+    <Content Include="Content\template\charts.html" />
+    <Content Include="Content\template\contacts.html" />
+    <Content Include="Content\template\css\bootstrap-responsive.css" />
+    <Content Include="Content\template\css\bootstrap.css" />
+    <Content Include="Content\template\css\chosen-sprite%402x.png" />
+    <Content Include="Content\template\css\chosen-sprite.png" />
+    <Content Include="Content\template\css\chosen.css" />
+    <Content Include="Content\template\css\chosen.min.css" />
+    <Content Include="Content\template\css\color\blue.css" />
+    <Content Include="Content\template\css\color\green.css" />
+    <Content Include="Content\template\css\color\orange.css" />
+    <Content Include="Content\template\css\color\purple.css" />
+    <Content Include="Content\template\css\color\red.css" />
+    <Content Include="Content\template\css\demo_table.css" />
+    <Content Include="Content\template\css\fullcalendar.css" />
+    <Content Include="Content\template\css\glisse.css" />
+    <Content Include="Content\template\css\icon\font-awesome.css" />
+    <Content Include="Content\template\css\icon\fontawesome-webfont.svg" />
+    <Content Include="Content\template\css\jquery-ui-1.8.16.custom.css" />
+    <Content Include="Content\template\css\jquery.fancybox.css" />
+    <Content Include="Content\template\css\jquery.jgrowl.css" />
+    <Content Include="Content\template\css\login.css" />
+    <Content Include="Content\template\css\moz.css" />
+    <Content Include="Content\template\css\style.css" />
+    <Content Include="Content\template\dashboard.html" />
+    <Content Include="Content\template\forms.html" />
+    <Content Include="Content\template\gallery.html" />
+    <Content Include="Content\template\icons.html" />
+    <Content Include="Content\template\images\alert.png" />
+    <Content Include="Content\template\images\alpha.png" />
+    <Content Include="Content\template\images\avatar-10.png" />
+    <Content Include="Content\template\images\avatar-11.png" />
+    <Content Include="Content\template\images\avatar-12.png" />
+    <Content Include="Content\template\images\avatar-13.png" />
+    <Content Include="Content\template\images\avatar-14.png" />
+    <Content Include="Content\template\images\avatar-15.png" />
+    <Content Include="Content\template\images\avatar-16.png" />
+    <Content Include="Content\template\images\avatar-17.png" />
+    <Content Include="Content\template\images\avatar-18.png" />
+    <Content Include="Content\template\images\avatar-19.png" />
+    <Content Include="Content\template\images\avatar-2.png" />
+    <Content Include="Content\template\images\avatar-20.png" />
+    <Content Include="Content\template\images\avatar-3.png" />
+    <Content Include="Content\template\images\avatar-4.png" />
+    <Content Include="Content\template\images\avatar-5.png" />
+    <Content Include="Content\template\images\avatar-6.png" />
+    <Content Include="Content\template\images\avatar-7.png" />
+    <Content Include="Content\template\images\avatar-8.png" />
+    <Content Include="Content\template\images\avatar-9.png" />
+    <Content Include="Content\template\images\avatar.png" />
+    <Content Include="Content\template\images\bg_left_menu.png" />
+    <Content Include="Content\template\images\blank.gif" />
+    <Content Include="Content\template\images\check_radio_sheet.png" />
+    <Content Include="Content\template\images\chosen-down.png" />
+    <Content Include="Content\template\images\chosen-sprite.png" />
+    <Content Include="Content\template\images\colors\blue\icon_config.png" />
+    <Content Include="Content\template\images\colors\blue\icon_menu.png" />
+    <Content Include="Content\template\images\colors\blue\icon_message.png" />
+    <Content Include="Content\template\images\colors\blue\icon_notification.png" />
+    <Content Include="Content\template\images\colors\green\icon_config.png" />
+    <Content Include="Content\template\images\colors\green\icon_menu.png" />
+    <Content Include="Content\template\images\colors\green\icon_message.png" />
+    <Content Include="Content\template\images\colors\green\icon_notification.png" />
+    <Content Include="Content\template\images\colors\orange\icon_config.png" />
+    <Content Include="Content\template\images\colors\orange\icon_menu.png" />
+    <Content Include="Content\template\images\colors\orange\icon_message.png" />
+    <Content Include="Content\template\images\colors\orange\icon_notification.png" />
+    <Content Include="Content\template\images\colors\purple\bg_left_menu.png" />
+    <Content Include="Content\template\images\colors\purple\icon_config.png" />
+    <Content Include="Content\template\images\colors\purple\icon_menu.png" />
+    <Content Include="Content\template\images\colors\purple\icon_message.png" />
+    <Content Include="Content\template\images\colors\purple\icon_notification.png" />
+    <Content Include="Content\template\images\colors\red\icon_config.png" />
+    <Content Include="Content\template\images\colors\red\icon_menu.png" />
+    <Content Include="Content\template\images\colors\red\icon_message.png" />
+    <Content Include="Content\template\images\colors\red\icon_notification.png" />
+    <Content Include="Content\template\images\contact-nav.png" />
+    <Content Include="Content\template\images\error.png" />
+    <Content Include="Content\template\images\facebook.png" />
+    <Content Include="Content\template\images\famfamfam-icons.png" />
+    <Content Include="Content\template\images\fancybox_loading.gif" />
+    <Content Include="Content\template\images\fancybox_overlay.png" />
+    <Content Include="Content\template\images\fancybox_sprite.png" />
+    <Content Include="Content\template\images\google.png" />
+    <Content Include="Content\template\images\hue.png" />
+    <Content Include="Content\template\images\icon\bonus.png" />
+    <Content Include="Content\template\images\icon\chat_off.png" />
+    <Content Include="Content\template\images\icon\chat_on.png" />
+    <Content Include="Content\template\images\icon\components.png" />
+    <Content Include="Content\template\images\icon\file_doc.png" />
+    <Content Include="Content\template\images\icon\file_jpg.png" />
+    <Content Include="Content\template\images\icon\file_pdf.png" />
+    <Content Include="Content\template\images\icon\file_txt.png" />
+    <Content Include="Content\template\images\icon\file_xls.png" />
+    <Content Include="Content\template\images\icon\file_zip.png" />
+    <Content Include="Content\template\images\icon\forms.png" />
+    <Content Include="Content\template\images\icon\general.png" />
+    <Content Include="Content\template\images\icon\icon_cont_check.png" />
+    <Content Include="Content\template\images\icon\icon_cont_close.png" />
+    <Content Include="Content\template\images\icon\icon_like_stats.png" />
+    <Content Include="Content\template\images\icon\icon_orders_stats.png" />
+    <Content Include="Content\template\images\icon\icon_vizitors_stats.png" />
+    <Content Include="Content\template\images\icon\pages.png" />
+    <Content Include="Content\template\images\icon\photo_delete.png" />
+    <Content Include="Content\template\images\icon\photo_edit.png" />
+    <Content Include="Content\template\images\icon\photo_zoom.png" />
+    <Content Include="Content\template\images\icon\statistics.png" />
+    <Content Include="Content\template\images\icon\stats_1.png" />
+    <Content Include="Content\template\images\icon\stats_2.png" />
+    <Content Include="Content\template\images\icon\stats_3.png" />
+    <Content Include="Content\template\images\icon\tables.png" />
+    <Content Include="Content\template\images\icon\table_del.png" />
+    <Content Include="Content\template\images\icon\table_edit.png" />
+    <Content Include="Content\template\images\icon\table_view.png" />
+    <Content Include="Content\template\images\icon_config.png" />
+    <Content Include="Content\template\images\icon_menu.png" />
+    <Content Include="Content\template\images\icon_message.png" />
+    <Content Include="Content\template\images\icon_notification.png" />
+    <Content Include="Content\template\images\ie\check_radio_sheet.png" />
+    <Content Include="Content\template\images\ie\colors\blue\icon_config.png" />
+    <Content Include="Content\template\images\ie\colors\blue\icon_menu.png" />
+    <Content Include="Content\template\images\ie\colors\blue\icon_message.png" />
+    <Content Include="Content\template\images\ie\colors\blue\icon_notification.png" />
+    <Content Include="Content\template\images\ie\colors\green\icon_config.png" />
+    <Content Include="Content\template\images\ie\colors\green\icon_menu.png" />
+    <Content Include="Content\template\images\ie\colors\green\icon_message.png" />
+    <Content Include="Content\template\images\ie\colors\green\icon_notification.png" />
+    <Content Include="Content\template\images\ie\colors\orange\icon_config.png" />
+    <Content Include="Content\template\images\ie\colors\orange\icon_menu.png" />
+    <Content Include="Content\template\images\ie\colors\orange\icon_message.png" />
+    <Content Include="Content\template\images\ie\colors\orange\icon_notification.png" />
+    <Content Include="Content\template\images\ie\colors\purple\icon_config.png" />
+    <Content Include="Content\template\images\ie\colors\purple\icon_menu.png" />
+    <Content Include="Content\template\images\ie\colors\purple\icon_message.png" />
+    <Content Include="Content\template\images\ie\colors\purple\icon_notification.png" />
+    <Content Include="Content\template\images\ie\colors\red\icon_config.png" />
+    <Content Include="Content\template\images\ie\colors\red\icon_menu.png" />
+    <Content Include="Content\template\images\ie\colors\red\icon_message.png" />
+    <Content Include="Content\template\images\ie\colors\red\icon_notification.png" />
+    <Content Include="Content\template\images\ie\facebook.png" />
+    <Content Include="Content\template\images\ie\google.png" />
+    <Content Include="Content\template\images\ie\icon\bonus.png" />
+    <Content Include="Content\template\images\ie\icon\components.png" />
+    <Content Include="Content\template\images\ie\icon\forms.png" />
+    <Content Include="Content\template\images\ie\icon\general.png" />
+    <Content Include="Content\template\images\ie\icon\icon_cont_check.png" />
+    <Content Include="Content\template\images\ie\icon\icon_cont_close.png" />
+    <Content Include="Content\template\images\ie\icon\pages.png" />
+    <Content Include="Content\template\images\ie\icon\photo_delete.png" />
+    <Content Include="Content\template\images\ie\icon\photo_edit.png" />
+    <Content Include="Content\template\images\ie\icon\photo_zoom.png" />
+    <Content Include="Content\template\images\ie\icon\statistics.png" />
+    <Content Include="Content\template\images\ie\icon\tables.png" />
+    <Content Include="Content\template\images\ie\icon_config.png" />
+    <Content Include="Content\template\images\ie\icon_menu.png" />
+    <Content Include="Content\template\images\ie\icon_message.png" />
+    <Content Include="Content\template\images\ie\icon_notification.png" />
+    <Content Include="Content\template\images\ie\logo.png" />
+    <Content Include="Content\template\images\ie\search.png" />
+    <Content Include="Content\template\images\ie\settings\1.png" />
+    <Content Include="Content\template\images\ie\settings\2.png" />
+    <Content Include="Content\template\images\ie\settings\3.png" />
+    <Content Include="Content\template\images\ie\settings\4.png" />
+    <Content Include="Content\template\images\ie\settings\5.png" />
+    <Content Include="Content\template\images\ie\settings\6.png" />
+    <Content Include="Content\template\images\ie\triangle.png" />
+    <Content Include="Content\template\images\ie\twitter.png" />
+    <Content Include="Content\template\images\loader.gif" />
+    <Content Include="Content\template\images\logo.png" />
+    <Content Include="Content\template\images\photo\1.jpg" />
+    <Content Include="Content\template\images\photo\2.jpg" />
+    <Content Include="Content\template\images\photo\3.jpg" />
+    <Content Include="Content\template\images\photo\4.jpg" />
+    <Content Include="Content\template\images\photo\5.jpg" />
+    <Content Include="Content\template\images\photo\6.jpg" />
+    <Content Include="Content\template\images\photo\7.jpg" />
+    <Content Include="Content\template\images\photo\8.jpg" />
+    <Content Include="Content\template\images\search.png" />
+    <Content Include="Content\template\images\settings\1.png" />
+    <Content Include="Content\template\images\settings\2.png" />
+    <Content Include="Content\template\images\settings\3.png" />
+    <Content Include="Content\template\images\settings\4.png" />
+    <Content Include="Content\template\images\settings\5.png" />
+    <Content Include="Content\template\images\settings\6.png" />
+    <Content Include="Content\template\images\triangle.png" />
+    <Content Include="Content\template\images\twitter.png" />
+    <Content Include="Content\template\images\ui\act.png" />
+    <Content Include="Content\template\images\ui\bg-cal.png" />
+    <Content Include="Content\template\images\ui\bg_slider.gif" />
+    <Content Include="Content\template\images\ui\calendar-act.gif" />
+    <Content Include="Content\template\images\ui\calendar.gif" />
+    <Content Include="Content\template\images\ui\hover.png" />
+    <Content Include="Content\template\images\ui\slider.png" />
+    <Content Include="Content\template\images\ui\slider_bg.gif" />
+    <Content Include="Content\template\images\ui\slider_bg_horiz.gif" />
+    <Content Include="Content\template\images\ui\triangle-e.png" />
+    <Content Include="Content\template\images\ui\triangle-w.png" />
+    <Content Include="Content\template\images\ui\ui-bg_diagonals-medium_75_cccccc_40x40.png" />
+    <Content Include="Content\template\images\ui\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\template\images\ui\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\template\images\ui\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\template\images\ui\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\template\images\ui\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\template\images\ui\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\template\images\ui\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\template\images\ui\ui-icons_222222_256x240.png" />
+    <Content Include="Content\template\images\ui\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\template\images\ui\ui-icons_454545_256x240.png" />
+    <Content Include="Content\template\images\ui\ui-icons_888888_256x240.png" />
+    <Content Include="Content\template\images\ui\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\template\images\ui\vert.png" />
+    <Content Include="Content\template\index.html" />
+    <Content Include="Content\template\js\application.js" />
+    <Content Include="Content\template\js\autoresize.jquery.min.js" />
+    <Content Include="Content\template\js\bootstrap.min.js" />
+    <Content Include="Content\template\js\chosen.jquery.js" />
+    <Content Include="Content\template\js\chosen.jquery.min.js" />
+    <Content Include="Content\template\js\excanvas.min.js" />
+    <Content Include="Content\template\js\float.settings.infobox.js" />
+    <Content Include="Content\template\js\fullcalendar.min.js" />
+    <Content Include="Content\template\js\glisse.js" />
+    <Content Include="Content\template\js\google-code-prettify\prettify.css" />
+    <Content Include="Content\template\js\google-code-prettify\prettify.js" />
+    <Content Include="Content\template\js\graphtable.js" />
+    <Content Include="Content\template\js\jquery-ui.min.js" />
+    <Content Include="Content\template\js\jquery.autotab.js" />
+    <Content Include="Content\template\js\jquery.cookie.js" />
+    <Content Include="Content\template\js\jquery.dataTables.min.js" />
+    <Content Include="Content\template\js\jquery.fancybox.js" />
+    <Content Include="Content\template\js\jquery.flot.categories.js" />
+    <Content Include="Content\template\js\jquery.flot.js" />
+    <Content Include="Content\template\js\jquery.flot.min.js" />
+    <Content Include="Content\template\js\jquery.flot.orderBars.js" />
+    <Content Include="Content\template\js\jquery.flot.pie.js" />
+    <Content Include="Content\template\js\jquery.flot.resize.js" />
+    <Content Include="Content\template\js\jquery.jgrowl_minimized.js" />
+    <Content Include="Content\template\js\jquery.js" />
+    <Content Include="Content\template\js\jquery.min.js" />
+    <Content Include="Content\template\js\jquery.sparkline.min.js" />
+    <Content Include="Content\template\js\jquery.stepy.min.js" />
+    <Content Include="Content\template\js\jquery.validate.min.js" />
+    <Content Include="Content\template\js\justgage.1.0.1.min.js" />
+    <Content Include="Content\template\js\main.js" />
+    <Content Include="Content\template\js\moderniz.js" />
+    <Content Include="Content\template\js\raphael.2.1.0.min.js" />
+    <Content Include="Content\template\js\slidernav-min.js" />
+    <Content Include="Content\template\js\styleswitcher.js" />
+    <Content Include="Content\template\page-404.html" />
+    <Content Include="Content\template\tables.html" />
+    <Content Include="Content\template\typo.html" />
+    <Content Include="Content\template\ui.html" />
+    <Content Include="Content\template\widgets.html" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\template\css\icon\fontawesome-webfont.eot" />
+    <Content Include="Content\template\css\icon\fontawesome-webfont.ttf" />
+    <Content Include="Content\template\css\icon\fontawesome-webfont.woff" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.cleditor.js" />
+    <Content Include="Scripts\jquery.cleditor.min.js" />
+    <Content Include="Scripts\knockout-2.2.1.debug.js" />
+    <Content Include="Scripts\knockout-2.2.1.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.6.2.min.js" />
+    <Content Include="Scripts\sammy-0.7.4.js" />
+    <Content Include="Scripts\sammy-0.7.4.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\modernizr-2.6.2.min.js.map" />
+    <Content Include="Scripts\jquery.cleditor.min.js.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCv20_Tools.Core\SCv20_Tools.Core.csproj">
+      <Project>{47046089-4d73-45e5-b506-3213e156355a}</Project>
+      <Name>SCv20_Tools.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCv20_Tools.Web.Framework\SCv20_Tools.Web.Framework.csproj">
+      <Project>{ce893af6-9ebc-4326-b569-02aaff82e016}</Project>
+      <Name>SCv20_Tools.Web.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.7\tools\Microsoft.Bcl.Build.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

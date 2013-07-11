@@ -1,5 +1,5 @@
 ﻿/*!
- CLEditor WYSIWYG HTML Editor v1.4.1
+ CLEditor WYSIWYG HTML Editor v1.4.3
  http://premiumsoftware.net/CLEditor
  requires jQuery v1.4.2 or later
 
@@ -104,7 +104,7 @@
 
     // Loop through all matching textareas and create the editors
     this.each(function(idx, elem) {
-      if (elem.tagName == "TEXTAREA") {
+      if (elem.tagName.toUpperCase() == "TEXTAREA") {
         var data = $.data(elem, CLEDITOR);
         if (!data) data = new cleditor(elem, options);
         $result = $result.add(data);
@@ -473,7 +473,7 @@
           return false; // stop propagination to document click
         }
 
-        // propaginate to documnt click
+        // propaginate to document click
         return;
 
       }
@@ -528,7 +528,7 @@
       // Opera returns the fontfamily wrapped in quotes
       value = target.style.fontFamily.replace(/"/g, "");
     else if (buttonName == "size") {
-      if (target.tagName == "DIV")
+      if (target.tagName.toUpperCase() == "DIV")
         target = target.children[0];
       value = target.innerHTML;
     }
@@ -631,7 +631,7 @@
     else if (popupName == "size")
       $.each(options.sizes.split(","), function(idx, size) {
         $(DIV_TAG).appendTo($popup)
-          .html("<font size=" + size + ">" + size + "</font>");
+          .html('<font size="' + size + '">' + size + '</font>');
       });
 
     // Style
@@ -643,13 +643,13 @@
 
     // URL
     else if (popupName == "url") {
-      $popup.html('Enter URL:<br><input type=text value="http://" size=35><br><input type=button value="Submit">');
+      $popup.html('Enter URL:<br /><input type="text" value="http://" size="35" /><br /><input type="button" value="Submit" />');
       popupTypeClass = PROMPT_CLASS;
     }
 
     // Paste as Text
     else if (popupName == "pastetext") {
-      $popup.html('Paste your content here and click submit.<br /><textarea cols=40 rows=3></textarea><br /><input type=button value=Submit>');
+      $popup.html('Paste your content here and click submit.<br /><textarea cols="40" rows="3"></textarea><br /><input type="button" value="Submit" />');
       popupTypeClass = PROMPT_CLASS;
     }
 
@@ -798,9 +798,8 @@
 
   // imagesPath - returns the path to the images folder
   function imagesPath() {
-    var cssFile = "jquery.cleditor.css",
-        href = $("link[href$='" + cssFile +"']").attr("href");
-    return href.substr(0, href.length - cssFile.length) + "images/";
+    var href = $("link[href*=cleditor]").attr("href");
+    return href.replace(/^(.*\/)[^\/]+$/, '$1') + "images/";
   }
 
   // imageUrl - Returns the css url string for a filemane
@@ -819,7 +818,7 @@
       editor.$frame.remove();
 
     // Create a new iframe
-    var $frame = editor.$frame = $('<iframe frameborder="0" src="javascript:true;">')
+    var $frame = editor.$frame = $('<iframe frameborder="0" src="javascript:true;" />')
       .hide()
       .appendTo($main);
 
