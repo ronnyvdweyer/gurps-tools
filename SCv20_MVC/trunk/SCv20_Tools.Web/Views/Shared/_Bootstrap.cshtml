@@ -189,12 +189,14 @@
         })
         $("#cmd2").click(function () {
             open();
-        })
+        });
+        
         function close() {
             $('#sidebar').animate({
                 left: -500, duration: 'slow'
             });
         }
+        
         function open() {
             $('#sidebar').animate({
                 left: 0,

@@ -1,110 +1,126 @@
 ﻿@{
     ViewBag.Title = "NightSky Theme";
-    Layout = "~/Views/Shared/_master.cshtml";
+    Layout = "~/Views/Shared/_BootStrap.cshtml";
 }
 <div class="row-fluid">
-                    <!--Style forms of validation  Start-->
-                    <div class="grid span6">
-                        <div class="grid-title">
-                            <div class="pull-left">
-                                <div class="icon-title"><i class="icon-bookmark"></i></div>
-                                <span>Validation style</span>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="pull-right">
-                                <div class="icon-title"><a href="#"><i class="icon-refresh"></i></a></div>
-                                <div class="icon-title"><a href="#"><i class="icon-cog"></i></a></div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="grid-content">
-                            <div class="control-group warning">
-                                <label for="inputWarning" class="control-label">Input with warning</label>
-                                <div class="controls">
-                                    <input type="text" id="inputWarning">
-                                    <span class="help-inline">Something may have gone wrong</span>
-                                </div>
-                            </div>
-                            <div class="control-group error">
-                                <label for="inputError" class="control-label">Input with error</label>
-                                <div class="controls">
-                                    <input type="text" id="inputError">
-                                    <span class="help-inline">Please correct the error</span>
-                                </div>
-                            </div>
-                            <div class="control-group success">
-                                <label for="inputsuccess" class="control-label">Input with success</label>
-                                <div class="controls">
-                                    <input type="text" id="inputsuccess">
-                                    <span class="help-inline">Woohoo!</span>
-                                </div>
-                            </div>
-                            <div class="control-group success">
-                                <label for="selectError" class="control-label">Select with success</label>
-                                <div class="controls">
-                                    <select id="selectError">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                    <span class="help-inline">Woohoo!</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Style forms of validation  END-->
-
-                    <!--Form help text  Start-->
-                    <div class="grid span6">
-                        <div class="grid-title">
-                            <div class="pull-left">
-                                <div class="icon-title"><i class="icon-bookmark"></i></div>
-                                <span>Form help text</span>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="pull-right">
-                                <div class="icon-title"><a href="#"><i class="icon-refresh"></i></a></div>
-                                <div class="icon-title"><a href="#"><i class="icon-cog"></i></a></div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="grid-content">
-                            <div class="control-group">
-                                <label for="prependedInput" class="control-label">Prepended text</label>
-                                <div class="controls">
-                                    <div class="input-append">
-                                        <input type="text" size="16" id="prependedInput" class="span7"><span class="add-on">X</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label for="appendedInput" class="control-label">Appended text</label>
-                                <div class="controls">
-                                    <div class="input-append">
-                                        <input type="text" size="16" id="appendedInput" class="span7"><span class="add-on">.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label for="appendedPrependedInput" class="control-label">Append and prepend</label>
-                                <div class="controls">
-                                    <div class="input-prepend input-append">
-                                        <span class="add-on">$</span><input type="text" size="16" id="appendedPrependedInput" class="span7"><span class="add-on">.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label for="appendedInputButton" class="control-label">Append with button</label>
-                                <div class="controls">
-                                    <div class="input-append">
-                                        <input type="text" size="16" id="appendedInputButton" class="span7">
-                                        <button type="button" class="btn">Go!</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Form help text  END-->
+    <!--Style forms of validation  Start-->
+    <div class="grid span6" style="background-color:#dddbbb;">
+        <div class="grid-title">
+            <div class="pull-left">
+                <div class="icon-title">
+                    <i class="icon-bookmark"></i>
                 </div>
+                <span>Validation style</span>
+                <div class="clearfix">
+                </div>
+            </div>
+            <div class="pull-right">
+                <div class="icon-title">
+                    <a href="#"><i class="icon-refresh"></i></a>
+                </div>
+                <div class="icon-title">
+                    <a href="#"><i class="icon-cog"></i></a>
+                </div>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+        <div class="grid-content">
+            <div class="control-group warning">
+                <label for="inputWarning" class="control-label">Input with warning</label>
+                <div class="controls">
+                    <input type="text" id="inputWarning">
+                    <span class="help-inline">Something may have gone wrong</span>
+                </div>
+            </div>
+            <div class="control-group error">
+                <label for="inputError" class="control-label">Input with error</label>
+                <div class="controls">
+                    <input type="text" id="inputError">
+                    <span class="help-inline">Please correct the error</span>
+                </div>
+            </div>
+            <div class="control-group success">
+                <label for="inputsuccess" class="control-label">Input with success</label>
+                <div class="controls">
+                    <input type="text" id="inputsuccess">
+                    <span class="help-inline">Woohoo!</span>
+                </div>
+            </div>
+            <div class="control-group success">
+                <label for="selectError" class="control-label">Select with success</label>
+                <div class="controls">
+                    <select id="selectError">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <span class="help-inline">Woohoo!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Style forms of validation  END-->
+    <!--Form help text  Start-->
+    <div class="grid span6" style="background-color:#dddaaa;">
+        <div class="grid-title">
+            <div class="pull-left">
+                <div class="icon-title">
+                    <i class="icon-bookmark"></i>
+                </div>
+                <span>Form help text</span>
+                <div class="clearfix">
+                </div>
+            </div>
+            <div class="pull-right">
+                <div class="icon-title">
+                    <a href="#"><i class="icon-refresh"></i></a>
+                </div>
+                <div class="icon-title">
+                    <a href="#"><i class="icon-cog"></i></a>
+                </div>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+        <div class="grid-content">
+            <div class="control-group">
+                <label for="prependedInput" class="control-label">Prepended text</label>
+                <div class="controls">
+                    <div class="input-append">
+                        <input type="text" size="16" id="prependedInput" class="span7"><span class="add-on">X</span>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="appendedInput" class="control-label">Appended text</label>
+                <div class="controls">
+                    <div class="input-append">
+                        <input type="text" size="16" id="appendedInput" class="span7"><span class="add-on">.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="appendedPrependedInput" class="control-label">Append and prepend</label>
+                <div class="controls">
+                    <div class="input-prepend input-append">
+                        <span class="add-on">$</span><input type="text" size="16" id="appendedPrependedInput" class="span7"><span class="add-on">.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="appendedInputButton" class="control-label">Append with button</label>
+                <div class="controls">
+                    <div class="input-append">
+                        <input type="text" size="16" id="appendedInputButton" class="span7">
+                        <button type="button" class="btn">
+                            Go!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Form help text  END-->
+</div>

@@ -83,12 +83,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
     </Reference>
+    <!--
     <Reference Include="System.Runtime">
       <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\net40\System.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\net40\System.Threading.Tasks.dll</HintPath>
     </Reference>
+    -->
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -179,7 +181,9 @@
     <Content Include="Content\template\css\jquery.jgrowl.css" />
     <Content Include="Content\template\css\login.css" />
     <Content Include="Content\template\css\moz.css" />
-    <Content Include="Content\template\css\style.css" />
+    <Content Include="Content\template\css\style.css">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\template\dashboard.html" />
     <Content Include="Content\template\forms.html" />
     <Content Include="Content\template\gallery.html" />
@@ -408,6 +412,7 @@
     <Content Include="Content\template\typo.html" />
     <Content Include="Content\template\ui.html" />
     <Content Include="Content\template\widgets.html" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\template\css\icon\fontawesome-webfont.eot" />
     <Content Include="Content\template\css\icon\fontawesome-webfont.ttf" />
@@ -437,7 +442,17 @@
     <Content Include="Scripts\modernizr-2.6.2.min.js.map" />
     <Content Include="Scripts\jquery.cleditor.min.js.map" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\__Layout.cshtml" />
+    <Content Include="Views\Shared\_messageBox.cshtml" />
+    <Content Include="Views\Shared\_notificationBox.cshtml" />
+    <Content Include="Views\Shared\_configBox.cshtml" />
+    <Content Include="Views\Shared\_profileBox.cshtml" />
+    <Content Include="Views\Shared\_mainMenu.cshtml" />
+    <Content Include="Views\Shared\_localMenu.cshtml" />
+    <Content Include="Views\Shared\_newFiles.cshtml" />
+    <Content Include="Views\Shared\_uploadBox.cshtml" />
+    <Content Include="Views\Shared\_mediaFiles.cshtml" />
+    <Content Include="Views\Shared\_addWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -479,7 +494,9 @@
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.7\tools\Microsoft.Bcl.Build.targets" />
+  <!-- 
+    <Import Project="..\packages\Microsoft.Bcl.Build.1.0.7\tools\Microsoft.Bcl.Build.targets" />
+    -->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

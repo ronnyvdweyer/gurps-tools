@@ -1,8 +1,27 @@
+/// <reference path="/Scripts/jquery-1.9.1.js" />
+
+jQuery.extend({
+    browser: {}
+});
+
+(function(){
+    var sUsrAg = navigator.userAgent;
+    if(sUsrAg.indexOf("Chrome") > -1) {
+        jQuery.browser.chrome = true;
+    } else if (sUsrAg.indexOf("Safari") > -1) {
+        jQuery.browser.safari = true;
+    } else if (sUsrAg.indexOf("Opera") > -1) {
+        jQuery.browser.opera = true;
+    } else if (sUsrAg.indexOf("Firefox") > -1) {
+        jQuery.browser.firefox = true;
+    } else if (sUsrAg.indexOf("MSIE") > -1) {
+        jQuery.browser.msie = true;
+    }
+})();
+
+
 $(document).ready(function () {
-    alert(navigator.userAgent);
-
     if ($.browser.opera == true) {
-
         $('#menu').css('left', '-280px');
         $("#menu").addClass("sideleft-mob");
 
@@ -14,10 +33,8 @@ $(document).ready(function () {
                 $("#menu").addClass("sideleft-mob");
                 $('#menu').css('left', '-280px');
             }
-
         });
     }
-
 });
 
 
@@ -113,29 +130,34 @@ $(document).ready(function () { $('.fancybox').fancybox(); });
             placement: "bottom",
             selector: "a[data-t=tooltip]"
         })
+
         $('.tooltip-top').tooltip({
             placement: "top",
             selector: "a[data-t=tooltip]"
         })
+
         $('.tooltip-left').tooltip({
             placement: "left",
             selector: "a[data-t=tooltip]"
         })
+
         $('.tooltip-right').tooltip({
             placement: "right",
             selector: "a[data-t=tooltip]"
         })
 
-
         $('.popover-top').popover({
             placement: "top"
         })
+
         $('.popover-bottom').popover({
             placement: "bottom"
         })
+
         $('.popover-left').popover({
             placement: "left"
         })
+
         $('.popover-right').popover({
             placement: "right"
         })
@@ -200,15 +222,15 @@ $(document).ready(function () { $('.fancybox').fancybox(); });
               })
 
             $.ajax({
-                type: 'POST'
-            , url: /\?dev/.test(window.location) ? 'http://localhost:3000' : 'http://bootstrap.herokuapp.com'
-            , dataType: 'jsonpi'
-            , params: {
-                js: js
-              , css: css
-              , vars: vars
-              , img: img
-            }
+                type: 'POST',
+                url: /\?dev/.test(window.location) ? 'http://localhost:3000' : 'http://bootstrap.herokuapp.com',
+                dataType: 'jsonpi',
+                params: {
+                    js: js,
+                    css: css,
+                    vars: vars,
+                    img: img
+                }
             })
         })
     })
@@ -245,7 +267,7 @@ $(document).ready(function () { $('.fancybox').fancybox(); });
         }
     })
 
-}(window.jQuery)
+} (window.jQuery)
 /*jslint unparam: true */
 /*global window, document, $ */
 $(function () {
@@ -589,47 +611,47 @@ $(document).ready(function () {
         events: [{
             title: 'All Day Event',
             start: new Date(y, m, 1),
-            className: 'label label-default',
+            className: 'label label-default'
         }, {
             title: 'Long Event',
             start: new Date(y, m, d - 5),
             end: new Date(y, m, d - 2),
-            className: 'label label-success',
+            className: 'label label-success'
         }, {
             id: 999,
             title: 'Repeating Event',
             start: new Date(y, m, d - 3, 16, 0),
             allDay: false,
-            className: 'label label-default',
+            className: 'label label-default'
         }, {
             id: 999,
             title: 'Repeating Event',
             start: new Date(y, m, d + 4, 16, 0),
             allDay: false,
-            className: 'label label-important',
+            className: 'label label-important'
         }, {
             title: 'Meeting',
             start: new Date(y, m, d, 10, 30),
             allDay: false,
-            className: 'label label-info',
+            className: 'label label-info'
         }, {
             title: 'Lunch',
             start: new Date(y, m, d, 12, 0),
             end: new Date(y, m, d, 14, 0),
             allDay: false,
-            className: 'label label-warning',
+            className: 'label label-warning'
         }, {
             title: 'Birthday Party',
             start: new Date(y, m, d + 1, 19, 0),
             end: new Date(y, m, d + 1, 22, 30),
             allDay: false,
-            className: 'label label-success',
+            className: 'label label-success'
         }, {
             title: 'Click for Google',
             start: new Date(y, m, 28),
             end: new Date(y, m, 29),
             url: 'http://google.com/',
-            className: 'label label-warning',
+            className: 'label label-warning'
         }]
     });
 
@@ -872,11 +894,11 @@ $(document).ready(function () {
         }
 
         var plot = $.plot($("#sincos"),
-			   [{ data: sin, label: "sin(x)/x" }, { data: cos, label: "cos(x)" }], {
+			   [{ data: sin, label: "sin(x)/x" }, { data: cos, label: "cos(x)"}], {
 			       series: {
 			           lines: {
 			               show: true,
-			               lineWidth: 2,
+			               lineWidth: 2
 			           },
 			           points: { show: true },
 			           shadowSize: 2
@@ -891,7 +913,7 @@ $(document).ready(function () {
 			       colors: ["#FA5833", "#2FABE9"]
 			   });
 
-        function showTooltip(x, y, contents) {
+        var showTooltip = function (x, y, contents) {
             $('<div id="tooltip">' + contents + '</div>').css({
                 position: 'absolute',
                 display: 'none',
@@ -993,12 +1015,12 @@ $(document).ready(function () {
 
         var stack = 0, bars = true, lines = false, steps = false;
 
-        function plotWithOptions() {
+        var plotWithOptions = function () {
             $.plot($("#stackchart"), [d1, d2, d3], {
                 series: {
                     stack: stack,
                     lines: { show: lines, fill: true, steps: steps },
-                    bars: { show: bars, barWidth: 0.6 },
+                    bars: { show: bars, barWidth: 0.6 }
                 },
                 colors: ["#FA5833", "#2FABE9", "#FABB3D"]
             });
@@ -1031,8 +1053,7 @@ $(document).ready(function () {
 
         var stack = 0, bars = true, lines = false, steps = false;
 
-        function plotWithOptions2() {
-
+        var plotWithOptions2 = function () {
             $.plot($("#activeUsers"), [d1], {
                 series: {
                     bars: {
@@ -1041,19 +1062,18 @@ $(document).ready(function () {
                         barWidth: 0.1,
                         align: "center",
                         lineWidth: 5,
-                        fillColor: { colors: [{ opacity: 1 }, { opacity: 0.5 }] }
-                    },
+                        fillColor: { colors: [{ opacity: 1 }, { opacity: 0.5}] }
+                    }
                 },
                 grid: {
                     hoverable: true,
                     clickable: true,
                     tickColor: "#dddddd",
-                    borderWidth: 0,
+                    borderWidth: 0
                 },
                 colors: ["#2d8aeb"],
                 xaxis: { ticks: 0, tickDecimals: 0, tickFormatter: function (v, a) { return v } },
-                yaxis: { ticks: 5, tickDecimals: 0, tickFormatter: function (v) { return v } },
-
+                yaxis: { ticks: 5, tickDecimals: 0, tickFormatter: function (v) { return v } }
             });
         }
 
@@ -1114,7 +1134,7 @@ $(document).ready(function () {
                 grid: {
                     hoverable: false,
                     clickable: true
-                },
+                }
             });
 
             $("#interactive").bind("plothover", pieHover);
@@ -1123,13 +1143,13 @@ $(document).ready(function () {
 
         });
 
-        function pieHover(event, pos, obj) {
-            if (!obj)
-                return;
+        var pieHover = function (event, pos, obj) {
+            if (!obj) return;
             percent = parseFloat(obj.series.percent).toFixed(2);
             $("#hover").html('<span style="font-weight: bold; color: ' + obj.series.color + '">' + obj.series.label + ' (' + percent + '%)</span>');
         }
-        function pieClick(event, pos, obj) {
+
+        var pieClick = function (event, pos, obj) {
             if (!obj)
                 return;
             percent = parseFloat(obj.series.percent).toFixed(2);
@@ -1148,8 +1168,7 @@ $(document).ready(function () {
                 data[i] = { label: "Series" + (i + 1), data: Math.floor(Math.random() * 100) + 1 }
             }
 
-            $.plot($("#graph2"), data,
-            {
+            $.plot($("#graph2"), data, {
                 series: {
                     pie: {
                         show: true,
@@ -1169,22 +1188,21 @@ $(document).ready(function () {
                 grid: {
                     hoverable: false,
                     clickable: true
-                },
+                }
             });
 
             $("#interactive").bind("plothover", pieHover);
             $("#interactive").bind("plotclick", pieClick);
-
-
         });
 
-        function pieHover(event, pos, obj) {
+        var pieHover = function (event, pos, obj) {
             if (!obj)
                 return;
             percent = parseFloat(obj.series.percent).toFixed(2);
             $("#hover").html('<span style="font-weight: bold; color: ' + obj.series.color + '">' + obj.series.label + ' (' + percent + '%)</span>');
         }
-        function pieClick(event, pos, obj) {
+
+        var pieClick = function (event, pos, obj) {
             if (!obj)
                 return;
             percent = parseFloat(obj.series.percent).toFixed(2);
@@ -1248,7 +1266,7 @@ $(document).ready(function () {
                     lines: {
                         lineWidth: 1,
                         fill: true,
-                        fillColor: { colors: [{ opacity: 0.5 }, { opacity: 1.0 }] },
+                        fillColor: { colors: [{ opacity: 0.5 }, { opacity: 1.0}] },
                         steps: false,
                         show: true
 

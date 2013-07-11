@@ -126,11 +126,11 @@ table.table {
 	color:#9a9a9a;
 	font-size:14px;
 	border:1px solid #292929;
-	width:206px;
+	/*width:206px;*/
 	height:35px;
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
-	border-radius: 20px;
+	border-radius: 5px;
 	padding:0px 22px;
 	background:url(../images/search.png) #fff right bottom no-repeat;
 	background-size:30px 30px;
