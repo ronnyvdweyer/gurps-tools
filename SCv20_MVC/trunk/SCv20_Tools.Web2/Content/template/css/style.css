@@ -628,7 +628,7 @@ div.profile-box {
 	color:#5c5c5c;
 }
 .file .file-name [class^="icon-"]:before, [class*=" icon-"]:before {
-	font-size:12px;
+	/*font-size:12px;*/
 }
 .file-date {
 	font-size:12px;

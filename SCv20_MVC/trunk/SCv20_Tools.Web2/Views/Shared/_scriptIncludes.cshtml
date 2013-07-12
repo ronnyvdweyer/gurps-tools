@@ -1,0 +1,52 @@
+﻿<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+@*
+<script src="/content/template/js/jquery.min.js"                    ></script>
+<script src="/content/template/js/jquery-ui.min.js"                 ></script>
+
+<script src="/content/template/js/bootstrap.min.js"                 ></script>
+<script src="/content/template/js/google-code-prettify/prettify.js" ></script>
+
+<script src="/content/template/js/jquery.flot.js"                   ></script>
+<script src="/content/template/js/jquery.flot.pie.js"               ></script>
+<script src="/content/template/js/jquery.flot.orderBars.js"         ></script>
+<script src="/content/template/js/jquery.flot.resize.js"            ></script>
+<script src="/content/template/js/jquery.flot.categories.js"        ></script>
+<script src="/content/template/js/graphtable.js"                    ></script>
+<script src="/content/template/js/fullcalendar.min.js"              ></script>
+<script src="/content/template/js/chosen.jquery.min.js"             ></script>
+<script src="/content/template/js/autoresize.jquery.min.js"         ></script>
+<script src="/content/template/js/jquery.autotab.js"                ></script>
+<script src="/content/template/js/jquery.jgrowl_minimized.js"       ></script>
+<script src="/content/template/js/jquery.dataTables.min.js"         ></script>
+<script src="/content/template/js/jquery.stepy.min.js"              ></script>
+<script src="/content/template/js/jquery.validate.min.js"           ></script>
+<script src="/content/template/js/raphael.2.1.0.min.js"             ></script>
+<script src="/content/template/js/justgage.1.0.1.min.js"            ></script>
+<script src="/content/template/js/glisse.js"                        ></script>
+<script src="/content/template/js/styleswitcher.js"                 ></script>
+
+<script src="/content/template/js/jquery.sparkline.min.js"          ></script>
+<script src="/content/template/js/slidernav-min.js"                 ></script>
+<script src="/content/template/js/jquery.fancybox.js?v=2.1.4"       ></script>
+
+<script src="/content/template/js/chosen.jquery.min.js"             ></script>
+*@
+
+<script type="text/javascript">
+    Modernizr.load([
+        {
+            load: [
+                    '/content/template/js/main.js'
+            ],
+            complete: function () {
+                $.fn.ready(function () {
+                    window.App.init();
+                });
+            }
+        }
+    ]);
+</script>
+
+@*<script src="/content/template/js/application.js"></script>*@

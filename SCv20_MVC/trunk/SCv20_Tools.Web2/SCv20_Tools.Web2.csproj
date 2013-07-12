@@ -174,8 +174,11 @@
     <Content Include="Content\template\css\demo_table.css" />
     <Content Include="Content\template\css\fullcalendar.css" />
     <Content Include="Content\template\css\glisse.css" />
+    <Content Include="Content\template\css\icon\original\font-awesome.css" />
+    <Content Include="Content\template\css\icon\font-awesome-ie7.css" />
+    <Content Include="Content\template\css\icon\font-awesome-ie7.min.css" />
     <Content Include="Content\template\css\icon\font-awesome.css" />
-    <Content Include="Content\template\css\icon\fontawesome-webfont.svg" />
+    <Content Include="Content\template\css\icon\font-awesome.min.css" />
     <Content Include="Content\template\css\jquery-ui-1.8.16.custom.css" />
     <Content Include="Content\template\css\jquery.fancybox.css" />
     <Content Include="Content\template\css\jquery.jgrowl.css" />
@@ -414,9 +417,15 @@
     <Content Include="Content\template\widgets.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\template\css\icon\fontawesome-webfont.eot" />
-    <Content Include="Content\template\css\icon\fontawesome-webfont.ttf" />
-    <Content Include="Content\template\css\icon\fontawesome-webfont.woff" />
+    <Content Include="Content\template\css\icon\original\fontawesome-webfont.woff" />
+    <Content Include="Content\template\css\icon\original\fontawesome-webfont.eot" />
+    <Content Include="Content\template\css\icon\original\fontawesome-webfont.svg" />
+    <Content Include="Content\template\css\icon\original\fontawesome-webfont.ttf" />
+    <None Include="Content\template\css\icon\fontawesome-webfont.eot" />
+    <None Include="Content\template\css\icon\fontawesome-webfont.svg" />
+    <None Include="Content\template\css\icon\fontawesome-webfont.ttf" />
+    <None Include="Content\template\css\icon\fontawesome-webfont.woff" />
+    <None Include="Content\template\css\icon\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -453,6 +462,13 @@
     <Content Include="Views\Shared\_uploadBox.cshtml" />
     <Content Include="Views\Shared\_mediaFiles.cshtml" />
     <Content Include="Views\Shared\_addWidget.cshtml" />
+    <Content Include="Views\Shared\forms\_inputFields.cshtml" />
+    <Content Include="Views\Shared\forms\_additionalInputFields.cshtml" />
+    <Content Include="Views\Shared\forms\_fluidForms.cshtml" />
+    <Content Include="Views\Shared\forms\_checkBoxAndRadio.cshtml" />
+    <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\Shared\_scriptIncludes.cshtml" />
+    <Content Include="Views\Shared\_styleIncludes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
