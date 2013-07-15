@@ -156,6 +156,8 @@
     <Content Include="Content\images\buttons.gif" />
     <Content Include="Content\images\toolbar.gif" />
     <Content Include="Content\jquery.cleditor.css" />
+    <Content Include="Content\plugins\jquery.bootstrap-duallistbox.css" />
+    <Content Include="Content\plugins\jquery.bootstrap-duallistbox.js" />
     <Content Include="Content\template\buttons.html" />
     <Content Include="Content\template\calendar.html" />
     <Content Include="Content\template\charts.html" />
@@ -427,6 +429,10 @@
     <None Include="Content\template\css\icon\fontawesome-webfont.woff" />
     <None Include="Content\template\css\icon\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\main.js" />
+    <Content Include="Scripts\backbone.js" />
+    <Content Include="Scripts\backbone.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery.cleditor.js" />
@@ -435,8 +441,15 @@
     <Content Include="Scripts\knockout-2.2.1.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.6.2.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
     <Content Include="Scripts\sammy-0.7.4.js" />
     <Content Include="Scripts\sammy-0.7.4.min.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
+    <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -473,6 +486,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\app\models\" />
+    <Folder Include="Scripts\app\views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
